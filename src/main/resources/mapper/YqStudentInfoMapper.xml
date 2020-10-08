@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sq.mappers.YqStudentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqStudentInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="college" jdbcType="VARCHAR" property="college" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="classes" jdbcType="VARCHAR" property="classes" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="person_type" jdbcType="INTEGER" property="personType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="md5_password" jdbcType="VARCHAR" property="md5Password" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="parents_phone" jdbcType="VARCHAR" property="parentsPhone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, school, college, user_name, user_no, sex, age, classes, phone, person_type, create_time, 
+    md5_password, department, parents_phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yq_student_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_student_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    insert into yq_student_info (id, school, college, 
+      user_name, user_no, sex, 
+      age, classes, phone, 
+      person_type, create_time, md5_password, 
+      department, parents_phone)
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{college,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=VARCHAR}, #{classes,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{personType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{md5Password,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{parentsPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    insert into yq_student_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="college != null">
+        college,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="classes != null">
+        classes,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="personType != null">
+        person_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="md5Password != null">
+        md5_password,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="parentsPhone != null">
+        parents_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="md5Password != null">
+        #{md5Password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="parentsPhone != null">
+        #{parentsPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    update yq_student_info
+    <set>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        college = #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        person_type = #{personType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="md5Password != null">
+        md5_password = #{md5Password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="parentsPhone != null">
+        parents_phone = #{parentsPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    update yq_student_info
+    set school = #{school,jdbcType=VARCHAR},
+      college = #{college,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      person_type = #{personType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      md5_password = #{md5Password,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      parents_phone = #{parentsPhone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqStudentInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="college" jdbcType="VARCHAR" property="college" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="classes" jdbcType="VARCHAR" property="classes" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="person_type" jdbcType="INTEGER" property="personType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="md5_password" jdbcType="VARCHAR" property="md5Password" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="parents_phone" jdbcType="VARCHAR" property="parentsPhone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, school, college, user_name, user_no, sex, age, classes, phone, person_type, create_time, 
+    md5_password, department, parents_phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yq_student_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_student_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    insert into yq_student_info (id, school, college, 
+      user_name, user_no, sex, 
+      age, classes, phone, 
+      person_type, create_time, md5_password, 
+      department, parents_phone)
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{college,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=VARCHAR}, #{classes,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{personType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{md5Password,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{parentsPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    insert into yq_student_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="college != null">
+        college,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="classes != null">
+        classes,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="personType != null">
+        person_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="md5Password != null">
+        md5_password,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="parentsPhone != null">
+        parents_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="md5Password != null">
+        #{md5Password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="parentsPhone != null">
+        #{parentsPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    update yq_student_info
+    <set>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        college = #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        person_type = #{personType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="md5Password != null">
+        md5_password = #{md5Password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="parentsPhone != null">
+        parents_phone = #{parentsPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    update yq_student_info
+    set school = #{school,jdbcType=VARCHAR},
+      college = #{college,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      person_type = #{personType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      md5_password = #{md5Password,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      parents_phone = #{parentsPhone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqStudentInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="college" jdbcType="VARCHAR" property="college" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="classes" jdbcType="VARCHAR" property="classes" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="person_type" jdbcType="INTEGER" property="personType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="md5_password" jdbcType="VARCHAR" property="md5Password" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="parents_phone" jdbcType="VARCHAR" property="parentsPhone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, school, college, user_name, user_no, sex, age, classes, phone, person_type, create_time, 
+    md5_password, department, parents_phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yq_student_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_student_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    insert into yq_student_info (id, school, college, 
+      user_name, user_no, sex, 
+      age, classes, phone, 
+      person_type, create_time, md5_password, 
+      department, parents_phone)
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{college,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{age,jdbcType=VARCHAR}, #{classes,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{personType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{md5Password,jdbcType=VARCHAR}, 
+      #{department,jdbcType=VARCHAR}, #{parentsPhone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    insert into yq_student_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="college != null">
+        college,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="classes != null">
+        classes,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="personType != null">
+        person_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="md5Password != null">
+        md5_password,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="parentsPhone != null">
+        parents_phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="md5Password != null">
+        #{md5Password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="parentsPhone != null">
+        #{parentsPhone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    update yq_student_info
+    <set>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="college != null">
+        college = #{college,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="classes != null">
+        classes = #{classes,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        person_type = #{personType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="md5Password != null">
+        md5_password = #{md5Password,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="parentsPhone != null">
+        parents_phone = #{parentsPhone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+    update yq_student_info
+    set school = #{school,jdbcType=VARCHAR},
+      college = #{college,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      classes = #{classes,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      person_type = #{personType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      md5_password = #{md5Password,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      parents_phone = #{parentsPhone,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

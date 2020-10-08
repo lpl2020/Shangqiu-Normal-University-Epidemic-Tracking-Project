@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.IoByThreadByLatencyMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.IoByThreadByLatency" >
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="DECIMAL" />
+    <result column="thread_id" property="threadId" jdbcType="BIGINT" />
+    <result column="processlist_id" property="processlistId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.sq.entity.IoByThreadByLatencyWithBLOBs" extends="BaseResultMap" >
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="min_latency" property="minLatency" jdbcType="LONGVARCHAR" />
+    <result column="avg_latency" property="avgLatency" jdbcType="LONGVARCHAR" />
+    <result column="max_latency" property="maxLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    total_latency, min_latency, avg_latency, max_latency
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.IoByThreadByLatencyWithBLOBs" >
+    insert into io_by_thread_by_latency (user, total, thread_id, 
+      processlist_id, total_latency, min_latency, 
+      avg_latency, max_latency)
+    values (#{user,jdbcType=VARCHAR}, #{total,jdbcType=DECIMAL}, #{threadId,jdbcType=BIGINT}, 
+      #{processlistId,jdbcType=BIGINT}, #{totalLatency,jdbcType=LONGVARCHAR}, #{minLatency,jdbcType=LONGVARCHAR}, 
+      #{avgLatency,jdbcType=LONGVARCHAR}, #{maxLatency,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.IoByThreadByLatencyWithBLOBs" >
+    insert into io_by_thread_by_latency
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        user,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="threadId != null" >
+        thread_id,
+      </if>
+      <if test="processlistId != null" >
+        processlist_id,
+      </if>
+      <if test="totalLatency != null" >
+        total_latency,
+      </if>
+      <if test="minLatency != null" >
+        min_latency,
+      </if>
+      <if test="avgLatency != null" >
+        avg_latency,
+      </if>
+      <if test="maxLatency != null" >
+        max_latency,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=DECIMAL},
+      </if>
+      <if test="threadId != null" >
+        #{threadId,jdbcType=BIGINT},
+      </if>
+      <if test="processlistId != null" >
+        #{processlistId,jdbcType=BIGINT},
+      </if>
+      <if test="totalLatency != null" >
+        #{totalLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="minLatency != null" >
+        #{minLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="avgLatency != null" >
+        #{avgLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="maxLatency != null" >
+        #{maxLatency,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

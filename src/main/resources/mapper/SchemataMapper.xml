@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.SchemataMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Schemata" >
+    <result column="CATALOG_NAME" property="catalogName" jdbcType="VARCHAR" />
+    <result column="SCHEMA_NAME" property="schemaName" jdbcType="VARCHAR" />
+    <result column="DEFAULT_CHARACTER_SET_NAME" property="defaultCharacterSetName" jdbcType="VARCHAR" />
+    <result column="DEFAULT_COLLATION_NAME" property="defaultCollationName" jdbcType="VARCHAR" />
+    <result column="SQL_PATH" property="sqlPath" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Schemata" >
+    insert into SCHEMATA (CATALOG_NAME, SCHEMA_NAME, DEFAULT_CHARACTER_SET_NAME, 
+      DEFAULT_COLLATION_NAME, SQL_PATH)
+    values (#{catalogName,jdbcType=VARCHAR}, #{schemaName,jdbcType=VARCHAR}, #{defaultCharacterSetName,jdbcType=VARCHAR}, 
+      #{defaultCollationName,jdbcType=VARCHAR}, #{sqlPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Schemata" >
+    insert into SCHEMATA
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="catalogName != null" >
+        CATALOG_NAME,
+      </if>
+      <if test="schemaName != null" >
+        SCHEMA_NAME,
+      </if>
+      <if test="defaultCharacterSetName != null" >
+        DEFAULT_CHARACTER_SET_NAME,
+      </if>
+      <if test="defaultCollationName != null" >
+        DEFAULT_COLLATION_NAME,
+      </if>
+      <if test="sqlPath != null" >
+        SQL_PATH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="catalogName != null" >
+        #{catalogName,jdbcType=VARCHAR},
+      </if>
+      <if test="schemaName != null" >
+        #{schemaName,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultCharacterSetName != null" >
+        #{defaultCharacterSetName,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultCollationName != null" >
+        #{defaultCollationName,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlPath != null" >
+        #{sqlPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

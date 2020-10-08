@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.XInnodbLockWaitsMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.XInnodbLockWaits" >
+    <result column="wait_started" property="waitStarted" jdbcType="TIMESTAMP" />
+    <result column="wait_age" property="waitAge" jdbcType="TIME" />
+    <result column="wait_age_secs" property="waitAgeSecs" jdbcType="BIGINT" />
+    <result column="locked_table" property="lockedTable" jdbcType="VARCHAR" />
+    <result column="locked_index" property="lockedIndex" jdbcType="VARCHAR" />
+    <result column="locked_type" property="lockedType" jdbcType="VARCHAR" />
+    <result column="waiting_trx_id" property="waitingTrxId" jdbcType="VARCHAR" />
+    <result column="waiting_trx_started" property="waitingTrxStarted" jdbcType="TIMESTAMP" />
+    <result column="waiting_trx_age" property="waitingTrxAge" jdbcType="TIME" />
+    <result column="waiting_trx_rows_locked" property="waitingTrxRowsLocked" jdbcType="BIGINT" />
+    <result column="waiting_trx_rows_modified" property="waitingTrxRowsModified" jdbcType="BIGINT" />
+    <result column="waiting_pid" property="waitingPid" jdbcType="BIGINT" />
+    <result column="waiting_query" property="waitingQuery" jdbcType="VARCHAR" />
+    <result column="waiting_lock_id" property="waitingLockId" jdbcType="VARCHAR" />
+    <result column="waiting_lock_mode" property="waitingLockMode" jdbcType="VARCHAR" />
+    <result column="blocking_trx_id" property="blockingTrxId" jdbcType="VARCHAR" />
+    <result column="blocking_pid" property="blockingPid" jdbcType="BIGINT" />
+    <result column="blocking_query" property="blockingQuery" jdbcType="VARCHAR" />
+    <result column="blocking_lock_id" property="blockingLockId" jdbcType="VARCHAR" />
+    <result column="blocking_lock_mode" property="blockingLockMode" jdbcType="VARCHAR" />
+    <result column="blocking_trx_started" property="blockingTrxStarted" jdbcType="TIMESTAMP" />
+    <result column="blocking_trx_age" property="blockingTrxAge" jdbcType="TIME" />
+    <result column="blocking_trx_rows_locked" property="blockingTrxRowsLocked" jdbcType="BIGINT" />
+    <result column="blocking_trx_rows_modified" property="blockingTrxRowsModified" jdbcType="BIGINT" />
+    <result column="sql_kill_blocking_query" property="sqlKillBlockingQuery" jdbcType="VARCHAR" />
+    <result column="sql_kill_blocking_connection" property="sqlKillBlockingConnection" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.XInnodbLockWaits" >
+    insert into x$innodb_lock_waits (wait_started, wait_age, wait_age_secs, 
+      locked_table, locked_index, locked_type, 
+      waiting_trx_id, waiting_trx_started, waiting_trx_age, 
+      waiting_trx_rows_locked, waiting_trx_rows_modified, 
+      waiting_pid, waiting_query, waiting_lock_id, 
+      waiting_lock_mode, blocking_trx_id, blocking_pid, 
+      blocking_query, blocking_lock_id, blocking_lock_mode, 
+      blocking_trx_started, blocking_trx_age, blocking_trx_rows_locked, 
+      blocking_trx_rows_modified, sql_kill_blocking_query, 
+      sql_kill_blocking_connection)
+    values (#{waitStarted,jdbcType=TIMESTAMP}, #{waitAge,jdbcType=TIME}, #{waitAgeSecs,jdbcType=BIGINT}, 
+      #{lockedTable,jdbcType=VARCHAR}, #{lockedIndex,jdbcType=VARCHAR}, #{lockedType,jdbcType=VARCHAR}, 
+      #{waitingTrxId,jdbcType=VARCHAR}, #{waitingTrxStarted,jdbcType=TIMESTAMP}, #{waitingTrxAge,jdbcType=TIME}, 
+      #{waitingTrxRowsLocked,jdbcType=BIGINT}, #{waitingTrxRowsModified,jdbcType=BIGINT}, 
+      #{waitingPid,jdbcType=BIGINT}, #{waitingQuery,jdbcType=VARCHAR}, #{waitingLockId,jdbcType=VARCHAR}, 
+      #{waitingLockMode,jdbcType=VARCHAR}, #{blockingTrxId,jdbcType=VARCHAR}, #{blockingPid,jdbcType=BIGINT}, 
+      #{blockingQuery,jdbcType=VARCHAR}, #{blockingLockId,jdbcType=VARCHAR}, #{blockingLockMode,jdbcType=VARCHAR}, 
+      #{blockingTrxStarted,jdbcType=TIMESTAMP}, #{blockingTrxAge,jdbcType=TIME}, #{blockingTrxRowsLocked,jdbcType=BIGINT}, 
+      #{blockingTrxRowsModified,jdbcType=BIGINT}, #{sqlKillBlockingQuery,jdbcType=VARCHAR}, 
+      #{sqlKillBlockingConnection,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.XInnodbLockWaits" >
+    insert into x$innodb_lock_waits
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="waitStarted != null" >
+        wait_started,
+      </if>
+      <if test="waitAge != null" >
+        wait_age,
+      </if>
+      <if test="waitAgeSecs != null" >
+        wait_age_secs,
+      </if>
+      <if test="lockedTable != null" >
+        locked_table,
+      </if>
+      <if test="lockedIndex != null" >
+        locked_index,
+      </if>
+      <if test="lockedType != null" >
+        locked_type,
+      </if>
+      <if test="waitingTrxId != null" >
+        waiting_trx_id,
+      </if>
+      <if test="waitingTrxStarted != null" >
+        waiting_trx_started,
+      </if>
+      <if test="waitingTrxAge != null" >
+        waiting_trx_age,
+      </if>
+      <if test="waitingTrxRowsLocked != null" >
+        waiting_trx_rows_locked,
+      </if>
+      <if test="waitingTrxRowsModified != null" >
+        waiting_trx_rows_modified,
+      </if>
+      <if test="waitingPid != null" >
+        waiting_pid,
+      </if>
+      <if test="waitingQuery != null" >
+        waiting_query,
+      </if>
+      <if test="waitingLockId != null" >
+        waiting_lock_id,
+      </if>
+      <if test="waitingLockMode != null" >
+        waiting_lock_mode,
+      </if>
+      <if test="blockingTrxId != null" >
+        blocking_trx_id,
+      </if>
+      <if test="blockingPid != null" >
+        blocking_pid,
+      </if>
+      <if test="blockingQuery != null" >
+        blocking_query,
+      </if>
+      <if test="blockingLockId != null" >
+        blocking_lock_id,
+      </if>
+      <if test="blockingLockMode != null" >
+        blocking_lock_mode,
+      </if>
+      <if test="blockingTrxStarted != null" >
+        blocking_trx_started,
+      </if>
+      <if test="blockingTrxAge != null" >
+        blocking_trx_age,
+      </if>
+      <if test="blockingTrxRowsLocked != null" >
+        blocking_trx_rows_locked,
+      </if>
+      <if test="blockingTrxRowsModified != null" >
+        blocking_trx_rows_modified,
+      </if>
+      <if test="sqlKillBlockingQuery != null" >
+        sql_kill_blocking_query,
+      </if>
+      <if test="sqlKillBlockingConnection != null" >
+        sql_kill_blocking_connection,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="waitStarted != null" >
+        #{waitStarted,jdbcType=TIMESTAMP},
+      </if>
+      <if test="waitAge != null" >
+        #{waitAge,jdbcType=TIME},
+      </if>
+      <if test="waitAgeSecs != null" >
+        #{waitAgeSecs,jdbcType=BIGINT},
+      </if>
+      <if test="lockedTable != null" >
+        #{lockedTable,jdbcType=VARCHAR},
+      </if>
+      <if test="lockedIndex != null" >
+        #{lockedIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="lockedType != null" >
+        #{lockedType,jdbcType=VARCHAR},
+      </if>
+      <if test="waitingTrxId != null" >
+        #{waitingTrxId,jdbcType=VARCHAR},
+      </if>
+      <if test="waitingTrxStarted != null" >
+        #{waitingTrxStarted,jdbcType=TIMESTAMP},
+      </if>
+      <if test="waitingTrxAge != null" >
+        #{waitingTrxAge,jdbcType=TIME},
+      </if>
+      <if test="waitingTrxRowsLocked != null" >
+        #{waitingTrxRowsLocked,jdbcType=BIGINT},
+      </if>
+      <if test="waitingTrxRowsModified != null" >
+        #{waitingTrxRowsModified,jdbcType=BIGINT},
+      </if>
+      <if test="waitingPid != null" >
+        #{waitingPid,jdbcType=BIGINT},
+      </if>
+      <if test="waitingQuery != null" >
+        #{waitingQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="waitingLockId != null" >
+        #{waitingLockId,jdbcType=VARCHAR},
+      </if>
+      <if test="waitingLockMode != null" >
+        #{waitingLockMode,jdbcType=VARCHAR},
+      </if>
+      <if test="blockingTrxId != null" >
+        #{blockingTrxId,jdbcType=VARCHAR},
+      </if>
+      <if test="blockingPid != null" >
+        #{blockingPid,jdbcType=BIGINT},
+      </if>
+      <if test="blockingQuery != null" >
+        #{blockingQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="blockingLockId != null" >
+        #{blockingLockId,jdbcType=VARCHAR},
+      </if>
+      <if test="blockingLockMode != null" >
+        #{blockingLockMode,jdbcType=VARCHAR},
+      </if>
+      <if test="blockingTrxStarted != null" >
+        #{blockingTrxStarted,jdbcType=TIMESTAMP},
+      </if>
+      <if test="blockingTrxAge != null" >
+        #{blockingTrxAge,jdbcType=TIME},
+      </if>
+      <if test="blockingTrxRowsLocked != null" >
+        #{blockingTrxRowsLocked,jdbcType=BIGINT},
+      </if>
+      <if test="blockingTrxRowsModified != null" >
+        #{blockingTrxRowsModified,jdbcType=BIGINT},
+      </if>
+      <if test="sqlKillBlockingQuery != null" >
+        #{sqlKillBlockingQuery,jdbcType=VARCHAR},
+      </if>
+      <if test="sqlKillBlockingConnection != null" >
+        #{sqlKillBlockingConnection,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

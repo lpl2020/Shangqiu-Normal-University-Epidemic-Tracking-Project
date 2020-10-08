@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.C3p0testtableMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.C3p0testtable" >
+    <result column="a" property="a" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.C3p0testtable" >
+    insert into c3p0testtable (a)
+    values (#{a,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.C3p0testtable" >
+    insert into c3p0testtable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="a != null" >
+        a,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="a != null" >
+        #{a,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

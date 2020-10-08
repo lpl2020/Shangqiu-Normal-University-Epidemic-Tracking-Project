@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.FuncMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Func" >
+    <id column="name" property="name" jdbcType="CHAR" />
+    <result column="ret" property="ret" jdbcType="BIT" />
+    <result column="dl" property="dl" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    name, ret, dl, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from func
+    where name = #{name,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from func
+    where name = #{name,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Func" >
+    insert into func (name, ret, dl, type
+      )
+    values (#{name,jdbcType=CHAR}, #{ret,jdbcType=BIT}, #{dl,jdbcType=CHAR}, #{type,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Func" >
+    insert into func
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="ret != null" >
+        ret,
+      </if>
+      <if test="dl != null" >
+        dl,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="ret != null" >
+        #{ret,jdbcType=BIT},
+      </if>
+      <if test="dl != null" >
+        #{dl,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.Func" >
+    update func
+    <set >
+      <if test="ret != null" >
+        ret = #{ret,jdbcType=BIT},
+      </if>
+      <if test="dl != null" >
+        dl = #{dl,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+    </set>
+    where name = #{name,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.Func" >
+    update func
+    set ret = #{ret,jdbcType=BIT},
+      dl = #{dl,jdbcType=CHAR},
+      type = #{type,jdbcType=CHAR}
+    where name = #{name,jdbcType=CHAR}
+  </update>
+</mapper>

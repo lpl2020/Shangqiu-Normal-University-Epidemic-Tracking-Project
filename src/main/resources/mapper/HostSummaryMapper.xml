@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.HostSummaryMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.HostSummary" >
+    <result column="host" property="host" jdbcType="VARCHAR" />
+    <result column="statements" property="statements" jdbcType="DECIMAL" />
+    <result column="table_scans" property="tableScans" jdbcType="DECIMAL" />
+    <result column="file_ios" property="fileIos" jdbcType="DECIMAL" />
+    <result column="current_connections" property="currentConnections" jdbcType="DECIMAL" />
+    <result column="total_connections" property="totalConnections" jdbcType="DECIMAL" />
+    <result column="unique_users" property="uniqueUsers" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.sq.entity.HostSummaryWithBLOBs" extends="BaseResultMap" >
+    <result column="statement_latency" property="statementLatency" jdbcType="LONGVARCHAR" />
+    <result column="statement_avg_latency" property="statementAvgLatency" jdbcType="LONGVARCHAR" />
+    <result column="file_io_latency" property="fileIoLatency" jdbcType="LONGVARCHAR" />
+    <result column="current_memory" property="currentMemory" jdbcType="LONGVARCHAR" />
+    <result column="total_memory_allocated" property="totalMemoryAllocated" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    statement_latency, statement_avg_latency, file_io_latency, current_memory, total_memory_allocated
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.HostSummaryWithBLOBs" >
+    insert into host_summary (host, statements, table_scans, 
+      file_ios, current_connections, total_connections, 
+      unique_users, statement_latency, statement_avg_latency, 
+      file_io_latency, current_memory, total_memory_allocated
+      )
+    values (#{host,jdbcType=VARCHAR}, #{statements,jdbcType=DECIMAL}, #{tableScans,jdbcType=DECIMAL}, 
+      #{fileIos,jdbcType=DECIMAL}, #{currentConnections,jdbcType=DECIMAL}, #{totalConnections,jdbcType=DECIMAL}, 
+      #{uniqueUsers,jdbcType=BIGINT}, #{statementLatency,jdbcType=LONGVARCHAR}, #{statementAvgLatency,jdbcType=LONGVARCHAR}, 
+      #{fileIoLatency,jdbcType=LONGVARCHAR}, #{currentMemory,jdbcType=LONGVARCHAR}, #{totalMemoryAllocated,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.HostSummaryWithBLOBs" >
+    insert into host_summary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="host != null" >
+        host,
+      </if>
+      <if test="statements != null" >
+        statements,
+      </if>
+      <if test="tableScans != null" >
+        table_scans,
+      </if>
+      <if test="fileIos != null" >
+        file_ios,
+      </if>
+      <if test="currentConnections != null" >
+        current_connections,
+      </if>
+      <if test="totalConnections != null" >
+        total_connections,
+      </if>
+      <if test="uniqueUsers != null" >
+        unique_users,
+      </if>
+      <if test="statementLatency != null" >
+        statement_latency,
+      </if>
+      <if test="statementAvgLatency != null" >
+        statement_avg_latency,
+      </if>
+      <if test="fileIoLatency != null" >
+        file_io_latency,
+      </if>
+      <if test="currentMemory != null" >
+        current_memory,
+      </if>
+      <if test="totalMemoryAllocated != null" >
+        total_memory_allocated,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="host != null" >
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="statements != null" >
+        #{statements,jdbcType=DECIMAL},
+      </if>
+      <if test="tableScans != null" >
+        #{tableScans,jdbcType=DECIMAL},
+      </if>
+      <if test="fileIos != null" >
+        #{fileIos,jdbcType=DECIMAL},
+      </if>
+      <if test="currentConnections != null" >
+        #{currentConnections,jdbcType=DECIMAL},
+      </if>
+      <if test="totalConnections != null" >
+        #{totalConnections,jdbcType=DECIMAL},
+      </if>
+      <if test="uniqueUsers != null" >
+        #{uniqueUsers,jdbcType=BIGINT},
+      </if>
+      <if test="statementLatency != null" >
+        #{statementLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="statementAvgLatency != null" >
+        #{statementAvgLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fileIoLatency != null" >
+        #{fileIoLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="currentMemory != null" >
+        #{currentMemory,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="totalMemoryAllocated != null" >
+        #{totalMemoryAllocated,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

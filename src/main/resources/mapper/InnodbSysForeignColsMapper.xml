@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.InnodbSysForeignColsMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.InnodbSysForeignCols" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="FOR_COL_NAME" property="forColName" jdbcType="VARCHAR" />
+    <result column="REF_COL_NAME" property="refColName" jdbcType="VARCHAR" />
+    <result column="POS" property="pos" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.InnodbSysForeignCols" >
+    insert into INNODB_SYS_FOREIGN_COLS (ID, FOR_COL_NAME, REF_COL_NAME, 
+      POS)
+    values (#{id,jdbcType=VARCHAR}, #{forColName,jdbcType=VARCHAR}, #{refColName,jdbcType=VARCHAR}, 
+      #{pos,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.InnodbSysForeignCols" >
+    insert into INNODB_SYS_FOREIGN_COLS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="forColName != null" >
+        FOR_COL_NAME,
+      </if>
+      <if test="refColName != null" >
+        REF_COL_NAME,
+      </if>
+      <if test="pos != null" >
+        POS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="forColName != null" >
+        #{forColName,jdbcType=VARCHAR},
+      </if>
+      <if test="refColName != null" >
+        #{refColName,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null" >
+        #{pos,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

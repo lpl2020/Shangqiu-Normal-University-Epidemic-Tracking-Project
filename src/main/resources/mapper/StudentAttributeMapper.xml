@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sq.mappers.StudentAttributeMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.StudentAttribute">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="STUDENT_NO" jdbcType="VARCHAR" property="studentNo" />
+    <result column="STUDENT_NAME" jdbcType="VARCHAR" property="studentName" />
+    <result column="STUDENT_AGE" jdbcType="INTEGER" property="studentAge" />
+    <result column="STUDENT_SEX" jdbcType="INTEGER" property="studentSex" />
+    <result column="NATION" jdbcType="VARCHAR" property="nation" />
+    <result column="ABILITY1" jdbcType="INTEGER" property="ability1" />
+    <result column="ABILITY2" jdbcType="INTEGER" property="ability2" />
+    <result column="ABILITY3" jdbcType="INTEGER" property="ability3" />
+    <result column="ABILITY4" jdbcType="INTEGER" property="ability4" />
+    <result column="ABILITY5" jdbcType="INTEGER" property="ability5" />
+    <result column="ABILITY6" jdbcType="INTEGER" property="ability6" />
+    <result column="ABILITY7" jdbcType="INTEGER" property="ability7" />
+    <result column="CLASSE" jdbcType="VARCHAR" property="classe" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, STUDENT_NO, STUDENT_NAME, STUDENT_AGE, STUDENT_SEX, NATION, ABILITY1, ABILITY2, 
+    ABILITY3, ABILITY4, ABILITY5, ABILITY6, ABILITY7, CLASSE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student_attribute
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student_attribute
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    insert into student_attribute (id, STUDENT_NO, STUDENT_NAME, 
+      STUDENT_AGE, STUDENT_SEX, NATION, 
+      ABILITY1, ABILITY2, ABILITY3, 
+      ABILITY4, ABILITY5, ABILITY6, 
+      ABILITY7, CLASSE)
+    values (#{id,jdbcType=INTEGER}, #{studentNo,jdbcType=VARCHAR}, #{studentName,jdbcType=VARCHAR}, 
+      #{studentAge,jdbcType=INTEGER}, #{studentSex,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, 
+      #{ability1,jdbcType=INTEGER}, #{ability2,jdbcType=INTEGER}, #{ability3,jdbcType=INTEGER}, 
+      #{ability4,jdbcType=INTEGER}, #{ability5,jdbcType=INTEGER}, #{ability6,jdbcType=INTEGER}, 
+      #{ability7,jdbcType=INTEGER}, #{classe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    insert into student_attribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="studentNo != null">
+        STUDENT_NO,
+      </if>
+      <if test="studentName != null">
+        STUDENT_NAME,
+      </if>
+      <if test="studentAge != null">
+        STUDENT_AGE,
+      </if>
+      <if test="studentSex != null">
+        STUDENT_SEX,
+      </if>
+      <if test="nation != null">
+        NATION,
+      </if>
+      <if test="ability1 != null">
+        ABILITY1,
+      </if>
+      <if test="ability2 != null">
+        ABILITY2,
+      </if>
+      <if test="ability3 != null">
+        ABILITY3,
+      </if>
+      <if test="ability4 != null">
+        ABILITY4,
+      </if>
+      <if test="ability5 != null">
+        ABILITY5,
+      </if>
+      <if test="ability6 != null">
+        ABILITY6,
+      </if>
+      <if test="ability7 != null">
+        ABILITY7,
+      </if>
+      <if test="classe != null">
+        CLASSE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="studentNo != null">
+        #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentName != null">
+        #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAge != null">
+        #{studentAge,jdbcType=INTEGER},
+      </if>
+      <if test="studentSex != null">
+        #{studentSex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="ability1 != null">
+        #{ability1,jdbcType=INTEGER},
+      </if>
+      <if test="ability2 != null">
+        #{ability2,jdbcType=INTEGER},
+      </if>
+      <if test="ability3 != null">
+        #{ability3,jdbcType=INTEGER},
+      </if>
+      <if test="ability4 != null">
+        #{ability4,jdbcType=INTEGER},
+      </if>
+      <if test="ability5 != null">
+        #{ability5,jdbcType=INTEGER},
+      </if>
+      <if test="ability6 != null">
+        #{ability6,jdbcType=INTEGER},
+      </if>
+      <if test="ability7 != null">
+        #{ability7,jdbcType=INTEGER},
+      </if>
+      <if test="classe != null">
+        #{classe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    update student_attribute
+    <set>
+      <if test="studentNo != null">
+        STUDENT_NO = #{studentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentName != null">
+        STUDENT_NAME = #{studentName,jdbcType=VARCHAR},
+      </if>
+      <if test="studentAge != null">
+        STUDENT_AGE = #{studentAge,jdbcType=INTEGER},
+      </if>
+      <if test="studentSex != null">
+        STUDENT_SEX = #{studentSex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="ability1 != null">
+        ABILITY1 = #{ability1,jdbcType=INTEGER},
+      </if>
+      <if test="ability2 != null">
+        ABILITY2 = #{ability2,jdbcType=INTEGER},
+      </if>
+      <if test="ability3 != null">
+        ABILITY3 = #{ability3,jdbcType=INTEGER},
+      </if>
+      <if test="ability4 != null">
+        ABILITY4 = #{ability4,jdbcType=INTEGER},
+      </if>
+      <if test="ability5 != null">
+        ABILITY5 = #{ability5,jdbcType=INTEGER},
+      </if>
+      <if test="ability6 != null">
+        ABILITY6 = #{ability6,jdbcType=INTEGER},
+      </if>
+      <if test="ability7 != null">
+        ABILITY7 = #{ability7,jdbcType=INTEGER},
+      </if>
+      <if test="classe != null">
+        CLASSE = #{classe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    update student_attribute
+    set STUDENT_NO = #{studentNo,jdbcType=VARCHAR},
+      STUDENT_NAME = #{studentName,jdbcType=VARCHAR},
+      STUDENT_AGE = #{studentAge,jdbcType=INTEGER},
+      STUDENT_SEX = #{studentSex,jdbcType=INTEGER},
+      NATION = #{nation,jdbcType=VARCHAR},
+      ABILITY1 = #{ability1,jdbcType=INTEGER},
+      ABILITY2 = #{ability2,jdbcType=INTEGER},
+      ABILITY3 = #{ability3,jdbcType=INTEGER},
+      ABILITY4 = #{ability4,jdbcType=INTEGER},
+      ABILITY5 = #{ability5,jdbcType=INTEGER},
+      ABILITY6 = #{ability6,jdbcType=INTEGER},
+      ABILITY7 = #{ability7,jdbcType=INTEGER},
+      CLASSE = #{classe,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.StudentAttribute">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stuNO" jdbcType="VARCHAR" property="stuno" />
+    <result column="stuName" jdbcType="VARCHAR" property="stuname" />
+    <result column="stuAge" jdbcType="INTEGER" property="stuage" />
+    <result column="stuSex" jdbcType="INTEGER" property="stusex" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="ability1" jdbcType="INTEGER" property="ability1" />
+    <result column="ability2" jdbcType="INTEGER" property="ability2" />
+    <result column="ability3" jdbcType="INTEGER" property="ability3" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stuNO, stuName, stuAge, stuSex, nation, ability1, ability2, ability3, grade
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student_attribute
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student_attribute
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    insert into student_attribute (id, stuNO, stuName, 
+      stuAge, stuSex, nation, 
+      ability1, ability2, ability3, 
+      grade)
+    values (#{id,jdbcType=INTEGER}, #{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, 
+      #{stuage,jdbcType=INTEGER}, #{stusex,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, 
+      #{ability1,jdbcType=INTEGER}, #{ability2,jdbcType=INTEGER}, #{ability3,jdbcType=INTEGER}, 
+      #{grade,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    insert into student_attribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stuno != null">
+        stuNO,
+      </if>
+      <if test="stuname != null">
+        stuName,
+      </if>
+      <if test="stuage != null">
+        stuAge,
+      </if>
+      <if test="stusex != null">
+        stuSex,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="ability1 != null">
+        ability1,
+      </if>
+      <if test="ability2 != null">
+        ability2,
+      </if>
+      <if test="ability3 != null">
+        ability3,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuage != null">
+        #{stuage,jdbcType=INTEGER},
+      </if>
+      <if test="stusex != null">
+        #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="ability1 != null">
+        #{ability1,jdbcType=INTEGER},
+      </if>
+      <if test="ability2 != null">
+        #{ability2,jdbcType=INTEGER},
+      </if>
+      <if test="ability3 != null">
+        #{ability3,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    update student_attribute
+    <set>
+      <if test="stuno != null">
+        stuNO = #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        stuName = #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuage != null">
+        stuAge = #{stuage,jdbcType=INTEGER},
+      </if>
+      <if test="stusex != null">
+        stuSex = #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="ability1 != null">
+        ability1 = #{ability1,jdbcType=INTEGER},
+      </if>
+      <if test="ability2 != null">
+        ability2 = #{ability2,jdbcType=INTEGER},
+      </if>
+      <if test="ability3 != null">
+        ability3 = #{ability3,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    update student_attribute
+    set stuNO = #{stuno,jdbcType=VARCHAR},
+      stuName = #{stuname,jdbcType=VARCHAR},
+      stuAge = #{stuage,jdbcType=INTEGER},
+      stuSex = #{stusex,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      ability1 = #{ability1,jdbcType=INTEGER},
+      ability2 = #{ability2,jdbcType=INTEGER},
+      ability3 = #{ability3,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.StudentAttribute">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="stuNO" jdbcType="VARCHAR" property="stuno" />
+    <result column="stuName" jdbcType="VARCHAR" property="stuname" />
+    <result column="stuAge" jdbcType="INTEGER" property="stuage" />
+    <result column="stuSex" jdbcType="INTEGER" property="stusex" />
+    <result column="nation" jdbcType="VARCHAR" property="nation" />
+    <result column="ability1" jdbcType="INTEGER" property="ability1" />
+    <result column="ability2" jdbcType="INTEGER" property="ability2" />
+    <result column="ability3" jdbcType="INTEGER" property="ability3" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, stuNO, stuName, stuAge, stuSex, nation, ability1, ability2, ability3, grade
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student_attribute
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student_attribute
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    insert into student_attribute (id, stuNO, stuName, 
+      stuAge, stuSex, nation, 
+      ability1, ability2, ability3, 
+      grade)
+    values (#{id,jdbcType=INTEGER}, #{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, 
+      #{stuage,jdbcType=INTEGER}, #{stusex,jdbcType=INTEGER}, #{nation,jdbcType=VARCHAR}, 
+      #{ability1,jdbcType=INTEGER}, #{ability2,jdbcType=INTEGER}, #{ability3,jdbcType=INTEGER}, 
+      #{grade,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    insert into student_attribute
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="stuno != null">
+        stuNO,
+      </if>
+      <if test="stuname != null">
+        stuName,
+      </if>
+      <if test="stuage != null">
+        stuAge,
+      </if>
+      <if test="stusex != null">
+        stuSex,
+      </if>
+      <if test="nation != null">
+        nation,
+      </if>
+      <if test="ability1 != null">
+        ability1,
+      </if>
+      <if test="ability2 != null">
+        ability2,
+      </if>
+      <if test="ability3 != null">
+        ability3,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuage != null">
+        #{stuage,jdbcType=INTEGER},
+      </if>
+      <if test="stusex != null">
+        #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="ability1 != null">
+        #{ability1,jdbcType=INTEGER},
+      </if>
+      <if test="ability2 != null">
+        #{ability2,jdbcType=INTEGER},
+      </if>
+      <if test="ability3 != null">
+        #{ability3,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    update student_attribute
+    <set>
+      <if test="stuno != null">
+        stuNO = #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        stuName = #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="stuage != null">
+        stuAge = #{stuage,jdbcType=INTEGER},
+      </if>
+      <if test="stusex != null">
+        stuSex = #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null">
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="ability1 != null">
+        ability1 = #{ability1,jdbcType=INTEGER},
+      </if>
+      <if test="ability2 != null">
+        ability2 = #{ability2,jdbcType=INTEGER},
+      </if>
+      <if test="ability3 != null">
+        ability3 = #{ability3,jdbcType=INTEGER},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.StudentAttribute">
+    update student_attribute
+    set stuNO = #{stuno,jdbcType=VARCHAR},
+      stuName = #{stuname,jdbcType=VARCHAR},
+      stuAge = #{stuage,jdbcType=INTEGER},
+      stuSex = #{stusex,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      ability1 = #{ability1,jdbcType=INTEGER},
+      ability2 = #{ability2,jdbcType=INTEGER},
+      ability3 = #{ability3,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

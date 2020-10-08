@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.StatisticsMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Statistics" >
+    <result column="TABLE_CATALOG" property="tableCatalog" jdbcType="VARCHAR" />
+    <result column="TABLE_SCHEMA" property="tableSchema" jdbcType="VARCHAR" />
+    <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+    <result column="NON_UNIQUE" property="nonUnique" jdbcType="BIGINT" />
+    <result column="INDEX_SCHEMA" property="indexSchema" jdbcType="VARCHAR" />
+    <result column="INDEX_NAME" property="indexName" jdbcType="VARCHAR" />
+    <result column="SEQ_IN_INDEX" property="seqInIndex" jdbcType="BIGINT" />
+    <result column="COLUMN_NAME" property="columnName" jdbcType="VARCHAR" />
+    <result column="COLLATION" property="collation" jdbcType="VARCHAR" />
+    <result column="CARDINALITY" property="cardinality" jdbcType="BIGINT" />
+    <result column="SUB_PART" property="subPart" jdbcType="BIGINT" />
+    <result column="PACKED" property="packed" jdbcType="VARCHAR" />
+    <result column="NULLABLE" property="nullable" jdbcType="VARCHAR" />
+    <result column="INDEX_TYPE" property="indexType" jdbcType="VARCHAR" />
+    <result column="COMMENT" property="comment" jdbcType="VARCHAR" />
+    <result column="INDEX_COMMENT" property="indexComment" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Statistics" >
+    insert into STATISTICS (TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, 
+      NON_UNIQUE, INDEX_SCHEMA, INDEX_NAME, 
+      SEQ_IN_INDEX, COLUMN_NAME, COLLATION, 
+      CARDINALITY, SUB_PART, PACKED, 
+      NULLABLE, INDEX_TYPE, COMMENT, 
+      INDEX_COMMENT)
+    values (#{tableCatalog,jdbcType=VARCHAR}, #{tableSchema,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR}, 
+      #{nonUnique,jdbcType=BIGINT}, #{indexSchema,jdbcType=VARCHAR}, #{indexName,jdbcType=VARCHAR}, 
+      #{seqInIndex,jdbcType=BIGINT}, #{columnName,jdbcType=VARCHAR}, #{collation,jdbcType=VARCHAR}, 
+      #{cardinality,jdbcType=BIGINT}, #{subPart,jdbcType=BIGINT}, #{packed,jdbcType=VARCHAR}, 
+      #{nullable,jdbcType=VARCHAR}, #{indexType,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, 
+      #{indexComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Statistics" >
+    insert into STATISTICS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tableCatalog != null" >
+        TABLE_CATALOG,
+      </if>
+      <if test="tableSchema != null" >
+        TABLE_SCHEMA,
+      </if>
+      <if test="tableName != null" >
+        TABLE_NAME,
+      </if>
+      <if test="nonUnique != null" >
+        NON_UNIQUE,
+      </if>
+      <if test="indexSchema != null" >
+        INDEX_SCHEMA,
+      </if>
+      <if test="indexName != null" >
+        INDEX_NAME,
+      </if>
+      <if test="seqInIndex != null" >
+        SEQ_IN_INDEX,
+      </if>
+      <if test="columnName != null" >
+        COLUMN_NAME,
+      </if>
+      <if test="collation != null" >
+        COLLATION,
+      </if>
+      <if test="cardinality != null" >
+        CARDINALITY,
+      </if>
+      <if test="subPart != null" >
+        SUB_PART,
+      </if>
+      <if test="packed != null" >
+        PACKED,
+      </if>
+      <if test="nullable != null" >
+        NULLABLE,
+      </if>
+      <if test="indexType != null" >
+        INDEX_TYPE,
+      </if>
+      <if test="comment != null" >
+        COMMENT,
+      </if>
+      <if test="indexComment != null" >
+        INDEX_COMMENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tableCatalog != null" >
+        #{tableCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="tableSchema != null" >
+        #{tableSchema,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="nonUnique != null" >
+        #{nonUnique,jdbcType=BIGINT},
+      </if>
+      <if test="indexSchema != null" >
+        #{indexSchema,jdbcType=VARCHAR},
+      </if>
+      <if test="indexName != null" >
+        #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="seqInIndex != null" >
+        #{seqInIndex,jdbcType=BIGINT},
+      </if>
+      <if test="columnName != null" >
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="collation != null" >
+        #{collation,jdbcType=VARCHAR},
+      </if>
+      <if test="cardinality != null" >
+        #{cardinality,jdbcType=BIGINT},
+      </if>
+      <if test="subPart != null" >
+        #{subPart,jdbcType=BIGINT},
+      </if>
+      <if test="packed != null" >
+        #{packed,jdbcType=VARCHAR},
+      </if>
+      <if test="nullable != null" >
+        #{nullable,jdbcType=VARCHAR},
+      </if>
+      <if test="indexType != null" >
+        #{indexType,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="indexComment != null" >
+        #{indexComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.UserVariablesByThreadMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.UserVariablesByThread" >
+    <result column="THREAD_ID" property="threadId" jdbcType="BIGINT" />
+    <result column="VARIABLE_NAME" property="variableName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.sq.entity.UserVariablesByThread" extends="BaseResultMap" >
+    <result column="VARIABLE_VALUE" property="variableValue" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    VARIABLE_VALUE
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.UserVariablesByThread" >
+    insert into user_variables_by_thread (THREAD_ID, VARIABLE_NAME, VARIABLE_VALUE
+      )
+    values (#{threadId,jdbcType=BIGINT}, #{variableName,jdbcType=VARCHAR}, #{variableValue,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.UserVariablesByThread" >
+    insert into user_variables_by_thread
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="threadId != null" >
+        THREAD_ID,
+      </if>
+      <if test="variableName != null" >
+        VARIABLE_NAME,
+      </if>
+      <if test="variableValue != null" >
+        VARIABLE_VALUE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="threadId != null" >
+        #{threadId,jdbcType=BIGINT},
+      </if>
+      <if test="variableName != null" >
+        #{variableName,jdbcType=VARCHAR},
+      </if>
+      <if test="variableValue != null" >
+        #{variableValue,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

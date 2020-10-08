@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.SalesByFilmCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.SalesByFilmCategory" >
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="total_sales" property="totalSales" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.SalesByFilmCategory" >
+    insert into sales_by_film_category (category, total_sales)
+    values (#{category,jdbcType=VARCHAR}, #{totalSales,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.SalesByFilmCategory" >
+    insert into sales_by_film_category
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="category != null" >
+        category,
+      </if>
+      <if test="totalSales != null" >
+        total_sales,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="totalSales != null" >
+        #{totalSales,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

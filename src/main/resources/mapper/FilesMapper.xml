@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.FilesMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Files" >
+    <result column="FILE_ID" property="fileId" jdbcType="BIGINT" />
+    <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="FILE_TYPE" property="fileType" jdbcType="VARCHAR" />
+    <result column="TABLESPACE_NAME" property="tablespaceName" jdbcType="VARCHAR" />
+    <result column="TABLE_CATALOG" property="tableCatalog" jdbcType="VARCHAR" />
+    <result column="TABLE_SCHEMA" property="tableSchema" jdbcType="VARCHAR" />
+    <result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+    <result column="LOGFILE_GROUP_NAME" property="logfileGroupName" jdbcType="VARCHAR" />
+    <result column="LOGFILE_GROUP_NUMBER" property="logfileGroupNumber" jdbcType="BIGINT" />
+    <result column="ENGINE" property="engine" jdbcType="VARCHAR" />
+    <result column="FULLTEXT_KEYS" property="fulltextKeys" jdbcType="VARCHAR" />
+    <result column="DELETED_ROWS" property="deletedRows" jdbcType="BIGINT" />
+    <result column="UPDATE_COUNT" property="updateCount" jdbcType="BIGINT" />
+    <result column="FREE_EXTENTS" property="freeExtents" jdbcType="BIGINT" />
+    <result column="TOTAL_EXTENTS" property="totalExtents" jdbcType="BIGINT" />
+    <result column="EXTENT_SIZE" property="extentSize" jdbcType="BIGINT" />
+    <result column="INITIAL_SIZE" property="initialSize" jdbcType="BIGINT" />
+    <result column="MAXIMUM_SIZE" property="maximumSize" jdbcType="BIGINT" />
+    <result column="AUTOEXTEND_SIZE" property="autoextendSize" jdbcType="BIGINT" />
+    <result column="CREATION_TIME" property="creationTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="LAST_ACCESS_TIME" property="lastAccessTime" jdbcType="TIMESTAMP" />
+    <result column="RECOVER_TIME" property="recoverTime" jdbcType="BIGINT" />
+    <result column="TRANSACTION_COUNTER" property="transactionCounter" jdbcType="BIGINT" />
+    <result column="VERSION" property="version" jdbcType="BIGINT" />
+    <result column="ROW_FORMAT" property="rowFormat" jdbcType="VARCHAR" />
+    <result column="TABLE_ROWS" property="tableRows" jdbcType="BIGINT" />
+    <result column="AVG_ROW_LENGTH" property="avgRowLength" jdbcType="BIGINT" />
+    <result column="DATA_LENGTH" property="dataLength" jdbcType="BIGINT" />
+    <result column="MAX_DATA_LENGTH" property="maxDataLength" jdbcType="BIGINT" />
+    <result column="INDEX_LENGTH" property="indexLength" jdbcType="BIGINT" />
+    <result column="DATA_FREE" property="dataFree" jdbcType="BIGINT" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CHECK_TIME" property="checkTime" jdbcType="TIMESTAMP" />
+    <result column="CHECKSUM" property="checksum" jdbcType="BIGINT" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="EXTRA" property="extra" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Files" >
+    insert into FILES (FILE_ID, FILE_NAME, FILE_TYPE, 
+      TABLESPACE_NAME, TABLE_CATALOG, TABLE_SCHEMA, 
+      TABLE_NAME, LOGFILE_GROUP_NAME, LOGFILE_GROUP_NUMBER, 
+      ENGINE, FULLTEXT_KEYS, DELETED_ROWS, 
+      UPDATE_COUNT, FREE_EXTENTS, TOTAL_EXTENTS, 
+      EXTENT_SIZE, INITIAL_SIZE, MAXIMUM_SIZE, 
+      AUTOEXTEND_SIZE, CREATION_TIME, LAST_UPDATE_TIME, 
+      LAST_ACCESS_TIME, RECOVER_TIME, TRANSACTION_COUNTER, 
+      VERSION, ROW_FORMAT, TABLE_ROWS, 
+      AVG_ROW_LENGTH, DATA_LENGTH, MAX_DATA_LENGTH, 
+      INDEX_LENGTH, DATA_FREE, CREATE_TIME, 
+      UPDATE_TIME, CHECK_TIME, CHECKSUM, 
+      STATUS, EXTRA)
+    values (#{fileId,jdbcType=BIGINT}, #{fileName,jdbcType=VARCHAR}, #{fileType,jdbcType=VARCHAR}, 
+      #{tablespaceName,jdbcType=VARCHAR}, #{tableCatalog,jdbcType=VARCHAR}, #{tableSchema,jdbcType=VARCHAR}, 
+      #{tableName,jdbcType=VARCHAR}, #{logfileGroupName,jdbcType=VARCHAR}, #{logfileGroupNumber,jdbcType=BIGINT}, 
+      #{engine,jdbcType=VARCHAR}, #{fulltextKeys,jdbcType=VARCHAR}, #{deletedRows,jdbcType=BIGINT}, 
+      #{updateCount,jdbcType=BIGINT}, #{freeExtents,jdbcType=BIGINT}, #{totalExtents,jdbcType=BIGINT}, 
+      #{extentSize,jdbcType=BIGINT}, #{initialSize,jdbcType=BIGINT}, #{maximumSize,jdbcType=BIGINT}, 
+      #{autoextendSize,jdbcType=BIGINT}, #{creationTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, 
+      #{lastAccessTime,jdbcType=TIMESTAMP}, #{recoverTime,jdbcType=BIGINT}, #{transactionCounter,jdbcType=BIGINT}, 
+      #{version,jdbcType=BIGINT}, #{rowFormat,jdbcType=VARCHAR}, #{tableRows,jdbcType=BIGINT}, 
+      #{avgRowLength,jdbcType=BIGINT}, #{dataLength,jdbcType=BIGINT}, #{maxDataLength,jdbcType=BIGINT}, 
+      #{indexLength,jdbcType=BIGINT}, #{dataFree,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{checkTime,jdbcType=TIMESTAMP}, #{checksum,jdbcType=BIGINT}, 
+      #{status,jdbcType=VARCHAR}, #{extra,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Files" >
+    insert into FILES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fileId != null" >
+        FILE_ID,
+      </if>
+      <if test="fileName != null" >
+        FILE_NAME,
+      </if>
+      <if test="fileType != null" >
+        FILE_TYPE,
+      </if>
+      <if test="tablespaceName != null" >
+        TABLESPACE_NAME,
+      </if>
+      <if test="tableCatalog != null" >
+        TABLE_CATALOG,
+      </if>
+      <if test="tableSchema != null" >
+        TABLE_SCHEMA,
+      </if>
+      <if test="tableName != null" >
+        TABLE_NAME,
+      </if>
+      <if test="logfileGroupName != null" >
+        LOGFILE_GROUP_NAME,
+      </if>
+      <if test="logfileGroupNumber != null" >
+        LOGFILE_GROUP_NUMBER,
+      </if>
+      <if test="engine != null" >
+        ENGINE,
+      </if>
+      <if test="fulltextKeys != null" >
+        FULLTEXT_KEYS,
+      </if>
+      <if test="deletedRows != null" >
+        DELETED_ROWS,
+      </if>
+      <if test="updateCount != null" >
+        UPDATE_COUNT,
+      </if>
+      <if test="freeExtents != null" >
+        FREE_EXTENTS,
+      </if>
+      <if test="totalExtents != null" >
+        TOTAL_EXTENTS,
+      </if>
+      <if test="extentSize != null" >
+        EXTENT_SIZE,
+      </if>
+      <if test="initialSize != null" >
+        INITIAL_SIZE,
+      </if>
+      <if test="maximumSize != null" >
+        MAXIMUM_SIZE,
+      </if>
+      <if test="autoextendSize != null" >
+        AUTOEXTEND_SIZE,
+      </if>
+      <if test="creationTime != null" >
+        CREATION_TIME,
+      </if>
+      <if test="lastUpdateTime != null" >
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="lastAccessTime != null" >
+        LAST_ACCESS_TIME,
+      </if>
+      <if test="recoverTime != null" >
+        RECOVER_TIME,
+      </if>
+      <if test="transactionCounter != null" >
+        TRANSACTION_COUNTER,
+      </if>
+      <if test="version != null" >
+        VERSION,
+      </if>
+      <if test="rowFormat != null" >
+        ROW_FORMAT,
+      </if>
+      <if test="tableRows != null" >
+        TABLE_ROWS,
+      </if>
+      <if test="avgRowLength != null" >
+        AVG_ROW_LENGTH,
+      </if>
+      <if test="dataLength != null" >
+        DATA_LENGTH,
+      </if>
+      <if test="maxDataLength != null" >
+        MAX_DATA_LENGTH,
+      </if>
+      <if test="indexLength != null" >
+        INDEX_LENGTH,
+      </if>
+      <if test="dataFree != null" >
+        DATA_FREE,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="checkTime != null" >
+        CHECK_TIME,
+      </if>
+      <if test="checksum != null" >
+        CHECKSUM,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="extra != null" >
+        EXTRA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fileId != null" >
+        #{fileId,jdbcType=BIGINT},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null" >
+        #{fileType,jdbcType=VARCHAR},
+      </if>
+      <if test="tablespaceName != null" >
+        #{tablespaceName,jdbcType=VARCHAR},
+      </if>
+      <if test="tableCatalog != null" >
+        #{tableCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="tableSchema != null" >
+        #{tableSchema,jdbcType=VARCHAR},
+      </if>
+      <if test="tableName != null" >
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="logfileGroupName != null" >
+        #{logfileGroupName,jdbcType=VARCHAR},
+      </if>
+      <if test="logfileGroupNumber != null" >
+        #{logfileGroupNumber,jdbcType=BIGINT},
+      </if>
+      <if test="engine != null" >
+        #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="fulltextKeys != null" >
+        #{fulltextKeys,jdbcType=VARCHAR},
+      </if>
+      <if test="deletedRows != null" >
+        #{deletedRows,jdbcType=BIGINT},
+      </if>
+      <if test="updateCount != null" >
+        #{updateCount,jdbcType=BIGINT},
+      </if>
+      <if test="freeExtents != null" >
+        #{freeExtents,jdbcType=BIGINT},
+      </if>
+      <if test="totalExtents != null" >
+        #{totalExtents,jdbcType=BIGINT},
+      </if>
+      <if test="extentSize != null" >
+        #{extentSize,jdbcType=BIGINT},
+      </if>
+      <if test="initialSize != null" >
+        #{initialSize,jdbcType=BIGINT},
+      </if>
+      <if test="maximumSize != null" >
+        #{maximumSize,jdbcType=BIGINT},
+      </if>
+      <if test="autoextendSize != null" >
+        #{autoextendSize,jdbcType=BIGINT},
+      </if>
+      <if test="creationTime != null" >
+        #{creationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null" >
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastAccessTime != null" >
+        #{lastAccessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recoverTime != null" >
+        #{recoverTime,jdbcType=BIGINT},
+      </if>
+      <if test="transactionCounter != null" >
+        #{transactionCounter,jdbcType=BIGINT},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=BIGINT},
+      </if>
+      <if test="rowFormat != null" >
+        #{rowFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="tableRows != null" >
+        #{tableRows,jdbcType=BIGINT},
+      </if>
+      <if test="avgRowLength != null" >
+        #{avgRowLength,jdbcType=BIGINT},
+      </if>
+      <if test="dataLength != null" >
+        #{dataLength,jdbcType=BIGINT},
+      </if>
+      <if test="maxDataLength != null" >
+        #{maxDataLength,jdbcType=BIGINT},
+      </if>
+      <if test="indexLength != null" >
+        #{indexLength,jdbcType=BIGINT},
+      </if>
+      <if test="dataFree != null" >
+        #{dataFree,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checkTime != null" >
+        #{checkTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="checksum != null" >
+        #{checksum,jdbcType=BIGINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="extra != null" >
+        #{extra,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

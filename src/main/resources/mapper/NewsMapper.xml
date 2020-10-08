@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.NewsMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.News" >
+    <id column="NewsID" property="newsid" jdbcType="INTEGER" />
+    <result column="NewsTitle" property="newstitle" jdbcType="VARCHAR" />
+    <result column="NewsTime" property="newstime" jdbcType="VARCHAR" />
+    <result column="AdminName" property="adminname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.sq.entity.News" extends="BaseResultMap" >
+    <result column="NewsContent" property="newscontent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    NewsID, NewsTitle, NewsTime, AdminName
+  </sql>
+  <sql id="Blob_Column_List" >
+    NewsContent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from news
+    where NewsID = #{newsid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from news
+    where NewsID = #{newsid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.News" >
+    insert into news (NewsID, NewsTitle, NewsTime, 
+      AdminName, NewsContent)
+    values (#{newsid,jdbcType=INTEGER}, #{newstitle,jdbcType=VARCHAR}, #{newstime,jdbcType=VARCHAR}, 
+      #{adminname,jdbcType=VARCHAR}, #{newscontent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.News" >
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="newsid != null" >
+        NewsID,
+      </if>
+      <if test="newstitle != null" >
+        NewsTitle,
+      </if>
+      <if test="newstime != null" >
+        NewsTime,
+      </if>
+      <if test="adminname != null" >
+        AdminName,
+      </if>
+      <if test="newscontent != null" >
+        NewsContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="newsid != null" >
+        #{newsid,jdbcType=INTEGER},
+      </if>
+      <if test="newstitle != null" >
+        #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newstime != null" >
+        #{newstime,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null" >
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="newscontent != null" >
+        #{newscontent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.News" >
+    update news
+    <set >
+      <if test="newstitle != null" >
+        NewsTitle = #{newstitle,jdbcType=VARCHAR},
+      </if>
+      <if test="newstime != null" >
+        NewsTime = #{newstime,jdbcType=VARCHAR},
+      </if>
+      <if test="adminname != null" >
+        AdminName = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="newscontent != null" >
+        NewsContent = #{newscontent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where NewsID = #{newsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.demo.sq.entity.News" >
+    update news
+    set NewsTitle = #{newstitle,jdbcType=VARCHAR},
+      NewsTime = #{newstime,jdbcType=VARCHAR},
+      AdminName = #{adminname,jdbcType=VARCHAR},
+      NewsContent = #{newscontent,jdbcType=LONGVARCHAR}
+    where NewsID = #{newsid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.News" >
+    update news
+    set NewsTitle = #{newstitle,jdbcType=VARCHAR},
+      NewsTime = #{newstime,jdbcType=VARCHAR},
+      AdminName = #{adminname,jdbcType=VARCHAR}
+    where NewsID = #{newsid,jdbcType=INTEGER}
+  </update>
+</mapper>

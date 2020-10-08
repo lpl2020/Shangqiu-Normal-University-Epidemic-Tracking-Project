@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.ForumMinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.ForumMinfo" >
+    <id column="minfo_id" property="minfoId" jdbcType="INTEGER" />
+    <result column="main_type" property="mainType" jdbcType="VARCHAR" />
+    <result column="minfo_reply" property="minfoReply" jdbcType="INTEGER" />
+    <result column="minfo_banzhu" property="minfoBanzhu" jdbcType="VARCHAR" />
+    <result column="minfo_creatime" property="minfoCreatime" jdbcType="TIMESTAMP" />
+    <result column="minfo_creatuser" property="minfoCreatuser" jdbcType="VARCHAR" />
+    <result column="minfo_order" property="minfoOrder" jdbcType="INTEGER" />
+    <result column="minfo_see" property="minfoSee" jdbcType="INTEGER" />
+    <result column="minfo_photo" property="minfoPhoto" jdbcType="VARCHAR" />
+    <result column="minfo_title" property="minfoTitle" jdbcType="VARCHAR" />
+    <result column="minfo_count" property="minfoCount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    minfo_id, main_type, minfo_reply, minfo_banzhu, minfo_creatime, minfo_creatuser, 
+    minfo_order, minfo_see, minfo_photo, minfo_title, minfo_count
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from forum_minfo
+    where minfo_id = #{minfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from forum_minfo
+    where minfo_id = #{minfoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.ForumMinfo" >
+    insert into forum_minfo (minfo_id, main_type, minfo_reply, 
+      minfo_banzhu, minfo_creatime, minfo_creatuser, 
+      minfo_order, minfo_see, minfo_photo, 
+      minfo_title, minfo_count)
+    values (#{minfoId,jdbcType=INTEGER}, #{mainType,jdbcType=VARCHAR}, #{minfoReply,jdbcType=INTEGER}, 
+      #{minfoBanzhu,jdbcType=VARCHAR}, #{minfoCreatime,jdbcType=TIMESTAMP}, #{minfoCreatuser,jdbcType=VARCHAR}, 
+      #{minfoOrder,jdbcType=INTEGER}, #{minfoSee,jdbcType=INTEGER}, #{minfoPhoto,jdbcType=VARCHAR}, 
+      #{minfoTitle,jdbcType=VARCHAR}, #{minfoCount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.ForumMinfo" >
+    insert into forum_minfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="minfoId != null" >
+        minfo_id,
+      </if>
+      <if test="mainType != null" >
+        main_type,
+      </if>
+      <if test="minfoReply != null" >
+        minfo_reply,
+      </if>
+      <if test="minfoBanzhu != null" >
+        minfo_banzhu,
+      </if>
+      <if test="minfoCreatime != null" >
+        minfo_creatime,
+      </if>
+      <if test="minfoCreatuser != null" >
+        minfo_creatuser,
+      </if>
+      <if test="minfoOrder != null" >
+        minfo_order,
+      </if>
+      <if test="minfoSee != null" >
+        minfo_see,
+      </if>
+      <if test="minfoPhoto != null" >
+        minfo_photo,
+      </if>
+      <if test="minfoTitle != null" >
+        minfo_title,
+      </if>
+      <if test="minfoCount != null" >
+        minfo_count,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="minfoId != null" >
+        #{minfoId,jdbcType=INTEGER},
+      </if>
+      <if test="mainType != null" >
+        #{mainType,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoReply != null" >
+        #{minfoReply,jdbcType=INTEGER},
+      </if>
+      <if test="minfoBanzhu != null" >
+        #{minfoBanzhu,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoCreatime != null" >
+        #{minfoCreatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minfoCreatuser != null" >
+        #{minfoCreatuser,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoOrder != null" >
+        #{minfoOrder,jdbcType=INTEGER},
+      </if>
+      <if test="minfoSee != null" >
+        #{minfoSee,jdbcType=INTEGER},
+      </if>
+      <if test="minfoPhoto != null" >
+        #{minfoPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoTitle != null" >
+        #{minfoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoCount != null" >
+        #{minfoCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.ForumMinfo" >
+    update forum_minfo
+    <set >
+      <if test="mainType != null" >
+        main_type = #{mainType,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoReply != null" >
+        minfo_reply = #{minfoReply,jdbcType=INTEGER},
+      </if>
+      <if test="minfoBanzhu != null" >
+        minfo_banzhu = #{minfoBanzhu,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoCreatime != null" >
+        minfo_creatime = #{minfoCreatime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minfoCreatuser != null" >
+        minfo_creatuser = #{minfoCreatuser,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoOrder != null" >
+        minfo_order = #{minfoOrder,jdbcType=INTEGER},
+      </if>
+      <if test="minfoSee != null" >
+        minfo_see = #{minfoSee,jdbcType=INTEGER},
+      </if>
+      <if test="minfoPhoto != null" >
+        minfo_photo = #{minfoPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoTitle != null" >
+        minfo_title = #{minfoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="minfoCount != null" >
+        minfo_count = #{minfoCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where minfo_id = #{minfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.ForumMinfo" >
+    update forum_minfo
+    set main_type = #{mainType,jdbcType=VARCHAR},
+      minfo_reply = #{minfoReply,jdbcType=INTEGER},
+      minfo_banzhu = #{minfoBanzhu,jdbcType=VARCHAR},
+      minfo_creatime = #{minfoCreatime,jdbcType=TIMESTAMP},
+      minfo_creatuser = #{minfoCreatuser,jdbcType=VARCHAR},
+      minfo_order = #{minfoOrder,jdbcType=INTEGER},
+      minfo_see = #{minfoSee,jdbcType=INTEGER},
+      minfo_photo = #{minfoPhoto,jdbcType=VARCHAR},
+      minfo_title = #{minfoTitle,jdbcType=VARCHAR},
+      minfo_count = #{minfoCount,jdbcType=INTEGER}
+    where minfo_id = #{minfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

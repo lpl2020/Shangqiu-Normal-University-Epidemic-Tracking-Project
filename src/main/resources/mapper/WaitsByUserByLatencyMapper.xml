@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.WaitsByUserByLatencyMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.WaitsByUserByLatency" >
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    <result column="event" property="event" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.example.demo.sq.entity.WaitsByUserByLatencyWithBLOBs" extends="BaseResultMap" >
+    <result column="total_latency" property="totalLatency" jdbcType="LONGVARCHAR" />
+    <result column="avg_latency" property="avgLatency" jdbcType="LONGVARCHAR" />
+    <result column="max_latency" property="maxLatency" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    total_latency, avg_latency, max_latency
+  </sql>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.WaitsByUserByLatencyWithBLOBs" >
+    insert into waits_by_user_by_latency (user, event, total, 
+      total_latency, avg_latency, max_latency
+      )
+    values (#{user,jdbcType=VARCHAR}, #{event,jdbcType=VARCHAR}, #{total,jdbcType=BIGINT}, 
+      #{totalLatency,jdbcType=LONGVARCHAR}, #{avgLatency,jdbcType=LONGVARCHAR}, #{maxLatency,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.WaitsByUserByLatencyWithBLOBs" >
+    insert into waits_by_user_by_latency
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        user,
+      </if>
+      <if test="event != null" >
+        event,
+      </if>
+      <if test="total != null" >
+        total,
+      </if>
+      <if test="totalLatency != null" >
+        total_latency,
+      </if>
+      <if test="avgLatency != null" >
+        avg_latency,
+      </if>
+      <if test="maxLatency != null" >
+        max_latency,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="event != null" >
+        #{event,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null" >
+        #{total,jdbcType=BIGINT},
+      </if>
+      <if test="totalLatency != null" >
+        #{totalLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="avgLatency != null" >
+        #{avgLatency,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="maxLatency != null" >
+        #{maxLatency,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

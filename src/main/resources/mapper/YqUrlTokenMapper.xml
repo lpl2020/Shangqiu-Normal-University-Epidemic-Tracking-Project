@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sq.mappers.YqUrlTokenMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqUrlToken">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="bigscreen_url" jdbcType="VARCHAR" property="bigscreenUrl" />
+    <result column="wx_url" jdbcType="VARCHAR" property="wxUrl" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="database_type" jdbcType="VARCHAR" property="databaseType" />
+    <result column="school_jc" jdbcType="VARCHAR" property="schoolJc" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, school, bigscreen_url, wx_url, token, database_type, school_jc, user, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yq_url_token
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_url_token
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    insert into yq_url_token (id, school, bigscreen_url, 
+      wx_url, token, database_type, 
+      school_jc, user, password
+      )
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{bigscreenUrl,jdbcType=VARCHAR}, 
+      #{wxUrl,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{databaseType,jdbcType=VARCHAR}, 
+      #{schoolJc,jdbcType=VARCHAR}, #{user,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    insert into yq_url_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="bigscreenUrl != null">
+        bigscreen_url,
+      </if>
+      <if test="wxUrl != null">
+        wx_url,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="databaseType != null">
+        database_type,
+      </if>
+      <if test="schoolJc != null">
+        school_jc,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="bigscreenUrl != null">
+        #{bigscreenUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUrl != null">
+        #{wxUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null">
+        #{databaseType,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolJc != null">
+        #{schoolJc,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    update yq_url_token
+    <set>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="bigscreenUrl != null">
+        bigscreen_url = #{bigscreenUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUrl != null">
+        wx_url = #{wxUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null">
+        database_type = #{databaseType,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolJc != null">
+        school_jc = #{schoolJc,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    update yq_url_token
+    set school = #{school,jdbcType=VARCHAR},
+      bigscreen_url = #{bigscreenUrl,jdbcType=VARCHAR},
+      wx_url = #{wxUrl,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      database_type = #{databaseType,jdbcType=VARCHAR},
+      school_jc = #{schoolJc,jdbcType=VARCHAR},
+      user = #{user,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqUrlToken">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="bigscreen_url" jdbcType="VARCHAR" property="bigscreenUrl" />
+    <result column="wx_url" jdbcType="VARCHAR" property="wxUrl" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="database_type" jdbcType="VARCHAR" property="databaseType" />
+    <result column="school_jc" jdbcType="VARCHAR" property="schoolJc" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, school, bigscreen_url, wx_url, token, database_type, school_jc, user, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yq_url_token
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_url_token
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    insert into yq_url_token (id, school, bigscreen_url, 
+      wx_url, token, database_type, 
+      school_jc, user, password
+      )
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{bigscreenUrl,jdbcType=VARCHAR}, 
+      #{wxUrl,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{databaseType,jdbcType=VARCHAR}, 
+      #{schoolJc,jdbcType=VARCHAR}, #{user,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    insert into yq_url_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="bigscreenUrl != null">
+        bigscreen_url,
+      </if>
+      <if test="wxUrl != null">
+        wx_url,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="databaseType != null">
+        database_type,
+      </if>
+      <if test="schoolJc != null">
+        school_jc,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="bigscreenUrl != null">
+        #{bigscreenUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUrl != null">
+        #{wxUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null">
+        #{databaseType,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolJc != null">
+        #{schoolJc,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    update yq_url_token
+    <set>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="bigscreenUrl != null">
+        bigscreen_url = #{bigscreenUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUrl != null">
+        wx_url = #{wxUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null">
+        database_type = #{databaseType,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolJc != null">
+        school_jc = #{schoolJc,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    update yq_url_token
+    set school = #{school,jdbcType=VARCHAR},
+      bigscreen_url = #{bigscreenUrl,jdbcType=VARCHAR},
+      wx_url = #{wxUrl,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      database_type = #{databaseType,jdbcType=VARCHAR},
+      school_jc = #{schoolJc,jdbcType=VARCHAR},
+      user = #{user,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqUrlToken">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="bigscreen_url" jdbcType="VARCHAR" property="bigscreenUrl" />
+    <result column="wx_url" jdbcType="VARCHAR" property="wxUrl" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="database_type" jdbcType="VARCHAR" property="databaseType" />
+    <result column="school_jc" jdbcType="VARCHAR" property="schoolJc" />
+    <result column="user" jdbcType="VARCHAR" property="user" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, school, bigscreen_url, wx_url, token, database_type, school_jc, user, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from yq_url_token
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_url_token
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    insert into yq_url_token (id, school, bigscreen_url, 
+      wx_url, token, database_type, 
+      school_jc, user, password
+      )
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{bigscreenUrl,jdbcType=VARCHAR}, 
+      #{wxUrl,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{databaseType,jdbcType=VARCHAR}, 
+      #{schoolJc,jdbcType=VARCHAR}, #{user,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    insert into yq_url_token
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="school != null">
+        school,
+      </if>
+      <if test="bigscreenUrl != null">
+        bigscreen_url,
+      </if>
+      <if test="wxUrl != null">
+        wx_url,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="databaseType != null">
+        database_type,
+      </if>
+      <if test="schoolJc != null">
+        school_jc,
+      </if>
+      <if test="user != null">
+        user,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="school != null">
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="bigscreenUrl != null">
+        #{bigscreenUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUrl != null">
+        #{wxUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null">
+        #{databaseType,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolJc != null">
+        #{schoolJc,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    update yq_url_token
+    <set>
+      <if test="school != null">
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="bigscreenUrl != null">
+        bigscreen_url = #{bigscreenUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUrl != null">
+        wx_url = #{wxUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="databaseType != null">
+        database_type = #{databaseType,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolJc != null">
+        school_jc = #{schoolJc,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null">
+        user = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqUrlToken">
+    update yq_url_token
+    set school = #{school,jdbcType=VARCHAR},
+      bigscreen_url = #{bigscreenUrl,jdbcType=VARCHAR},
+      wx_url = #{wxUrl,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      database_type = #{databaseType,jdbcType=VARCHAR},
+      school_jc = #{schoolJc,jdbcType=VARCHAR},
+      user = #{user,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

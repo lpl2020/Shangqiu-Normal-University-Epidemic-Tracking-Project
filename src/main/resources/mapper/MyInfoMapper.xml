@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.MyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.MyInfo" >
+    <id column="info_id" property="infoId" jdbcType="INTEGER" />
+    <result column="main_id" property="mainId" jdbcType="VARCHAR" />
+    <result column="info_reply" property="infoReply" jdbcType="INTEGER" />
+    <result column="info_see" property="infoSee" jdbcType="INTEGER" />
+    <result column="info_lastuser" property="infoLastuser" jdbcType="VARCHAR" />
+    <result column="info_lastime" property="infoLastime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    info_id, main_id, info_reply, info_see, info_lastuser, info_lastime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from my_info
+    where info_id = #{infoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from my_info
+    where info_id = #{infoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.MyInfo" >
+    insert into my_info (info_id, main_id, info_reply, 
+      info_see, info_lastuser, info_lastime
+      )
+    values (#{infoId,jdbcType=INTEGER}, #{mainId,jdbcType=VARCHAR}, #{infoReply,jdbcType=INTEGER}, 
+      #{infoSee,jdbcType=INTEGER}, #{infoLastuser,jdbcType=VARCHAR}, #{infoLastime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.MyInfo" >
+    insert into my_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="infoId != null" >
+        info_id,
+      </if>
+      <if test="mainId != null" >
+        main_id,
+      </if>
+      <if test="infoReply != null" >
+        info_reply,
+      </if>
+      <if test="infoSee != null" >
+        info_see,
+      </if>
+      <if test="infoLastuser != null" >
+        info_lastuser,
+      </if>
+      <if test="infoLastime != null" >
+        info_lastime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="infoId != null" >
+        #{infoId,jdbcType=INTEGER},
+      </if>
+      <if test="mainId != null" >
+        #{mainId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoReply != null" >
+        #{infoReply,jdbcType=INTEGER},
+      </if>
+      <if test="infoSee != null" >
+        #{infoSee,jdbcType=INTEGER},
+      </if>
+      <if test="infoLastuser != null" >
+        #{infoLastuser,jdbcType=VARCHAR},
+      </if>
+      <if test="infoLastime != null" >
+        #{infoLastime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.MyInfo" >
+    update my_info
+    <set >
+      <if test="mainId != null" >
+        main_id = #{mainId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoReply != null" >
+        info_reply = #{infoReply,jdbcType=INTEGER},
+      </if>
+      <if test="infoSee != null" >
+        info_see = #{infoSee,jdbcType=INTEGER},
+      </if>
+      <if test="infoLastuser != null" >
+        info_lastuser = #{infoLastuser,jdbcType=VARCHAR},
+      </if>
+      <if test="infoLastime != null" >
+        info_lastime = #{infoLastime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where info_id = #{infoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.MyInfo" >
+    update my_info
+    set main_id = #{mainId,jdbcType=VARCHAR},
+      info_reply = #{infoReply,jdbcType=INTEGER},
+      info_see = #{infoSee,jdbcType=INTEGER},
+      info_lastuser = #{infoLastuser,jdbcType=VARCHAR},
+      info_lastime = #{infoLastime,jdbcType=TIMESTAMP}
+    where info_id = #{infoId,jdbcType=INTEGER}
+  </update>
+</mapper>

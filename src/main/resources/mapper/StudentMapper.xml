@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sq.mappers.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <result column="stuNo" jdbcType="VARCHAR" property="stuno" />
+    <result column="stuName" jdbcType="VARCHAR" property="stuname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="class" jdbcType="VARCHAR" property="class" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phonenum" />
+    <result column="insertTime" jdbcType="DATE" property="inserttime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into student (stuNo, stuName, sex, 
+      class, age, grade, 
+      height, phoneNum, insertTime, 
+      updateTime)
+    values (#{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{class,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{inserttime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        stuNo,
+      </if>
+      <if test="stuname != null">
+        stuName,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="class != null">
+        class,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="phonenum != null">
+        phoneNum,
+      </if>
+      <if test="inserttime != null">
+        insertTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null">
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="inserttime != null">
+        #{inserttime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="clazzId" jdbcType="INTEGER" property="clazzid" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clazzId, sn, username, password, sex, photo, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from student
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from student
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into student (id, clazzId, sn, 
+      username, password, sex, 
+      photo, remark)
+    values (#{id,jdbcType=INTEGER}, #{clazzid,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clazzid != null">
+        clazzId,
+      </if>
+      <if test="sn != null">
+        sn,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clazzid != null">
+        #{clazzid,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.Student">
+    update student
+    <set>
+      <if test="clazzid != null">
+        clazzId = #{clazzid,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.Student">
+    update student
+    set clazzId = #{clazzid,jdbcType=INTEGER},
+      sn = #{sn,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <result column="学号" jdbcType="VARCHAR" property="学号" />
+    <result column="姓名" jdbcType="VARCHAR" property="姓名" />
+    <result column="性别" jdbcType="VARCHAR" property="性别" />
+    <result column="班级" jdbcType="VARCHAR" property="班级" />
+    <result column="年龄" jdbcType="VARCHAR" property="年龄" />
+    <result column="成绩" jdbcType="VARCHAR" property="成绩" />
+    <result column="身高" jdbcType="VARCHAR" property="身高" />
+    <result column="手机" jdbcType="VARCHAR" property="手机" />
+    <result column="插入时间" jdbcType="DATE" property="插入时间" />
+    <result column="更新时间" jdbcType="DATE" property="更新时间" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into student (学号, 姓名, 性别, 班级, 
+      年龄, 成绩, 身高, 手机, 
+      插入时间, 更新时间)
+    values (#{学号,jdbcType=VARCHAR}, #{姓名,jdbcType=VARCHAR}, #{性别,jdbcType=VARCHAR}, #{班级,jdbcType=VARCHAR}, 
+      #{年龄,jdbcType=VARCHAR}, #{成绩,jdbcType=VARCHAR}, #{身高,jdbcType=VARCHAR}, #{手机,jdbcType=VARCHAR}, 
+      #{插入时间,jdbcType=DATE}, #{更新时间,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="学号 != null">
+        学号,
+      </if>
+      <if test="姓名 != null">
+        姓名,
+      </if>
+      <if test="性别 != null">
+        性别,
+      </if>
+      <if test="班级 != null">
+        班级,
+      </if>
+      <if test="年龄 != null">
+        年龄,
+      </if>
+      <if test="成绩 != null">
+        成绩,
+      </if>
+      <if test="身高 != null">
+        身高,
+      </if>
+      <if test="手机 != null">
+        手机,
+      </if>
+      <if test="插入时间 != null">
+        插入时间,
+      </if>
+      <if test="更新时间 != null">
+        更新时间,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="学号 != null">
+        #{学号,jdbcType=VARCHAR},
+      </if>
+      <if test="姓名 != null">
+        #{姓名,jdbcType=VARCHAR},
+      </if>
+      <if test="性别 != null">
+        #{性别,jdbcType=VARCHAR},
+      </if>
+      <if test="班级 != null">
+        #{班级,jdbcType=VARCHAR},
+      </if>
+      <if test="年龄 != null">
+        #{年龄,jdbcType=VARCHAR},
+      </if>
+      <if test="成绩 != null">
+        #{成绩,jdbcType=VARCHAR},
+      </if>
+      <if test="身高 != null">
+        #{身高,jdbcType=VARCHAR},
+      </if>
+      <if test="手机 != null">
+        #{手机,jdbcType=VARCHAR},
+      </if>
+      <if test="插入时间 != null">
+        #{插入时间,jdbcType=DATE},
+      </if>
+      <if test="更新时间 != null">
+        #{更新时间,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <result column="stuNo" jdbcType="VARCHAR" property="stuno" />
+    <result column="stuName" jdbcType="VARCHAR" property="stuname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="class" jdbcType="VARCHAR" property="class" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phonenum" />
+    <result column="insertTime" jdbcType="DATE" property="inserttime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into student (stuNo, stuName, sex, 
+      class, age, grade, 
+      height, phoneNum, insertTime, 
+      updateTime)
+    values (#{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{class,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{inserttime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        stuNo,
+      </if>
+      <if test="stuname != null">
+        stuName,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="class != null">
+        class,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="phonenum != null">
+        phoneNum,
+      </if>
+      <if test="inserttime != null">
+        insertTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null">
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="inserttime != null">
+        #{inserttime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <result column="学号" jdbcType="VARCHAR" property="学号" />
+    <result column="姓名" jdbcType="VARCHAR" property="姓名" />
+    <result column="性别" jdbcType="VARCHAR" property="性别" />
+    <result column="班级" jdbcType="VARCHAR" property="班级" />
+    <result column="年龄" jdbcType="VARCHAR" property="年龄" />
+    <result column="成绩" jdbcType="VARCHAR" property="成绩" />
+    <result column="身高" jdbcType="VARCHAR" property="身高" />
+    <result column="手机" jdbcType="VARCHAR" property="手机" />
+    <result column="插入时间" jdbcType="DATE" property="插入时间" />
+    <result column="更新时间" jdbcType="DATE" property="更新时间" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student" (学号, 姓名, 性别, 班级, 
+      年龄, 成绩, 身高, 手机, 
+      插入时间, 更新时间)
+    values (#{学号,jdbcType=VARCHAR}, #{姓名,jdbcType=VARCHAR}, #{性别,jdbcType=VARCHAR}, #{班级,jdbcType=VARCHAR}, 
+      #{年龄,jdbcType=VARCHAR}, #{成绩,jdbcType=VARCHAR}, #{身高,jdbcType=VARCHAR}, #{手机,jdbcType=VARCHAR}, 
+      #{插入时间,jdbcType=DATE}, #{更新时间,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="学号 != null">
+        学号,
+      </if>
+      <if test="姓名 != null">
+        姓名,
+      </if>
+      <if test="性别 != null">
+        性别,
+      </if>
+      <if test="班级 != null">
+        班级,
+      </if>
+      <if test="年龄 != null">
+        年龄,
+      </if>
+      <if test="成绩 != null">
+        成绩,
+      </if>
+      <if test="身高 != null">
+        身高,
+      </if>
+      <if test="手机 != null">
+        手机,
+      </if>
+      <if test="插入时间 != null">
+        插入时间,
+      </if>
+      <if test="更新时间 != null">
+        更新时间,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="学号 != null">
+        #{学号,jdbcType=VARCHAR},
+      </if>
+      <if test="姓名 != null">
+        #{姓名,jdbcType=VARCHAR},
+      </if>
+      <if test="性别 != null">
+        #{性别,jdbcType=VARCHAR},
+      </if>
+      <if test="班级 != null">
+        #{班级,jdbcType=VARCHAR},
+      </if>
+      <if test="年龄 != null">
+        #{年龄,jdbcType=VARCHAR},
+      </if>
+      <if test="成绩 != null">
+        #{成绩,jdbcType=VARCHAR},
+      </if>
+      <if test="身高 != null">
+        #{身高,jdbcType=VARCHAR},
+      </if>
+      <if test="手机 != null">
+        #{手机,jdbcType=VARCHAR},
+      </if>
+      <if test="插入时间 != null">
+        #{插入时间,jdbcType=DATE},
+      </if>
+      <if test="更新时间 != null">
+        #{更新时间,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <result column="stuNo" jdbcType="VARCHAR" property="stuno" />
+    <result column="stuName" jdbcType="VARCHAR" property="stuname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="class" jdbcType="VARCHAR" property="class" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phonenum" />
+    <result column="insertTime" jdbcType="DATE" property="inserttime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student" (stuNo, stuName, sex, 
+      class, age, grade, 
+      height, phoneNum, insertTime, 
+      updateTime)
+    values (#{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{class,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{inserttime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        stuNo,
+      </if>
+      <if test="stuname != null">
+        stuName,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="class != null">
+        class,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="phonenum != null">
+        phoneNum,
+      </if>
+      <if test="inserttime != null">
+        insertTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null">
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="inserttime != null">
+        #{inserttime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <result column="stuNo" jdbcType="VARCHAR" property="stuno" />
+    <result column="stuName" jdbcType="VARCHAR" property="stuname" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="class" jdbcType="VARCHAR" property="class" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="height" jdbcType="VARCHAR" property="height" />
+    <result column="phoneNum" jdbcType="VARCHAR" property="phonenum" />
+    <result column="insertTime" jdbcType="DATE" property="inserttime" />
+    <result column="updateTime" jdbcType="DATE" property="updatetime" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student" (stuNo, stuName, sex, 
+      class, age, grade, 
+      height, phoneNum, insertTime, 
+      updateTime)
+    values (#{stuno,jdbcType=VARCHAR}, #{stuname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{class,jdbcType=VARCHAR}, #{age,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{height,jdbcType=VARCHAR}, #{phonenum,jdbcType=VARCHAR}, #{inserttime,jdbcType=DATE}, 
+      #{updatetime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        stuNo,
+      </if>
+      <if test="stuname != null">
+        stuName,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="class != null">
+        class,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="phonenum != null">
+        phoneNum,
+      </if>
+      <if test="inserttime != null">
+        insertTime,
+      </if>
+      <if test="updatetime != null">
+        updateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuno != null">
+        #{stuno,jdbcType=VARCHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="class != null">
+        #{class,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=VARCHAR},
+      </if>
+      <if test="phonenum != null">
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="inserttime != null">
+        #{inserttime,jdbcType=DATE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Student">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="clazzId" jdbcType="INTEGER" property="clazzid" />
+    <result column="sn" jdbcType="VARCHAR" property="sn" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, clazzId, sn, username, password, sex, photo, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from "student"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "student"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student" (id, clazzId, sn, 
+      username, password, sex, 
+      photo, remark)
+    values (#{id,jdbcType=INTEGER}, #{clazzid,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{photo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Student">
+    insert into "student"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="clazzid != null">
+        clazzId,
+      </if>
+      <if test="sn != null">
+        sn,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clazzid != null">
+        #{clazzid,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.Student">
+    update "student"
+    <set>
+      <if test="clazzid != null">
+        clazzId = #{clazzid,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null">
+        sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.Student">
+    update "student"
+    set clazzId = #{clazzid,jdbcType=INTEGER},
+      sn = #{sn,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

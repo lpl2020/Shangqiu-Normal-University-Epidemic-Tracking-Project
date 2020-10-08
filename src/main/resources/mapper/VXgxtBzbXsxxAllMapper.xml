@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.sq.mappers.VXgxtBzbXsxxAllMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="xh" jdbcType="VARCHAR" property="xh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="Xymc" jdbcType="VARCHAR" property="xymc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, xh, xm, Xymc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_xgxt_bzb_xsxx_all
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_xgxt_bzb_xsxx_all
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    insert into v_xgxt_bzb_xsxx_all (Id, xh, xm, Xymc
+      )
+    values (#{id,jdbcType=INTEGER}, #{xh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xymc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    insert into v_xgxt_bzb_xsxx_all
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="xh != null">
+        xh,
+      </if>
+      <if test="xm != null">
+        xm,
+      </if>
+      <if test="xymc != null">
+        Xymc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xh != null">
+        #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null">
+        #{xymc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    update v_xgxt_bzb_xsxx_all
+    <set>
+      <if test="xh != null">
+        xh = #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null">
+        Xymc = #{xymc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    update v_xgxt_bzb_xsxx_all
+    set xh = #{xh,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      Xymc = #{xymc,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="xh" jdbcType="VARCHAR" property="xh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="Xymc" jdbcType="VARCHAR" property="xymc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, xh, xm, Xymc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_xgxt_bzb_xsxx_all
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_xgxt_bzb_xsxx_all
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    insert into v_xgxt_bzb_xsxx_all (Id, xh, xm, Xymc
+      )
+    values (#{id,jdbcType=INTEGER}, #{xh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xymc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    insert into v_xgxt_bzb_xsxx_all
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="xh != null">
+        xh,
+      </if>
+      <if test="xm != null">
+        xm,
+      </if>
+      <if test="xymc != null">
+        Xymc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xh != null">
+        #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null">
+        #{xymc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    update v_xgxt_bzb_xsxx_all
+    <set>
+      <if test="xh != null">
+        xh = #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null">
+        Xymc = #{xymc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    update v_xgxt_bzb_xsxx_all
+    set xh = #{xh,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      Xymc = #{xymc,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="xh" jdbcType="VARCHAR" property="xh" />
+    <result column="xm" jdbcType="VARCHAR" property="xm" />
+    <result column="xb" jdbcType="VARCHAR" property="xb" />
+    <result column="Xbmc" jdbcType="VARCHAR" property="xbmc" />
+    <result column="mz" jdbcType="VARCHAR" property="mz" />
+    <result column="xybh" jdbcType="VARCHAR" property="xybh" />
+    <result column="Xymc" jdbcType="VARCHAR" property="xymc" />
+    <result column="zybh" jdbcType="VARCHAR" property="zybh" />
+    <result column="Zymc" jdbcType="VARCHAR" property="zymc" />
+    <result column="cch" jdbcType="VARCHAR" property="cch" />
+    <result column="ssnj" jdbcType="INTEGER" property="ssnj" />
+    <result column="bjbh" jdbcType="VARCHAR" property="bjbh" />
+    <result column="Bjmc" jdbcType="VARCHAR" property="bjmc" />
+    <result column="sysq" jdbcType="VARCHAR" property="sysq" />
+    <result column="zzmm" jdbcType="VARCHAR" property="zzmm" />
+    <result column="csrq" jdbcType="VARCHAR" property="csrq" />
+    <result column="Bak9" jdbcType="VARCHAR" property="bak9" />
+    <result column="jtzz" jdbcType="VARCHAR" property="jtzz" />
+    <result column="Phone" jdbcType="VARCHAR" property="phone" />
+    <result column="xz" jdbcType="DECIMAL" property="xz" />
+    <result column="Fdyh" jdbcType="VARCHAR" property="fdyh" />
+    <result column="Bak8" jdbcType="VARCHAR" property="bak8" />
+    <result column="xszt" jdbcType="VARCHAR" property="xszt" />
+    <result column="QFQK" jdbcType="VARCHAR" property="qfqk" />
+    <result column="Sfqf" jdbcType="VARCHAR" property="sfqf" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, xh, xm, xb, Xbmc, mz, xybh, Xymc, zybh, Zymc, cch, ssnj, bjbh, Bjmc, sysq, zzmm, 
+    csrq, Bak9, jtzz, Phone, xz, Fdyh, Bak8, xszt, QFQK, Sfqf
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from v_xgxt_bzb_xsxx_all
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from v_xgxt_bzb_xsxx_all
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    insert into v_xgxt_bzb_xsxx_all (Id, xh, xm, xb, 
+      Xbmc, mz, xybh, Xymc, 
+      zybh, Zymc, cch, ssnj, 
+      bjbh, Bjmc, sysq, zzmm, 
+      csrq, Bak9, jtzz, Phone, 
+      xz, Fdyh, Bak8, xszt, 
+      QFQK, Sfqf)
+    values (#{id,jdbcType=INTEGER}, #{xh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{xb,jdbcType=VARCHAR}, 
+      #{xbmc,jdbcType=VARCHAR}, #{mz,jdbcType=VARCHAR}, #{xybh,jdbcType=VARCHAR}, #{xymc,jdbcType=VARCHAR}, 
+      #{zybh,jdbcType=VARCHAR}, #{zymc,jdbcType=VARCHAR}, #{cch,jdbcType=VARCHAR}, #{ssnj,jdbcType=INTEGER}, 
+      #{bjbh,jdbcType=VARCHAR}, #{bjmc,jdbcType=VARCHAR}, #{sysq,jdbcType=VARCHAR}, #{zzmm,jdbcType=VARCHAR}, 
+      #{csrq,jdbcType=VARCHAR}, #{bak9,jdbcType=VARCHAR}, #{jtzz,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{xz,jdbcType=DECIMAL}, #{fdyh,jdbcType=VARCHAR}, #{bak8,jdbcType=VARCHAR}, #{xszt,jdbcType=VARCHAR}, 
+      #{qfqk,jdbcType=VARCHAR}, #{sfqf,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    insert into v_xgxt_bzb_xsxx_all
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="xh != null">
+        xh,
+      </if>
+      <if test="xm != null">
+        xm,
+      </if>
+      <if test="xb != null">
+        xb,
+      </if>
+      <if test="xbmc != null">
+        Xbmc,
+      </if>
+      <if test="mz != null">
+        mz,
+      </if>
+      <if test="xybh != null">
+        xybh,
+      </if>
+      <if test="xymc != null">
+        Xymc,
+      </if>
+      <if test="zybh != null">
+        zybh,
+      </if>
+      <if test="zymc != null">
+        Zymc,
+      </if>
+      <if test="cch != null">
+        cch,
+      </if>
+      <if test="ssnj != null">
+        ssnj,
+      </if>
+      <if test="bjbh != null">
+        bjbh,
+      </if>
+      <if test="bjmc != null">
+        Bjmc,
+      </if>
+      <if test="sysq != null">
+        sysq,
+      </if>
+      <if test="zzmm != null">
+        zzmm,
+      </if>
+      <if test="csrq != null">
+        csrq,
+      </if>
+      <if test="bak9 != null">
+        Bak9,
+      </if>
+      <if test="jtzz != null">
+        jtzz,
+      </if>
+      <if test="phone != null">
+        Phone,
+      </if>
+      <if test="xz != null">
+        xz,
+      </if>
+      <if test="fdyh != null">
+        Fdyh,
+      </if>
+      <if test="bak8 != null">
+        Bak8,
+      </if>
+      <if test="xszt != null">
+        xszt,
+      </if>
+      <if test="qfqk != null">
+        QFQK,
+      </if>
+      <if test="sfqf != null">
+        Sfqf,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="xh != null">
+        #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="xbmc != null">
+        #{xbmc,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null">
+        #{mz,jdbcType=VARCHAR},
+      </if>
+      <if test="xybh != null">
+        #{xybh,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null">
+        #{xymc,jdbcType=VARCHAR},
+      </if>
+      <if test="zybh != null">
+        #{zybh,jdbcType=VARCHAR},
+      </if>
+      <if test="zymc != null">
+        #{zymc,jdbcType=VARCHAR},
+      </if>
+      <if test="cch != null">
+        #{cch,jdbcType=VARCHAR},
+      </if>
+      <if test="ssnj != null">
+        #{ssnj,jdbcType=INTEGER},
+      </if>
+      <if test="bjbh != null">
+        #{bjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="bjmc != null">
+        #{bjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sysq != null">
+        #{sysq,jdbcType=VARCHAR},
+      </if>
+      <if test="zzmm != null">
+        #{zzmm,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null">
+        #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="bak9 != null">
+        #{bak9,jdbcType=VARCHAR},
+      </if>
+      <if test="jtzz != null">
+        #{jtzz,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="xz != null">
+        #{xz,jdbcType=DECIMAL},
+      </if>
+      <if test="fdyh != null">
+        #{fdyh,jdbcType=VARCHAR},
+      </if>
+      <if test="bak8 != null">
+        #{bak8,jdbcType=VARCHAR},
+      </if>
+      <if test="xszt != null">
+        #{xszt,jdbcType=VARCHAR},
+      </if>
+      <if test="qfqk != null">
+        #{qfqk,jdbcType=VARCHAR},
+      </if>
+      <if test="sfqf != null">
+        #{sfqf,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    update v_xgxt_bzb_xsxx_all
+    <set>
+      <if test="xh != null">
+        xh = #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null">
+        xm = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null">
+        xb = #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="xbmc != null">
+        Xbmc = #{xbmc,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null">
+        mz = #{mz,jdbcType=VARCHAR},
+      </if>
+      <if test="xybh != null">
+        xybh = #{xybh,jdbcType=VARCHAR},
+      </if>
+      <if test="xymc != null">
+        Xymc = #{xymc,jdbcType=VARCHAR},
+      </if>
+      <if test="zybh != null">
+        zybh = #{zybh,jdbcType=VARCHAR},
+      </if>
+      <if test="zymc != null">
+        Zymc = #{zymc,jdbcType=VARCHAR},
+      </if>
+      <if test="cch != null">
+        cch = #{cch,jdbcType=VARCHAR},
+      </if>
+      <if test="ssnj != null">
+        ssnj = #{ssnj,jdbcType=INTEGER},
+      </if>
+      <if test="bjbh != null">
+        bjbh = #{bjbh,jdbcType=VARCHAR},
+      </if>
+      <if test="bjmc != null">
+        Bjmc = #{bjmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sysq != null">
+        sysq = #{sysq,jdbcType=VARCHAR},
+      </if>
+      <if test="zzmm != null">
+        zzmm = #{zzmm,jdbcType=VARCHAR},
+      </if>
+      <if test="csrq != null">
+        csrq = #{csrq,jdbcType=VARCHAR},
+      </if>
+      <if test="bak9 != null">
+        Bak9 = #{bak9,jdbcType=VARCHAR},
+      </if>
+      <if test="jtzz != null">
+        jtzz = #{jtzz,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="xz != null">
+        xz = #{xz,jdbcType=DECIMAL},
+      </if>
+      <if test="fdyh != null">
+        Fdyh = #{fdyh,jdbcType=VARCHAR},
+      </if>
+      <if test="bak8 != null">
+        Bak8 = #{bak8,jdbcType=VARCHAR},
+      </if>
+      <if test="xszt != null">
+        xszt = #{xszt,jdbcType=VARCHAR},
+      </if>
+      <if test="qfqk != null">
+        QFQK = #{qfqk,jdbcType=VARCHAR},
+      </if>
+      <if test="sfqf != null">
+        Sfqf = #{sfqf,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.VXgxtBzbXsxxAll">
+    update v_xgxt_bzb_xsxx_all
+    set xh = #{xh,jdbcType=VARCHAR},
+      xm = #{xm,jdbcType=VARCHAR},
+      xb = #{xb,jdbcType=VARCHAR},
+      Xbmc = #{xbmc,jdbcType=VARCHAR},
+      mz = #{mz,jdbcType=VARCHAR},
+      xybh = #{xybh,jdbcType=VARCHAR},
+      Xymc = #{xymc,jdbcType=VARCHAR},
+      zybh = #{zybh,jdbcType=VARCHAR},
+      Zymc = #{zymc,jdbcType=VARCHAR},
+      cch = #{cch,jdbcType=VARCHAR},
+      ssnj = #{ssnj,jdbcType=INTEGER},
+      bjbh = #{bjbh,jdbcType=VARCHAR},
+      Bjmc = #{bjmc,jdbcType=VARCHAR},
+      sysq = #{sysq,jdbcType=VARCHAR},
+      zzmm = #{zzmm,jdbcType=VARCHAR},
+      csrq = #{csrq,jdbcType=VARCHAR},
+      Bak9 = #{bak9,jdbcType=VARCHAR},
+      jtzz = #{jtzz,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      xz = #{xz,jdbcType=DECIMAL},
+      Fdyh = #{fdyh,jdbcType=VARCHAR},
+      Bak8 = #{bak8,jdbcType=VARCHAR},
+      xszt = #{xszt,jdbcType=VARCHAR},
+      QFQK = #{qfqk,jdbcType=VARCHAR},
+      Sfqf = #{sfqf,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

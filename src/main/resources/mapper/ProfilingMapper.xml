@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.sq.mappers.ProfilingMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.Profiling" >
+    <result column="QUERY_ID" property="queryId" jdbcType="INTEGER" />
+    <result column="SEQ" property="seq" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="DURATION" property="duration" jdbcType="DECIMAL" />
+    <result column="CPU_USER" property="cpuUser" jdbcType="DECIMAL" />
+    <result column="CPU_SYSTEM" property="cpuSystem" jdbcType="DECIMAL" />
+    <result column="CONTEXT_VOLUNTARY" property="contextVoluntary" jdbcType="INTEGER" />
+    <result column="CONTEXT_INVOLUNTARY" property="contextInvoluntary" jdbcType="INTEGER" />
+    <result column="BLOCK_OPS_IN" property="blockOpsIn" jdbcType="INTEGER" />
+    <result column="BLOCK_OPS_OUT" property="blockOpsOut" jdbcType="INTEGER" />
+    <result column="MESSAGES_SENT" property="messagesSent" jdbcType="INTEGER" />
+    <result column="MESSAGES_RECEIVED" property="messagesReceived" jdbcType="INTEGER" />
+    <result column="PAGE_FAULTS_MAJOR" property="pageFaultsMajor" jdbcType="INTEGER" />
+    <result column="PAGE_FAULTS_MINOR" property="pageFaultsMinor" jdbcType="INTEGER" />
+    <result column="SWAPS" property="swaps" jdbcType="INTEGER" />
+    <result column="SOURCE_FUNCTION" property="sourceFunction" jdbcType="VARCHAR" />
+    <result column="SOURCE_FILE" property="sourceFile" jdbcType="VARCHAR" />
+    <result column="SOURCE_LINE" property="sourceLine" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.demo.sq.entity.Profiling" >
+    insert into PROFILING (QUERY_ID, SEQ, STATE, 
+      DURATION, CPU_USER, CPU_SYSTEM, 
+      CONTEXT_VOLUNTARY, CONTEXT_INVOLUNTARY, BLOCK_OPS_IN, 
+      BLOCK_OPS_OUT, MESSAGES_SENT, MESSAGES_RECEIVED, 
+      PAGE_FAULTS_MAJOR, PAGE_FAULTS_MINOR, SWAPS, 
+      SOURCE_FUNCTION, SOURCE_FILE, SOURCE_LINE
+      )
+    values (#{queryId,jdbcType=INTEGER}, #{seq,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, 
+      #{duration,jdbcType=DECIMAL}, #{cpuUser,jdbcType=DECIMAL}, #{cpuSystem,jdbcType=DECIMAL}, 
+      #{contextVoluntary,jdbcType=INTEGER}, #{contextInvoluntary,jdbcType=INTEGER}, #{blockOpsIn,jdbcType=INTEGER}, 
+      #{blockOpsOut,jdbcType=INTEGER}, #{messagesSent,jdbcType=INTEGER}, #{messagesReceived,jdbcType=INTEGER}, 
+      #{pageFaultsMajor,jdbcType=INTEGER}, #{pageFaultsMinor,jdbcType=INTEGER}, #{swaps,jdbcType=INTEGER}, 
+      #{sourceFunction,jdbcType=VARCHAR}, #{sourceFile,jdbcType=VARCHAR}, #{sourceLine,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.Profiling" >
+    insert into PROFILING
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="queryId != null" >
+        QUERY_ID,
+      </if>
+      <if test="seq != null" >
+        SEQ,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="duration != null" >
+        DURATION,
+      </if>
+      <if test="cpuUser != null" >
+        CPU_USER,
+      </if>
+      <if test="cpuSystem != null" >
+        CPU_SYSTEM,
+      </if>
+      <if test="contextVoluntary != null" >
+        CONTEXT_VOLUNTARY,
+      </if>
+      <if test="contextInvoluntary != null" >
+        CONTEXT_INVOLUNTARY,
+      </if>
+      <if test="blockOpsIn != null" >
+        BLOCK_OPS_IN,
+      </if>
+      <if test="blockOpsOut != null" >
+        BLOCK_OPS_OUT,
+      </if>
+      <if test="messagesSent != null" >
+        MESSAGES_SENT,
+      </if>
+      <if test="messagesReceived != null" >
+        MESSAGES_RECEIVED,
+      </if>
+      <if test="pageFaultsMajor != null" >
+        PAGE_FAULTS_MAJOR,
+      </if>
+      <if test="pageFaultsMinor != null" >
+        PAGE_FAULTS_MINOR,
+      </if>
+      <if test="swaps != null" >
+        SWAPS,
+      </if>
+      <if test="sourceFunction != null" >
+        SOURCE_FUNCTION,
+      </if>
+      <if test="sourceFile != null" >
+        SOURCE_FILE,
+      </if>
+      <if test="sourceLine != null" >
+        SOURCE_LINE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="queryId != null" >
+        #{queryId,jdbcType=INTEGER},
+      </if>
+      <if test="seq != null" >
+        #{seq,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=DECIMAL},
+      </if>
+      <if test="cpuUser != null" >
+        #{cpuUser,jdbcType=DECIMAL},
+      </if>
+      <if test="cpuSystem != null" >
+        #{cpuSystem,jdbcType=DECIMAL},
+      </if>
+      <if test="contextVoluntary != null" >
+        #{contextVoluntary,jdbcType=INTEGER},
+      </if>
+      <if test="contextInvoluntary != null" >
+        #{contextInvoluntary,jdbcType=INTEGER},
+      </if>
+      <if test="blockOpsIn != null" >
+        #{blockOpsIn,jdbcType=INTEGER},
+      </if>
+      <if test="blockOpsOut != null" >
+        #{blockOpsOut,jdbcType=INTEGER},
+      </if>
+      <if test="messagesSent != null" >
+        #{messagesSent,jdbcType=INTEGER},
+      </if>
+      <if test="messagesReceived != null" >
+        #{messagesReceived,jdbcType=INTEGER},
+      </if>
+      <if test="pageFaultsMajor != null" >
+        #{pageFaultsMajor,jdbcType=INTEGER},
+      </if>
+      <if test="pageFaultsMinor != null" >
+        #{pageFaultsMinor,jdbcType=INTEGER},
+      </if>
+      <if test="swaps != null" >
+        #{swaps,jdbcType=INTEGER},
+      </if>
+      <if test="sourceFunction != null" >
+        #{sourceFunction,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceFile != null" >
+        #{sourceFile,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceLine != null" >
+        #{sourceLine,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
