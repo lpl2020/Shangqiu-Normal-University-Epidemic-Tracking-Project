@@ -10,7 +10,7 @@ import com.alibaba.fastjson.JSONObject;
 @RestController
 @RequestMapping("/student")
 public class StudentController {
-
+//    测试类
     @Autowired
     private StudentService studentService;
 
