@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.sq.mappers.YqFxdataCollectionMapper">
-  <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqFxdataCollection">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="school" jdbcType="VARCHAR" property="school" />
-    <result column="userName" jdbcType="VARCHAR" property="username" />
-    <result column="userNo" jdbcType="VARCHAR" property="userno" />
-    <result column="fxTime" jdbcType="DATE" property="fxtime" />
-    <result column="fxCountry" jdbcType="VARCHAR" property="fxcountry" />
-    <result column="fxProvince" jdbcType="VARCHAR" property="fxprovince" />
-    <result column="fxCity" jdbcType="VARCHAR" property="fxcity" />
-    <result column="fxTown" jdbcType="VARCHAR" property="fxtown" />
-    <result column="fxVehicle" jdbcType="VARCHAR" property="fxvehicle" />
-    <result column="throughEpidemicArea" jdbcType="INTEGER" property="throughepidemicarea" />
-    <result column="trainNum" jdbcType="VARCHAR" property="trainnum" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.example.demo.sq.entity.YqFxdataCollection">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="school" jdbcType="VARCHAR" property="school"/>
+        <result column="userName" jdbcType="VARCHAR" property="username"/>
+        <result column="userNo" jdbcType="VARCHAR" property="userno"/>
+        <result column="fxTime" jdbcType="DATE" property="fxtime"/>
+        <result column="fxCountry" jdbcType="VARCHAR" property="fxcountry"/>
+        <result column="fxProvince" jdbcType="VARCHAR" property="fxprovince"/>
+        <result column="fxCity" jdbcType="VARCHAR" property="fxcity"/>
+        <result column="fxTown" jdbcType="VARCHAR" property="fxtown"/>
+        <result column="fxVehicle" jdbcType="VARCHAR" property="fxvehicle"/>
+        <result column="throughEpidemicArea" jdbcType="INTEGER" property="throughepidemicarea"/>
+        <result column="trainNum" jdbcType="VARCHAR" property="trainnum"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, school, userName, userNo, fxTime, fxCountry, fxProvince, fxCity, fxTown, fxVehicle, 
     throughEpidemicArea, trainNum, createTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from yq_fxdata_collection
-    where id = #{id,jdbcType=INTEGER}
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from yq_fxdata_collection
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="getFxdataInfo" resultType="java.util.Map">
+
+    SELECT COUNT(1) AS fxNum,SUM(IF(fx_addr_country !='中国',1,0)) AS jwfxNum, SUM(IF(fx_addr_province !='河南省',1,0))
+     AS wsfxNum FROM (SELECT * FROM yq_fxdata_collection WHERE school='山东英才学院' GROUP BY user_no) FXRY
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yq_fxdata_collection
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
+    <insert id="insert" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
     insert into yq_fxdata_collection (id, school, userName, 
       userNo, fxTime, fxCountry, 
       fxProvince, fxCity, fxTown, 
@@ -42,134 +47,134 @@
       #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{trainnum,jdbcType=VARCHAR}, 
       #{createtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
-    insert into yq_fxdata_collection
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="school != null">
-        school,
-      </if>
-      <if test="username != null">
-        userName,
-      </if>
-      <if test="userno != null">
-        userNo,
-      </if>
-      <if test="fxtime != null">
-        fxTime,
-      </if>
-      <if test="fxcountry != null">
-        fxCountry,
-      </if>
-      <if test="fxprovince != null">
-        fxProvince,
-      </if>
-      <if test="fxcity != null">
-        fxCity,
-      </if>
-      <if test="fxtown != null">
-        fxTown,
-      </if>
-      <if test="fxvehicle != null">
-        fxVehicle,
-      </if>
-      <if test="throughepidemicarea != null">
-        throughEpidemicArea,
-      </if>
-      <if test="trainnum != null">
-        trainNum,
-      </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="school != null">
-        #{school,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userno != null">
-        #{userno,jdbcType=VARCHAR},
-      </if>
-      <if test="fxtime != null">
-        #{fxtime,jdbcType=DATE},
-      </if>
-      <if test="fxcountry != null">
-        #{fxcountry,jdbcType=VARCHAR},
-      </if>
-      <if test="fxprovince != null">
-        #{fxprovince,jdbcType=VARCHAR},
-      </if>
-      <if test="fxcity != null">
-        #{fxcity,jdbcType=VARCHAR},
-      </if>
-      <if test="fxtown != null">
-        #{fxtown,jdbcType=VARCHAR},
-      </if>
-      <if test="fxvehicle != null">
-        #{fxvehicle,jdbcType=VARCHAR},
-      </if>
-      <if test="throughepidemicarea != null">
-        #{throughepidemicarea,jdbcType=INTEGER},
-      </if>
-      <if test="trainnum != null">
-        #{trainnum,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
-    update yq_fxdata_collection
-    <set>
-      <if test="school != null">
-        school = #{school,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        userName = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="userno != null">
-        userNo = #{userno,jdbcType=VARCHAR},
-      </if>
-      <if test="fxtime != null">
-        fxTime = #{fxtime,jdbcType=DATE},
-      </if>
-      <if test="fxcountry != null">
-        fxCountry = #{fxcountry,jdbcType=VARCHAR},
-      </if>
-      <if test="fxprovince != null">
-        fxProvince = #{fxprovince,jdbcType=VARCHAR},
-      </if>
-      <if test="fxcity != null">
-        fxCity = #{fxcity,jdbcType=VARCHAR},
-      </if>
-      <if test="fxtown != null">
-        fxTown = #{fxtown,jdbcType=VARCHAR},
-      </if>
-      <if test="fxvehicle != null">
-        fxVehicle = #{fxvehicle,jdbcType=VARCHAR},
-      </if>
-      <if test="throughepidemicarea != null">
-        throughEpidemicArea = #{throughepidemicarea,jdbcType=INTEGER},
-      </if>
-      <if test="trainnum != null">
-        trainNum = #{trainnum,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
+    <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
+        insert into yq_fxdata_collection
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="school != null">
+                school,
+            </if>
+            <if test="username != null">
+                userName,
+            </if>
+            <if test="userno != null">
+                userNo,
+            </if>
+            <if test="fxtime != null">
+                fxTime,
+            </if>
+            <if test="fxcountry != null">
+                fxCountry,
+            </if>
+            <if test="fxprovince != null">
+                fxProvince,
+            </if>
+            <if test="fxcity != null">
+                fxCity,
+            </if>
+            <if test="fxtown != null">
+                fxTown,
+            </if>
+            <if test="fxvehicle != null">
+                fxVehicle,
+            </if>
+            <if test="throughepidemicarea != null">
+                throughEpidemicArea,
+            </if>
+            <if test="trainnum != null">
+                trainNum,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="school != null">
+                #{school,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="userno != null">
+                #{userno,jdbcType=VARCHAR},
+            </if>
+            <if test="fxtime != null">
+                #{fxtime,jdbcType=DATE},
+            </if>
+            <if test="fxcountry != null">
+                #{fxcountry,jdbcType=VARCHAR},
+            </if>
+            <if test="fxprovince != null">
+                #{fxprovince,jdbcType=VARCHAR},
+            </if>
+            <if test="fxcity != null">
+                #{fxcity,jdbcType=VARCHAR},
+            </if>
+            <if test="fxtown != null">
+                #{fxtown,jdbcType=VARCHAR},
+            </if>
+            <if test="fxvehicle != null">
+                #{fxvehicle,jdbcType=VARCHAR},
+            </if>
+            <if test="throughepidemicarea != null">
+                #{throughepidemicarea,jdbcType=INTEGER},
+            </if>
+            <if test="trainnum != null">
+                #{trainnum,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
+        update yq_fxdata_collection
+        <set>
+            <if test="school != null">
+                school = #{school,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                userName = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="userno != null">
+                userNo = #{userno,jdbcType=VARCHAR},
+            </if>
+            <if test="fxtime != null">
+                fxTime = #{fxtime,jdbcType=DATE},
+            </if>
+            <if test="fxcountry != null">
+                fxCountry = #{fxcountry,jdbcType=VARCHAR},
+            </if>
+            <if test="fxprovince != null">
+                fxProvince = #{fxprovince,jdbcType=VARCHAR},
+            </if>
+            <if test="fxcity != null">
+                fxCity = #{fxcity,jdbcType=VARCHAR},
+            </if>
+            <if test="fxtown != null">
+                fxTown = #{fxtown,jdbcType=VARCHAR},
+            </if>
+            <if test="fxvehicle != null">
+                fxVehicle = #{fxvehicle,jdbcType=VARCHAR},
+            </if>
+            <if test="throughepidemicarea != null">
+                throughEpidemicArea = #{throughepidemicarea,jdbcType=INTEGER},
+            </if>
+            <if test="trainnum != null">
+                trainNum = #{trainnum,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
     update yq_fxdata_collection
     set school = #{school,jdbcType=VARCHAR},
       userName = #{username,jdbcType=VARCHAR},

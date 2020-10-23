@@ -19,6 +19,9 @@
     id, school, user_name, user_no, timestamp, heathinfo1, heathinfo2, heathinfo3, is_quarantine, 
     notes, temperature, create_time
   </sql>
+  <select id="getYqFxhealthInfo" resultType="java.util.Map">
+    select * from yq_fxhealth_collection
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
