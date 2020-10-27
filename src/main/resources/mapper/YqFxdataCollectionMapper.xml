@@ -28,8 +28,8 @@
     </select>
     <select id="getFxdataInfo" resultType="java.util.Map">
 
-    SELECT COUNT(1) AS fxNum,SUM(IF(fx_addr_country !='中国',1,0)) AS jwfxNum, SUM(IF(fx_addr_province !='河南省',1,0))
-     AS wsfxNum FROM (SELECT * FROM yq_fxdata_collection WHERE school='山东英才学院' GROUP BY user_no) FXRY
+    SELECT COUNT(1) AS fx_num,SUM(IF(fx_addr_country !='中国',1,0)) AS jwfx_num, SUM(IF(fx_addr_province !='河南省',1,0))
+     AS wsfx_num FROM (SELECT * FROM yq_fxdata_collection WHERE school='山东英才学院' GROUP BY user_no) FXRY
   </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yq_fxdata_collection
