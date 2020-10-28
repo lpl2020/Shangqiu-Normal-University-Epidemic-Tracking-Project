@@ -1,24 +1,18 @@
 package com.example.demo.sq.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.demo.sq.mappers.YqFxdataCollectionMapper;
-import com.example.demo.sq.service.YqFxdataService;
+import com.example.demo.sq.entity.YqStudentInfo;
+import com.example.demo.sq.entity.YqUrlToken;
+import com.example.demo.sq.mappers.YqStudentInfoMapper;
+import com.example.demo.sq.mappers.YqUrlTokenMapper;
+import com.example.demo.sq.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-//import com.alibaba.fastjson.JSONObject;
-//import com.example.demo.sq.mappers.YqStudentInfoMapper;
-//import com.example.demo.sq.service.StudentService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.List;
-//import java.util.Map;
-//
-//@Service
+@Service
 //public class StudentServiceImpl implements StudentService {
 //    @Autowired
 //    private YqStudentInfoMapper yqStudentInfoMapper;
@@ -31,18 +25,17 @@ import java.util.Map;
 //        return res;
 //    }
 //}
-@Service
-public class YqFxdataServiceImpl implements YqFxdataService {
+
+public class TestServiceImpl implements TestService {
     @Autowired
-    private YqFxdataCollectionMapper yqFxdataCollectionMapper;
+    private YqUrlTokenMapper yqUrlTokenMapper;
 
     @Override
-    public JSONObject getYqFxdatacollection(){
+    public JSONObject getUrlToken(){
         JSONObject res = new JSONObject();
-        List<Map<String,Object>> mapResult = yqFxdataCollectionMapper.getYqFxdatacollection();
+        List<Map<String,Object>> mapResult = yqUrlTokenMapper.getUrlToken();
         res.put("mapResult",mapResult);
         return res;
-
-
     }
+
 }
