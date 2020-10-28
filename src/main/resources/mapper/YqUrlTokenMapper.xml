@@ -15,8 +15,12 @@
   <sql id="Base_Column_List">
     id, school, bigscreen_url, wx_url, token, database_type, school_jc, user, password
   </sql>
+  <select id="getUrlToken" resultType="java.util.Map">
+    select create_time from yq_url_token
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select *
     <include refid="Base_Column_List" />
     from yq_url_token
     where id = #{id,jdbcType=INTEGER}

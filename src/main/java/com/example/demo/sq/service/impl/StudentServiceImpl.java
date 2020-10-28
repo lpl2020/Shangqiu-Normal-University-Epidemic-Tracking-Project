@@ -11,8 +11,6 @@ import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-
-
     @Autowired
     private YqStudentInfoMapper yqStudentInfoMapper;
 

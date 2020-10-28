@@ -20,6 +20,9 @@
     id, school, userName, userNo, fxTime, fxCountry, fxProvince, fxCity, fxTown, fxVehicle, 
     throughEpidemicArea, trainNum, createTime
   </sql>
+  <select id="getYqFxdatacollection" resultType="java.util.Map">
+    select * from yq_fxdata_collection
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
