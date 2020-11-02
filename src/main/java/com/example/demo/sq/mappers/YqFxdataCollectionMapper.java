@@ -1,8 +1,6 @@
 package com.example.demo.sq.mappers;
 
 import com.example.demo.sq.entity.YqFxdataCollection;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,6 +15,8 @@ public interface YqFxdataCollectionMapper {
     int insertSelective(YqFxdataCollection record);
 
     List<Map<String,Object>> getFxdataInfo();
+
+    List<Map<String,Object>> getYqIbodyInfo();
 
     YqFxdataCollection selectByPrimaryKey(Integer id);
 

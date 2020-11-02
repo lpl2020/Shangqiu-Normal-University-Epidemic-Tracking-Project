@@ -27,10 +27,36 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <select id="getFxdataInfo" resultType="java.util.Map">
-
     SELECT COUNT(1) AS fx_num,SUM(IF(fx_addr_country !='中国',1,0)) AS jwfx_num, SUM(IF(fx_addr_province !='河南省',1,0))
      AS wsfx_num FROM (SELECT * FROM yq_fxdata_collection WHERE school='山东英才学院' GROUP BY user_no) FXRY
-  </select>
+    </select>
+    <select id="getYqIbodyInfo" resultType="java.util.Map">
+        SELECT
+	    tmp3.user_name AS userName,
+	    tmp3.user_no AS userNum,
+	    college,
+	    fx_addr_province AS originCity
+        FROM
+	        (
+	        SELECT
+		        tmp2.user_name,
+		        tmp2.user_no,
+		        college
+	        FROM
+		        (
+		        SELECT
+			        user_name,
+			        user_no
+		        FROM
+			        yq_fxhealth_collection AS tmp1
+		        WHERE
+		        school = '山东英才学院' and tmp1.heathinfo1 != '00001' and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = '山东英才学院' GROUP BY user_no )) tmp2
+		        LEFT JOIN yq_student_info ON tmp2.user_no = yq_student_info.user_no
+	        ) tmp3
+	        LEFT JOIN yq_fxdata_collection ON tmp3.user_no = yq_fxdata_collection.user_no
+            GROUP BY
+	            tmp3.user_no
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yq_fxdata_collection
     where id = #{id,jdbcType=INTEGER}

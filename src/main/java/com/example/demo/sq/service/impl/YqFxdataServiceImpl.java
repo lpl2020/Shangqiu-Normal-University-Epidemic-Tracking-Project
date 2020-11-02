@@ -38,9 +38,7 @@ public class YqFxdataServiceImpl implements YqFxdataService {
                 }
             }
             res.put("result", mapResult);
-            JSONObject re = new JSONObject();
-            re.put("result", res);
-            return re;
+            return res;
         } catch (Exception e) {
             System.out.println("fales");
         }
