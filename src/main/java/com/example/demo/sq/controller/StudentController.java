@@ -18,5 +18,5 @@ public class StudentController {
     public JSONObject StudentInfo(){
         return studentService.getStudentInfo();
     }
-
 }
+

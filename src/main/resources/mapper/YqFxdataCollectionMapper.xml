@@ -17,7 +17,7 @@
         <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, school, userName, userNo, fxTime, fxCountry, fxProvince, fxCity, fxTown, fxVehicle, 
+    id, school, userName, userNo, fxTime, fxCountry, fxProvince, fxCity, fxTown, fxVehicle,
     throughEpidemicArea, trainNum, createTime
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -57,20 +57,60 @@
             GROUP BY
 	            tmp3.user_no
     </select>
+    <select id="getRmlyInfo" resultType="java.util.Map">
+        SELECT fx_addr_province AS originCity,count(1) AS count
+	 			FROM yq_fxdata_collection WHERE school='山东英才学院' GROUP BY fx_addr_province ORDER BY count DESC LIMIT 5;
+    </select>
+    <select id="getYqFxTrafficInfo" resultType="java.util.Map">
+        SELECT
+	fx_vehicl AS NAME
+FROM
+	yq_fxdata_collection AS tmp1
+WHERE
+	school = '山东英才学院'
+	AND tmp1.id IN (
+	SELECT
+		SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 )
+	FROM
+		yq_fxdata_collection
+	WHERE
+		school = '山东英才学院'
+GROUP BY
+	user_no)
+    </select>
+    <select id="getYqFxrylyInfo" resultType="java.util.Map">
+        SELECT originCity, count, longitude,dimension FROM (SELECT fx_addr_city AS originCity,count(1)
+	 			AS count FROM `yq_fxdata_collection` WHERE school= '山东英才学院' GROUP BY fx_addr_city)tmp
+	 			LEFT JOIN yq_city_gps ON tmp.originCity= yq_city_gps.city;
+    </select>
+    <select id="getYqEveryYuanFxdataInfo" resultType="java.util.Map">
+        SELECT
+        college AS NAME,
+        count( 1 ) AS count
+        FROM
+        `yq_fxdata_collection`
+        LEFT JOIN yq_student_info ON yq_fxdata_collection.user_no = yq_student_info.user_no
+        WHERE
+        yq_fxdata_collection.school = '山东英才学院'
+        AND college != ''
+        AND college IS NOT NULL
+        GROUP BY
+        college;
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yq_fxdata_collection
     where id = #{id,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
-    insert into yq_fxdata_collection (id, school, userName, 
-      userNo, fxTime, fxCountry, 
-      fxProvince, fxCity, fxTown, 
-      fxVehicle, throughEpidemicArea, trainNum, 
+    insert into yq_fxdata_collection (id, school, userName,
+      userNo, fxTime, fxCountry,
+      fxProvince, fxCity, fxTown,
+      fxVehicle, throughEpidemicArea, trainNum,
       createTime)
-    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{userno,jdbcType=VARCHAR}, #{fxtime,jdbcType=DATE}, #{fxcountry,jdbcType=VARCHAR}, 
-      #{fxprovince,jdbcType=VARCHAR}, #{fxcity,jdbcType=VARCHAR}, #{fxtown,jdbcType=VARCHAR}, 
-      #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{trainnum,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{userno,jdbcType=VARCHAR}, #{fxtime,jdbcType=DATE}, #{fxcountry,jdbcType=VARCHAR},
+      #{fxprovince,jdbcType=VARCHAR}, #{fxcity,jdbcType=VARCHAR}, #{fxtown,jdbcType=VARCHAR},
+      #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{trainnum,jdbcType=VARCHAR},
       #{createtime,jdbcType=TIMESTAMP})
   </insert>
     <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqFxdataCollection">

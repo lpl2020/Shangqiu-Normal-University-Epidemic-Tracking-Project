@@ -18,6 +18,14 @@ public interface YqFxdataCollectionMapper {
 
     List<Map<String,Object>> getYqIbodyInfo();
 
+    List<Map<String,Object>> getRmlyInfo();
+
+    List<Map<String,Object>> getYqFxTrafficInfo();
+
+    List<Map<String,Object>> getYqFxrylyInfo();
+
+    List<Map<String,Object>> getYqEveryYuanFxdataInfo();
+
     YqFxdataCollection selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(YqFxdataCollection record);
