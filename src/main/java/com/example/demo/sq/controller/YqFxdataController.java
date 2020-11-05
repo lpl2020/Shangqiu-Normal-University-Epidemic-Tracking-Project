@@ -1,7 +1,5 @@
 package com.example.demo.sq.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.example.demo.sq.mappers.YqFxdataCollectionMapper;
 import com.example.demo.sq.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;

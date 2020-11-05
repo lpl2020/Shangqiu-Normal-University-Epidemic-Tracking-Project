@@ -20,7 +20,7 @@ public interface YqFxdataCollectionMapper {
 
     List<Map<String,Object>> getRmlyInfo();
 
-    List<Map<String,Object>> getYqFxTrafficInfo();
+    List<Map<String,String>> getYqFxTrafficInfo();
 
     List<Map<String,Object>> getYqFxrylyInfo();
 
