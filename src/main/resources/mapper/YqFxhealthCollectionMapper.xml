@@ -19,28 +19,27 @@
     id, school, user_name, user_no, timestamp, heathinfo1, heathinfo2, heathinfo3, is_quarantine, 
     notes, temperature, create_time
   </sql>
-  <select id="getFxdataInfo" resultType="java.util.Map">
+  <select id="getEntiCountDataInfo" resultType="java.util.Map">
     SELECT
-	count( 1 ) AS zdgcNum
+	SUM(
+	IF
+	( fx_addr_country != '中国', 1, 0 )) AS fromOtherCountry,
+	SUM(
+	IF
+	( fx_addr_city = '武汉市', 1, 0 )) AS fromWuHan,
+	count( 1 ) AS focusObservation
 FROM
-	yq_fxhealth_collection AS tmp1
-WHERE
-	school = '山东英才学院' and tmp1.heathinfo1 != '00001' and tmp1.id IN
-	(SELECT
-		SUBSTRING_INDEX( group_concat( id ORDER BY create_time DESC ), ',', 1 )
+	(
+	SELECT
+		*
 	FROM
-		yq_fxhealth_collection
-	GROUP BY
-	user_no)
-  </select>
-  <select id="getYqFxhealthInfo" resultType="java.util.Map">
-    select * from yq_fxhealth_collection
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from yq_fxhealth_collection
-    where id = #{id,jdbcType=INTEGER}
+		yq_fxhealth_collection AS tmp1
+	WHERE
+		tmp1.school = '山东英才学院'
+	AND tmp1.heathinfo1 != '00001' and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection GROUP BY user_no )) tmp2
+	LEFT JOIN ( SELECT * FROM yq_fxdata_collection WHERE school = '山东英才学院' GROUP BY user_no ) tmp3 ON tmp2.user_no = tmp3.user_no
+WHERE
+	tmp2.school = '山东英才学院'
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yq_fxhealth_collection

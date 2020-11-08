@@ -20,8 +20,23 @@
     id, school, userName, userNo, fxTime, fxCountry, fxProvince, fxCity, fxTown, fxVehicle, 
     throughEpidemicArea, trainNum, createTime
   </sql>
-  <select id="getStudentInfo" resultType="java.util.Map">
-    select * from yq_fxdata_collection
+  <select id="getEntiCountDataInfo" resultType="java.util.Map">
+    SELECT
+	SUM(
+	IF
+	( person_type = '1', 1, 0 )) AS teachercount,
+	SUM(
+	IF
+	( person_type = '0', 1, 0 )) AS studentcount,
+	SUM(
+	IF
+	( person_type = '2', 1, 0 )) AS foreigner,
+	SUM(
+	IF
+	( person_type = '3', 1, 0 )) AS other
+FROM
+	( SELECT * FROM yq_fxdata_collection WHERE school = '山东英才学院' GROUP BY user_no ) tmp1
+	LEFT JOIN ( SELECT * FROM yq_student_info GROUP BY user_no ) tmp2 ON tmp1.user_no = tmp2.user_no
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 

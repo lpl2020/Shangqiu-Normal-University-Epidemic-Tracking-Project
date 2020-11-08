@@ -13,7 +13,7 @@ public interface YqFxhealthCollectionMapper {
 
     int insertSelective(YqFxhealthCollection record);
 
-    List<Map<String,Object>> getYqFxhealthInfo();
+    List<Map<String,Object>> getEntiCountDataInfo();
 
     List<Map<String,Object>> getFxdataInfo();
 
