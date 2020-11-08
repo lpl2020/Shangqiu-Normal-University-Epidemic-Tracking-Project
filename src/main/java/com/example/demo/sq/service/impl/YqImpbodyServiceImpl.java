@@ -14,9 +14,9 @@ public class YqImpbodyServiceImpl implements YqImportantbodyService {
     @Autowired
     private YqFxdataCollectionMapper yqFxdataCollectionMapper;
     @Override
-    public JSONObject getYqImbodyInfo(){
+    public JSONObject getYqImbodyInfo(String school){
         JSONObject res = new JSONObject();
-        List<Map<String,Object>> mapResult  = yqFxdataCollectionMapper.getYqIbodyInfo();
+        List<Map<String,Object>> mapResult  = yqFxdataCollectionMapper.getYqIbodyInfo(school);
         System.out.println(mapResult);
         res.put("mapResult",mapResult);
         return res;

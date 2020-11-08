@@ -7,5 +7,5 @@ import com.alibaba.fastjson.JSONObject;
  * @return
  */
 public interface YqFxdataService {
-    JSONObject getYqFxdataInfo();
+    JSONObject getYqFxdataInfo(String school);
 }

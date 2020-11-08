@@ -31,10 +31,10 @@ public class YqXyryfbServiceImpl implements YqXyryfbService {
     @Autowired
     private YqWxgjCollectionMapper yqWxgjCollectionMapper;
     @Override
-    public JSONObject getYqxyryfbInfo(){
+    public JSONObject getYqxyryfbInfo(String school){
         JSONObject re = new JSONObject();
-        List<Map<String,Object>> r = yqCollageConfigureMapper.getXyryInfo();
-        List<Map<String,Object>> r1 = yqWxgjCollectionMapper.getXyRyInfo();
+        List<Map<String,Object>> r = yqCollageConfigureMapper.getXyryInfo(school);
+        List<Map<String,Object>> r1 = yqWxgjCollectionMapper.getXyRyInfo(school);
         List<Double> lb = new ArrayList<>();
         Map<String,Object> mp = r.get(0);
         for (int i = 0; i < r1.size(); i++) {

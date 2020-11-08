@@ -12,9 +12,9 @@ public interface YqWxgjCollectionMapper {
 
     int insertSelective(YqWxgjCollection record);
 
-    List<Map<String,Object>> getXyRyInfo();
+    List<Map<String,Object>> getXyRyInfo(String school);
 
-    List<Map<String,Object>> getXyYjInfo();
+    List<Map<String,Object>> getXyYjInfo(String school);
 
     YqWxgjCollection selectByPrimaryKey(Integer id);
 

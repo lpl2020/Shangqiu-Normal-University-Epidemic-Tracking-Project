@@ -22,7 +22,7 @@
 FROM
 	`yq_wxgj_collection`
 WHERE
-	school = '山东英才学院'
+	school = #{school}
 	AND id IN (
 	SELECT
 		SUBSTRING_INDEX( group_concat( id ORDER BY `time` DESC ), ',', 1 )
@@ -45,16 +45,16 @@ FROM
 		FROM
 			yq_wxgj_collection
 		WHERE
-			school = '山东英才学院'
+			school = #{school}
 			AND user_no NOT IN (
 			SELECT
 				user_no
 			FROM
 				yq_fxhealth_collection AS tmp1
 			WHERE
-				school = '山东英才学院'
+				school = #{school}
 				AND tmp1.heathinfo1 != '00001'
-			AND tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = '山东英才学院' GROUP BY user_no ))
+			AND tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = #{school} GROUP BY user_no ))
 		ORDER BY
 			creat_time DESC
 			LIMIT 10
@@ -69,14 +69,14 @@ FROM
 		FROM
 			yq_wxgj_collection
 		WHERE
-			school = '山东英才学院'
+			school = #{school}
 			AND user_no IN (
 			SELECT
 				user_no
 			FROM
 				yq_fxhealth_collection AS tmp1
 			WHERE
-			school = '山东英才学院' and tmp1.heathinfo1 != '00001' and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = '山东英才学院' GROUP BY user_no ))
+			school = #{school} and tmp1.heathinfo1 != '00001' and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = #{school} GROUP BY user_no ))
 		ORDER BY
 			creat_time DESC
 			LIMIT 5

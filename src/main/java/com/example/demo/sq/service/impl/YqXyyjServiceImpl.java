@@ -14,9 +14,9 @@ public class YqXyyjServiceImpl implements YqXyyjService {
     @Autowired
     private YqWxgjCollectionMapper yqWxgjCollectionMapper;
     @Override
-    public JSONObject getYqxyyjInfo(){
+    public JSONObject getYqxyyjInfo(String school){
         JSONObject re = new JSONObject();
-        List<Map<String,Object>> Reresult = yqWxgjCollectionMapper.getXyYjInfo();
+        List<Map<String,Object>> Reresult = yqWxgjCollectionMapper.getXyYjInfo(school);
         re.put("result",Reresult);
         return re;
     }

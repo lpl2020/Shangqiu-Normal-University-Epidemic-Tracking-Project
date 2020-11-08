@@ -12,7 +12,7 @@ public interface YqCollageConfigureMapper {
 
     int insertSelective(YqCollageConfigure record);
 
-    List<Map<String,Object>> getXyryInfo();
+    List<Map<String,Object>> getXyryInfo(String school);
 
     YqCollageConfigure selectByPrimaryKey(Integer id);
 

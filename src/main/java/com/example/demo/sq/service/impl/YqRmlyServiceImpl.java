@@ -13,9 +13,9 @@ public class YqRmlyServiceImpl implements YqRmlyService {
     @Autowired
     private YqFxdataCollectionMapper yqFxdataCollectionMapper;
     @Override
-    public JSONObject getYqrmlyInfo(){
+    public JSONObject getYqrmlyInfo(String school){
        JSONObject re = new JSONObject();
-        List<Map<String,Object>> Result = yqFxdataCollectionMapper.getRmlyInfo();
+        List<Map<String,Object>> Result = yqFxdataCollectionMapper.getRmlyInfo(school);
         re.put("result",Result);
         return re;
     }

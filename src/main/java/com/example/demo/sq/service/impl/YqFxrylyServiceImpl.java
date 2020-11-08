@@ -19,12 +19,12 @@ public class YqFxrylyServiceImpl implements YqFxrylyService {
     private YqFxdataCollectionMapper yqFxdataCollectionMapper;
 
     @Override
-    public JSONObject getYqFxrylyInfo(){
+    public JSONObject getYqFxrylyInfo(String school){
         JSONObject res = new JSONObject();
         JSONObject re = new JSONObject();
-        List<Map<String,Object>> Result = yqFxdataCollectionMapper.getYqFxrylyInfo();
-        List<Map<String,Object>> result = yqCollageConfigureMapper.getXyryInfo();
-        res.put("school","山东英才学院");
+        List<Map<String,Object>> Result = yqFxdataCollectionMapper.getYqFxrylyInfo(school);
+        List<Map<String,Object>> result = yqCollageConfigureMapper.getXyryInfo(school);
+        res.put("school",school);
         res.put("center",result);
         res.put("from",Result);
         re.put("result",res);

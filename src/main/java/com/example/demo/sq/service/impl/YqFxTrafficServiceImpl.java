@@ -16,9 +16,9 @@ public class YqFxTrafficServiceImpl implements YqFxTrafficService {
     @Autowired
     private YqFxdataCollectionMapper yqFxdataCollectionMapper;
     @Override
-    public JSONObject getYqFxTrafficInfo(){
+    public JSONObject getYqFxTrafficInfo(String school){
         JSONObject resultJsonObject =new JSONObject();
-        List<Map<String,String>> Result = yqFxdataCollectionMapper.getYqFxTrafficInfo();
+        List<Map<String,String>> Result = yqFxdataCollectionMapper.getYqFxTrafficInfo(school);
         Integer[] count = new Integer[] { 0, 0, 0, 0, 0 };
         JSONArray syinfoArrayObject = new JSONArray();
         for (int i = 0; i < Result.size(); i++) {
@@ -26,7 +26,6 @@ public class YqFxTrafficServiceImpl implements YqFxTrafficService {
             Iterator iterator = r.keySet().iterator();
 //            System.out.println(r.get(iterator.next()));
             String jtfs = r.get(iterator.next());
-            System.out.println(jtfs);
             if (jtfs.length() != 5) {
                 break;
             }

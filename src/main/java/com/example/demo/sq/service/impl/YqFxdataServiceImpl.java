@@ -19,11 +19,11 @@ public class YqFxdataServiceImpl implements YqFxdataService {
     private YqFxhealthCollectionMapper yqFxhealthCollectionMapper;
 
     @Override
-    public JSONObject getYqFxdataInfo() {
+    public JSONObject getYqFxdataInfo(String school) {
         try {
             JSONObject res = new JSONObject();
-            List<Map<String, Object>> mapResult = yqFxdataCollectionMapper.getFxdataInfo();
-            List<Map<String, Object>> Result = yqFxhealthCollectionMapper.getFxdataInfo();
+            List<Map<String, Object>> mapResult = yqFxdataCollectionMapper.getFxdataInfo(school);
+            List<Map<String, Object>> Result = yqFxhealthCollectionMapper.getFxdataInfo(school);
             for (int i = 0; i < mapResult.size(); i++) {
                 Map<String, Object> r = mapResult.get(i);
                 for (int j = 0; j < Result.size(); j++) {
@@ -43,5 +43,6 @@ public class YqFxdataServiceImpl implements YqFxdataService {
             System.out.println("fales");
         }
         return null;
+
     }
 }

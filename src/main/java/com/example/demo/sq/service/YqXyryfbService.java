@@ -7,5 +7,5 @@ import com.alibaba.fastjson.JSONObject;
  * @return
  */
 public interface YqXyryfbService {
-    JSONObject getYqxyryfbInfo();
+    JSONObject getYqxyryfbInfo(String school);
 }

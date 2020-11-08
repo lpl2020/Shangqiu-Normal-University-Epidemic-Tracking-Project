@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.alibaba.fastjson.JSONObject;
 
+
 @RestController// 返回json字符串的数据，直接可以编写RESTFul的接口
 @RequestMapping("/student")
 public class YqFxdataController {
@@ -17,8 +18,10 @@ public class YqFxdataController {
     @Autowired
     private YqFxdataService yqFxdataService;
     @RequestMapping(value = "/sy_baseinfo", method = RequestMethod.GET)
-    public JSONObject YqFxhealthServiceInfo() {
-        return yqFxdataService.getYqFxdataInfo();
+    public JSONObject YqFxhealthServiceInfo(@RequestParam(value = "school", required = false) String school
+    ) {
+        System.out.println(school);
+        return yqFxdataService.getYqFxdataInfo(school);
     }
 
     /**
@@ -30,8 +33,8 @@ public class YqFxdataController {
     @Autowired
     private YqjkdataService yqjkdataService;
     @RequestMapping(value = "/sy_yqjkinfo", method = RequestMethod.POST)
-    public JSONObject getYqjkdataServiceInfo(){
-        return yqjkdataService.getYqjkdataInfo();
+    public JSONObject getYqjkdataServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqjkdataService.getYqjkdataInfo(school);
     }
     /**
      * 接口3、 重点观察人员：姓名、学院、来源地、来源地确诊人数
@@ -41,8 +44,8 @@ public class YqFxdataController {
     @Autowired
     private YqImportantbodyService yqImportantbodyService;
     @RequestMapping(value = "/sy_zdgcryinfo", method = RequestMethod.GET)
-    public JSONObject getYqImpdataServiceInfo(){
-        return yqImportantbodyService.getYqImbodyInfo();
+    public JSONObject getYqImpdataServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqImportantbodyService.getYqImbodyInfo(school);
     }
 //    校园人员分布：校园中心gps（百度地图）
     /**
@@ -53,8 +56,8 @@ public class YqFxdataController {
     @Autowired
     private YqXyryfbService yqXyryfbService;
     @RequestMapping(value = "/sy_xyryfbinfo", method = RequestMethod.GET)
-    public JSONObject getYqxyryfbServiceInfo(){
-        return yqXyryfbService.getYqxyryfbInfo();
+    public JSONObject getYqxyryfbServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqXyryfbService.getYqxyryfbInfo(school);
     }
     /**
      * 接口5、 预警信息:学生或老师扫码事件
@@ -64,8 +67,8 @@ public class YqFxdataController {
     @Autowired
     private YqXyyjService yqXyyjService;
     @RequestMapping(value = "sy_yjinfo",method = RequestMethod.GET)
-    public JSONObject getYqxyyjServiceInfo(){
-        return yqXyyjService.getYqxyyjInfo();
+    public JSONObject getYqxyyjServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqXyyjService.getYqxyyjInfo(school);
     }
     /**
      * 接口6、热门来源
@@ -75,8 +78,8 @@ public class YqFxdataController {
     @Autowired
     private YqRmlyService yqRmlyService;
     @RequestMapping(value = "sq_rmlyinfo",method = RequestMethod.GET)
-    public JSONObject getYqrmlyServiceInfo(){
-        return yqRmlyService.getYqrmlyInfo();
+    public JSONObject getYqrmlyServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqRmlyService.getYqrmlyInfo(school);
     }
     /**
      * 接口7、返校交通
@@ -86,8 +89,8 @@ public class YqFxdataController {
     @Autowired
     private YqFxTrafficService yqFxTrafficService;
     @RequestMapping(value = "sy_fxjtinfo",method = RequestMethod.GET)
-    public JSONObject getYqFxTrafServiceInfo(){
-        return yqFxTrafficService.getYqFxTrafficInfo();
+    public JSONObject getYqFxTrafServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqFxTrafficService.getYqFxTrafficInfo(school);
     }
     /**
      * 接口8、返校人员来源：学校gps
@@ -97,8 +100,8 @@ public class YqFxdataController {
     @Autowired
     private YqFxrylyService yqFxrylyService;
     @RequestMapping(value = "sy_fxrylyinfo",method = RequestMethod.GET)
-    public JSONObject getYqFxrylyServiceInfo(){
-        return yqFxrylyService.getYqFxrylyInfo();
+    public JSONObject getYqFxrylyServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqFxrylyService.getYqFxrylyInfo(school);
     }
     /**
      * 接口9、疫情动态接口
@@ -119,7 +122,7 @@ public class YqFxdataController {
     @Autowired
     private YqEveryYuanFxdataService yqEveryYuanFxdataService;
     @RequestMapping(value = "sy_ejxyfxinfo",method = RequestMethod.GET)
-    public JSONObject getYqEveryYuanFxdataServiceInfo(){
-        return yqEveryYuanFxdataService.getYqEveryYuanFxdataInfo();
+    public JSONObject getYqEveryYuanFxdataServiceInfo(@RequestParam(value = "school", required = false) String school){
+        return yqEveryYuanFxdataService.getYqEveryYuanFxdataInfo(school);
     }
 }

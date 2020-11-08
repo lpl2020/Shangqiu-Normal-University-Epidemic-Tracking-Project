@@ -2,10 +2,13 @@ package com.example.demo.sq.service.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.example.demo.sq.entity.YqSchoolConfigure;
+import com.example.demo.sq.mappers.YqSchoolConfigureMapper;
 import com.example.demo.sq.service.YqjkdataService;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.LaxRedirectStrategy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -15,22 +18,24 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+
 @Service
 public class YqjkdataServiceImpl implements YqjkdataService {
-    public JSONObject getYqjkdataInfo() {
+    @Autowired
+    YqSchoolConfigureMapper yqSchoolConfigureMapper;
+
+    public JSONObject getYqjkdataInfo(String school) {
 
         JSONObject resultJsonObject = new JSONObject();
-
-//        if (null == school || "".equals(school))
-//            school = DEFAULTSCHOOL;
-//        List<SchoolPara> schoolInfo = EpideSituDisplayEntiMapper.getSchoolInfo(school);
-
-//
-//        String province = schoolInfo.get(0).getProvince();
-//        String city = schoolInfo.get(0).getCity();
-        String province = "山东";
-        String city = "济南";
+        List<Map<String, String>> schoolInfo = yqSchoolConfigureMapper.getSchoolInfo(school);
+        Map<String, String> r = schoolInfo.get(0);
+        Iterator iterator = r.keySet().iterator();
+//        获取省份和城市
+        String province = r.get(iterator.next());
+        String city = r.get(iterator.next());
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("authoration", "apicode");

@@ -14,9 +14,9 @@ public class YqEveryYuanFxdataServiceImpl implements YqEveryYuanFxdataService {
     @Autowired
     private YqFxdataCollectionMapper yqFxdataCollectionMapper;
     @Override
-    public JSONObject getYqEveryYuanFxdataInfo(){
+    public JSONObject getYqEveryYuanFxdataInfo(String school){
         JSONObject re = new JSONObject();
-        List<Map<String,Object>> Result = yqFxdataCollectionMapper.getYqEveryYuanFxdataInfo();
+        List<Map<String,Object>> Result = yqFxdataCollectionMapper.getYqEveryYuanFxdataInfo(school);
         re.put("result",Result);
         return re;
     }

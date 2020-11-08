@@ -14,17 +14,17 @@ public interface YqFxdataCollectionMapper {
 
     int insertSelective(YqFxdataCollection record);
 
-    List<Map<String,Object>> getFxdataInfo();
+    List<Map<String,Object>> getFxdataInfo(String school);
 
-    List<Map<String,Object>> getYqIbodyInfo();
+    List<Map<String,Object>> getYqIbodyInfo(String school);
 
-    List<Map<String,Object>> getRmlyInfo();
+    List<Map<String,Object>> getRmlyInfo(String school);
 
-    List<Map<String,String>> getYqFxTrafficInfo();
+    List<Map<String,String>> getYqFxTrafficInfo(String school);
 
-    List<Map<String,Object>> getYqFxrylyInfo();
+    List<Map<String,Object>> getYqFxrylyInfo(String school);
 
-    List<Map<String,Object>> getYqEveryYuanFxdataInfo();
+    List<Map<String,Object>> getYqEveryYuanFxdataInfo(String school);
 
     YqFxdataCollection selectByPrimaryKey(Integer id);
 
