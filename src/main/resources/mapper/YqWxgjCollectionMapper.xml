@@ -15,6 +15,49 @@
   <sql id="Base_Column_List">
     id, school, addr, user_name, user_no, longitude, dimension, time, creat_time
   </sql>
+  <select id="getSygrxysjDataInfo" resultType="java.util.Map">
+    SELECT
+	user_name AS userName,
+	user_no AS userNo,
+	addr,
+	time
+FROM
+	`yq_wxgj_collection`
+WHERE
+	school = '山东英才学院'
+  </select>
+  <select id="getSygrgitDataInfo" resultType="java.util.Map">
+    SELECT
+	addr,
+	longitude AS longitude,
+	dimension AS dimension,
+	time
+FROM
+	`yq_wxgj_collection`
+WHERE
+	school = '山东英才学院'
+	LIMIT 20;
+  </select>
+<select id="getXmcrCountDataInfo" resultType="java.util.Map">
+SELECT
+	DATE_FORMAT( time, '%H' ) AS TIMESTAMP,
+	SUM(
+	IF
+	( person_type = '1', 1, 0 )) AS teachercount,
+	SUM(
+	IF
+	( person_type = '0', 1, 0 )) AS studentcount,
+	SUM(
+	IF
+	( person_type = '3', 1, 0 )) AS other
+FROM
+	`yq_wxgj_collection`
+	LEFT JOIN yq_student_info ON yq_wxgj_collection.user_no = yq_student_info.user_no
+WHERE
+	yq_wxgj_collection.time > CURDATE()
+	AND yq_wxgj_collection.school = '山东英才学院' AND addr like '%校门%' GROUP BY DATE_FORMAT( time, '%Y-%m-%d %H' )
+
+</select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

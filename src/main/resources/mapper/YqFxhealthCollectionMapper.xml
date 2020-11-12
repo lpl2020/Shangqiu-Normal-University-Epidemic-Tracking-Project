@@ -19,6 +19,15 @@
     id, school, user_name, user_no, timestamp, heathinfo1, heathinfo2, heathinfo3, is_quarantine, 
     notes, temperature, create_time
   </sql>
+  <select id="getPersionDataInfo" resultType="java.util.Map">
+    SELECT
+	create_time AS TIMESTAMP
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school = '山东英才学院'
+	AND heathinfo1 != '00001';
+  </select>
   <select id="getEntiCountDataInfo" resultType="java.util.Map">
     SELECT
 	SUM(
@@ -40,6 +49,27 @@ FROM
 	LEFT JOIN ( SELECT * FROM yq_fxdata_collection WHERE school = '山东英才学院' GROUP BY user_no ) tmp3 ON tmp2.user_no = tmp3.user_no
 WHERE
 	tmp2.school = '山东英才学院'
+  </select>
+  <select id="getSysjDataInfo"  resultType="java.util.Map">
+SELECT
+	user_name AS userName,
+	user_no AS userNo,
+	`timestamp` AS TIMESTAMP
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school ='山东英才学院' and is_quarantine=1;
+  </select>
+  <select id="getYjxnDataInfo" resultType="java.util.Map">
+SELECT
+	heathinfo1,
+TIMESTAMP
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school = '山东英才学院'
+	AND heathinfo1 != '00001';
+
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from yq_fxhealth_collection

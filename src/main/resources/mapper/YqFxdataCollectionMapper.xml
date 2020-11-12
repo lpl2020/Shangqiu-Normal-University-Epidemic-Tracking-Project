@@ -20,6 +20,60 @@
     id, school, userName, userNo, fxTime, fxCountry, fxProvince, fxCity, fxTown, fxVehicle, 
     throughEpidemicArea, trainNum, createTime
   </sql>
+  <select id="getPersionDataInfo" resultType="java.util.Map">
+    SELECT
+	TMP1.user_name AS userName,
+	sex AS sex,
+	age AS age,
+	classes AS classes,
+	phone,
+	parents_phone AS parentPhone,
+	fx_time AS fxTime,
+	TMP2.fx_vehicl AS fxVehicl,
+	TMP2.fxjt_sm AS fxjtSm,
+	TMP2.fx_addr_city AS addr
+FROM
+	( SELECT * FROM yq_student_info WHERE school = '山东英才学院' ) TMP1
+	LEFT JOIN (
+	SELECT
+		*
+	FROM
+		yq_fxdata_collection AS tmp1
+	WHERE
+		school = '山东英才学院'
+		AND tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxdata_collection WHERE school = '山东英才学院' GROUP BY user_no )) TMP2 ON TMP1.user_no = TMP2.user_no;
+  </select>
+  <select id="getsyrelationDataInfo" resultType="java.util.Map">
+SELECT
+	TMP1.user_name AS userName,
+	sex AS sex,
+	age AS age,
+	classes AS classes,
+	phone,
+	parents_phone AS parentPhone,
+	fx_time AS fxTime,
+	TMP2.fx_vehicl AS fxVehicl,
+	TMP2.fxjt_sm AS fxjtSm,
+	TMP2.fx_addr_city AS addr
+FROM
+	( SELECT * FROM yq_student_info WHERE school = '山东英才学院' ) TMP1
+	LEFT JOIN (
+	SELECT
+		*
+	FROM
+		yq_fxdata_collection AS tmp1
+	WHERE
+		school = '山东英才学院'
+		AND tmp1.id IN (
+		SELECT
+			SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM
+			yq_fxdata_collection
+		WHERE
+			school = '山东英才学院'
+		GROUP BY
+			user_no
+		)) TMP2 ON TMP1.user_no = TMP2.user_no;
+  </select>
   <select id="getEntiCountDataInfo" resultType="java.util.Map">
     SELECT
 	SUM(

@@ -14,6 +14,9 @@ public interface YqFxhealthCollectionMapper {
     int insertSelective(YqFxhealthCollection record);
 
     List<Map<String,Object>> getEntiCountDataInfo();
+    List<Map<String,Object>> getYjxnDataInfo();
+    List<Map<String,Object>> getSysjDataInfo();
+    List<Map<String,Object>> getPersionDataInfo();
 
     List<Map<String,Object>> getFxdataInfo();
 

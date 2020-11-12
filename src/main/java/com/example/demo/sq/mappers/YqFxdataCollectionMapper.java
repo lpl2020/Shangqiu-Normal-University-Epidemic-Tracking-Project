@@ -1,10 +1,11 @@
 package com.example.demo.sq.mappers;
 
 import com.example.demo.sq.entity.YqFxdataCollection;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public interface YqFxdataCollectionMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -21,5 +22,7 @@ public interface YqFxdataCollectionMapper {
     List<Map<String, Object>> getFxdataInfo();
 
     List<Map<String, Object>> getEntiCountDataInfo();
+    List<Map<String, Object>> getsyrelationDataInfo();
+    List<Map<String, Object>> getPersionDataInfo();
 
 }

@@ -10,6 +10,15 @@
   <sql id="Base_Column_List">
     id, school, college, speciality
   </sql>
+  <select id="getSygrgitDataInfo" resultType="java.util.Map">
+    SELECT
+	center_longitude AS centerLongitude,
+	center_dimension AS centerDimension
+FROM
+	`yq_school_configure`
+WHERE
+	school ='山东英才学院';
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
