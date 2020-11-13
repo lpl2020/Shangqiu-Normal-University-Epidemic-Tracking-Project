@@ -4,6 +4,4 @@ import com.alibaba.fastjson.JSONObject;
 
 public interface schoolService {
     JSONObject getSchoolInfo();
-public interface TestService {
-        JSONObject getBaseInfo();
 }
