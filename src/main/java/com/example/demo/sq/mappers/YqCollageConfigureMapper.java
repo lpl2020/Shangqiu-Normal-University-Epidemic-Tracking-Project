@@ -4,6 +4,8 @@ import com.example.demo.sq.entity.YqCollageConfigure;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface YqCollageConfigureMapper {
@@ -18,6 +20,8 @@ public interface YqCollageConfigureMapper {
     List<YqCollageConfigure> postGetcollagelist(String schools);
 
     List<YqCollageConfigure> postpersonallitylist(String schools, String collages);
+
+    List<Map<String,Object>> getXyryInfo(String school);
 
     YqCollageConfigure selectByPrimaryKey(Integer id);
 

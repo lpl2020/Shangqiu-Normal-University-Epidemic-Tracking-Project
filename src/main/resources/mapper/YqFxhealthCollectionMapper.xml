@@ -36,6 +36,23 @@
             GROUP BY user_no
             )
   </select>
+  <select id="getFxdataInfo" resultType="java.util.Map">
+    SELECT
+	count( 1 ) AS zdgcNum
+FROM
+	yq_fxhealth_collection AS tmp1
+WHERE
+	school = #{school} and tmp1.heathinfo1 != '00001' and tmp1.id IN
+	(SELECT
+		SUBSTRING_INDEX( group_concat( id ORDER BY create_time DESC ), ',', 1 )
+	FROM
+		yq_fxhealth_collection
+	GROUP BY
+	user_no)
+  </select>
+  <select id="getYqFxhealthInfo" resultType="java.util.Map">
+    select * from yq_fxhealth_collection
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -4,6 +4,7 @@ import com.example.demo.sq.entity.YqFxdataCollection;
 import com.example.demo.sq.entity.YqFxhealthCollection;
 import com.example.demo.sq.entity.YqStudentInfo;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,10 @@ public interface YqFxhealthCollectionMapper {
     Map<String,Object> getHealthCollection();
 
     List<YqFxhealthCollection> jkSubmit(String school, String no);
+
+    List<Map<String,Object>> getYqFxhealthInfo();
+
+    List<Map<String,Object>> getFxdataInfo(String school);
 
     YqFxhealthCollection selectByPrimaryKey(Integer id);
 

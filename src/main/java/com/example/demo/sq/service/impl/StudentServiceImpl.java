@@ -11,8 +11,6 @@ import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-
-
     @Autowired
     private YqStudentInfoMapper yqStudentInfoMapper;
 
@@ -21,6 +19,7 @@ public class StudentServiceImpl implements StudentService {
         JSONObject res = new JSONObject();
         List<Map<String,Object>> mapResult = yqStudentInfoMapper.getStudentInfo();
         res.put("mapResult",mapResult);
+        System.out.println(res);
         return res;
     }
 }

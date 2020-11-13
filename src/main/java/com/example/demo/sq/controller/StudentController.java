@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/student")
 public class StudentController {
-
+//    测试类
     @Autowired
     private StudentService studentService;
 
@@ -19,5 +19,5 @@ public class StudentController {
     public JSONObject StudentInfo(){
         return studentService.getStudentInfo();
     }
-
 }
+

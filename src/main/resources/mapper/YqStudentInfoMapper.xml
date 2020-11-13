@@ -39,7 +39,7 @@
 	AND md5_password = #{password};
   </select>
   <select id="getStudentInfo" resultType="java.util.Map">
-    select * from yq_student_info
+    select create_time from yq_student_info
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
