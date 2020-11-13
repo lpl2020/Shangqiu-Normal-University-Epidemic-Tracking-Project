@@ -17,6 +17,8 @@ public interface YqFxdataCollectionMapper {
 
     int insertSelective(YqFxdataCollection record);
 
+    List<YqFxdataCollection> jtSubmit(String school, String no);
+
     List<Map<String,Object>> getFxdataInfo(String school);
 
     List<Map<String,Object>> getYqIbodyInfo(String school);
