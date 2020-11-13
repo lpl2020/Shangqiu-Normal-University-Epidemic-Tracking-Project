@@ -11,7 +11,8 @@ public interface YqUrlTokenMapper {
     int insert(YqUrlToken record);
 
     int insertSelective(YqUrlToken record);
-    List<Map<String,Object>> getUrlToken();
+
+    List<Map<String,Object>> getUrlToken(String school,String user,String password);
 
     YqUrlToken selectByPrimaryKey(Integer id);
 

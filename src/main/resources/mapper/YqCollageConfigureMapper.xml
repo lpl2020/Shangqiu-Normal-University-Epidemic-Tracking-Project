@@ -10,6 +10,9 @@
   <sql id="Base_Column_List">
     id, school, college, speciality
   </sql>
+  <select id="getSchoolListInfo" resultType="java.util.Map">
+    SELECT school FROM `yq_collage_configure` group by school
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -56,7 +56,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
         </dependency>
-    </dependencies>
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.16.10</version>
+    </dependency>
+</dependencies>
 
     <build>
         <plugins>

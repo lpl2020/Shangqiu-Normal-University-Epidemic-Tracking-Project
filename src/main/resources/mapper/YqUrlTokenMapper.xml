@@ -16,7 +16,8 @@
     id, school, bigscreen_url, wx_url, token, database_type, school_jc, user, password
   </sql>
   <select id="getUrlToken" resultType="java.util.Map">
-    select create_time from yq_url_token
+    SELECT school,bigscreen_url as bigscreenUrl FROM `yq_url_token`
+    WHERE school=#{school} AND user = #{user} AND password=#{password}
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
