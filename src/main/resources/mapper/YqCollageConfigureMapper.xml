@@ -10,6 +10,40 @@
   <sql id="Base_Column_List">
     id, school, college, speciality
   </sql>
+  <select id="postGetschoollist" resultType="com.example.demo.sq.entity.YqCollageConfigure">
+    SELECT
+      school,
+      collage AS college,
+      speciality AS classes
+    FROM
+        `yq_collage_configure`
+    GROUP BY
+        school
+  </select>
+  <select id="postGetcollagelist" resultType="com.example.demo.sq.entity.YqCollageConfigure">
+    SELECT
+        school,
+        collage AS college,
+        speciality AS classes
+    FROM
+        `yq_collage_configure`
+    WHERE
+        school = #{schools}
+    group by collage
+  </select>
+  <select id="postpersonallitylist" resultType="com.example.demo.sq.entity.YqCollageConfigure">
+    SELECT
+        school,
+        collage AS college,
+        speciality AS classes
+    FROM
+        `yq_collage_configure`
+    WHERE
+        school = #{schools}
+        AND collage = #{collages}
+    GROUP BY
+        speciality
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

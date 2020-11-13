@@ -1,11 +1,13 @@
 package com.example.demo.sq.mappers;
 
 import com.example.demo.sq.entity.YqVisitinfoInfo;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface YqVisitinfoInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(YqVisitinfoInfo record);
+    int postSavevisitorinfo(YqVisitinfoInfo record);
 
     int insertSelective(YqVisitinfoInfo record);
 

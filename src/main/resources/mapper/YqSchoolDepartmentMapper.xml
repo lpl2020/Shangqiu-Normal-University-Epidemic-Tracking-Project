@@ -9,6 +9,16 @@
   <sql id="Base_Column_List">
     id, school, department
   </sql>
+  <select id="getdepartlist" resultType="com.example.demo.sq.entity.YqSchoolDepartment">
+    SELECT
+      school,
+      department
+    FROM
+      `yq_school_department`
+    GROUP BY
+      school,
+      department
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

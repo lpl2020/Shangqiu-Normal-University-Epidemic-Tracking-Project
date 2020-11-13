@@ -15,6 +15,16 @@
   <sql id="Base_Column_List">
     id, school, addr, user_name, user_no, longitude, dimension, time, creat_time
   </sql>
+  <select id="postGetScanninglist" resultType="com.example.demo.sq.entity.YqWxgjCollection">
+    SELECT
+	addr,
+	time AS TIMESTAMP
+    FROM
+	`yq_wxgj_collection`
+    WHERE
+	school = #{school}
+	AND user_no = #{no};
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -25,7 +35,7 @@
     delete from yq_wxgj_collection
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.sq.entity.YqWxgjCollection">
+  <insert id="postYqSaomainfo" parameterType="com.example.demo.sq.entity.YqWxgjCollection">
     insert into yq_wxgj_collection (id, school, addr, 
       user_name, user_no, longitude, 
       dimension, time, creat_time

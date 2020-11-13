@@ -11,7 +11,7 @@ public class YqFxdataCollection {
 
     private String userno;
 
-    private Date fxtime;
+    private String fxtime;
 
     private String fxcountry;
 
@@ -28,6 +28,57 @@ public class YqFxdataCollection {
     private String trainnum;
 
     private Date createtime;
+
+    private Integer fxNum;
+
+    private Integer jwfxNum;
+
+    private Integer wsfxNum;
+
+    private String fxjk;
+
+    private String fxjtSm;
+
+    public String getFxjk() {
+        return fxjk;
+    }
+
+    public void setFxjk(String fxjk) {
+        this.fxjk = fxjk;
+    }
+
+    public String getFxjtSm() {
+        return fxjtSm;
+    }
+
+    public void setFxjtSm(String fxjtSm) {
+        this.fxjtSm = fxjtSm;
+    }
+
+    public Integer getFxNum() {
+        return fxNum;
+    }
+
+    public void setFxNum(Integer fxNum) {
+        this.fxNum = fxNum;
+    }
+
+    public Integer getJwfxNum() {
+        return jwfxNum;
+    }
+
+    public void setJwfxNum(Integer jwfxNum) {
+        this.jwfxNum = jwfxNum;
+    }
+
+    public Integer getWsfxNum() {
+        return wsfxNum;
+    }
+
+    public void setWsfxNum(Integer wsfxNum) {
+        this.wsfxNum = wsfxNum;
+    }
+
 
     public Integer getId() {
         return id;
@@ -61,11 +112,11 @@ public class YqFxdataCollection {
         this.userno = userno == null ? null : userno.trim();
     }
 
-    public Date getFxtime() {
+    public String getFxtime() {
         return fxtime;
     }
 
-    public void setFxtime(Date fxtime) {
+    public void setFxtime(String fxtime) {
         this.fxtime = fxtime;
     }
 

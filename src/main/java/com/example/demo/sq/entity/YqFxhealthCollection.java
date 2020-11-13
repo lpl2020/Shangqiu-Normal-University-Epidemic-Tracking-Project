@@ -11,7 +11,7 @@ public class YqFxhealthCollection {
 
     private String userNo;
 
-    private Date timestamp;
+    private String timestamp;
 
     private String heathinfo1;
 
@@ -19,13 +19,23 @@ public class YqFxhealthCollection {
 
     private Integer heathinfo3;
 
-    private Integer isQuarantine;
+    private String isQuarantine;
 
     private String notes;
 
     private String temperature;
 
     private Date createTime;
+
+    private Integer ZdgcNum;
+
+    public Integer getZdgcNum() {
+        return ZdgcNum;
+    }
+
+    public void setZdgcNum(Integer zdgcNum) {
+        ZdgcNum = zdgcNum;
+    }
 
     public Integer getId() {
         return id;
@@ -59,11 +69,11 @@ public class YqFxhealthCollection {
         this.userNo = userNo == null ? null : userNo.trim();
     }
 
-    public Date getTimestamp() {
+    public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -91,11 +101,11 @@ public class YqFxhealthCollection {
         this.heathinfo3 = heathinfo3;
     }
 
-    public Integer getIsQuarantine() {
+    public String getIsQuarantine() {
         return isQuarantine;
     }
 
-    public void setIsQuarantine(Integer isQuarantine) {
+    public void setIsQuarantine(String isQuarantine) {
         this.isQuarantine = isQuarantine;
     }
 

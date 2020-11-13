@@ -21,7 +21,23 @@
     id, school, college, user_name, user_no, sex, age, classes, phone, person_type, create_time, 
     md5_password, department, parents_phone
   </sql>
-
+  <select id="getYqLogin" resultType="com.example.demo.sq.entity.YqStudentInfo">
+    SELECT
+        school,
+        college,
+        user_name AS userName,
+        classes,
+        phone,
+        user_no AS userNo,
+        person_type AS personType,
+        department,
+        parents_phone AS parentPhone
+    FROM
+        `yq_student_info`
+    WHERE
+        user_no = #{no}
+	AND md5_password = #{password};
+  </select>
   <select id="getStudentInfo" resultType="java.util.Map">
     select * from yq_student_info
   </select>
@@ -37,7 +53,7 @@
     delete from yq_student_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.sq.entity.YqStudentInfo">
+  <insert id="postYqZhuceinfo" parameterType="com.example.demo.sq.entity.YqStudentInfo">
     insert into yq_student_info (id, school, college,
       user_name, user_no, sex,
       age, classes, phone,
@@ -49,6 +65,11 @@
       #{personType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{md5Password,jdbcType=VARCHAR},
       #{department,jdbcType=VARCHAR}, #{parentsPhone,jdbcType=VARCHAR})
   </insert>
+  <select id="getYqZhuceinfo" resultType="com.example.demo.sq.entity.YqStudentInfo">
+    SELECT school,college,user_name AS userName ,classes,phone,user_no AS userNo, department
+    FROM `yq_student_info`
+    WHERE user_no=#{no}
+  </select>
   <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqStudentInfo">
     insert into yq_student_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
