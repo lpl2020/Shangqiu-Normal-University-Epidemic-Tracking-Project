@@ -21,6 +21,16 @@ public class YqWxgjCollection {
 
     private Date creatTime;
 
+    private String  timestamp;
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -17,7 +17,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public JSONObject getStudentInfo() {
         JSONObject res = new JSONObject();
-        List<Map<String,Object>> mapResult  = yqStudentInfoMapper.getStudentInfo();
+        List<Map<String,Object>> mapResult = yqStudentInfoMapper.getStudentInfo();
         res.put("mapResult",mapResult);
         System.out.println(res);
         return res;

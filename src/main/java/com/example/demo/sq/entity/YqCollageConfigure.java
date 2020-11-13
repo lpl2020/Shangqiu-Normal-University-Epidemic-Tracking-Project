@@ -1,5 +1,5 @@
 package com.example.demo.sq.entity;
-
+import java.util.Date;
 public class YqCollageConfigure {
     private Integer id;
 
@@ -8,6 +8,16 @@ public class YqCollageConfigure {
     private String college;
 
     private String speciality;
+
+    private String classes;
+
+    public String getClasses() {
+        return classes;
+    }
+
+    public void setClasses(String classes) {
+        this.classes = classes;
+    }
 
     public Integer getId() {
         return id;

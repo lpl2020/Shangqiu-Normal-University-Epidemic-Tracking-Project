@@ -23,7 +23,7 @@
     delete from yq_visitinfo_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.demo.sq.entity.YqVisitinfoInfo">
+  <insert id="postSavevisitorinfo" parameterType="com.example.demo.sq.entity.YqVisitinfoInfo">
     insert into yq_visitinfo_info (id, school, name, 
       phone, toname, tophone, 
       visitinfo)

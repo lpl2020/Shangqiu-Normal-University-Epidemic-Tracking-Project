@@ -13,6 +13,44 @@
   <select id="getSchoolListInfo" resultType="java.util.Map">
     SELECT school FROM `yq_collage_configure` group by school
   </select>
+  <select id="postGetschoollist" resultType="com.example.demo.sq.entity.YqCollageConfigure">
+    SELECT
+      school,
+      collage AS college,
+      speciality AS classes
+    FROM
+        `yq_collage_configure`
+    GROUP BY
+        school
+  </select>
+  <select id="postGetcollagelist" resultType="com.example.demo.sq.entity.YqCollageConfigure">
+    SELECT
+        school,
+        collage AS college,
+        speciality AS classes
+    FROM
+        `yq_collage_configure`
+    WHERE
+        school = #{schools}
+    group by collage
+  </select>
+  <select id="postpersonallitylist" resultType="com.example.demo.sq.entity.YqCollageConfigure">
+    SELECT
+        school,
+        collage AS college,
+        speciality AS classes
+    FROM
+        `yq_collage_configure`
+    WHERE
+        school = #{schools}
+        AND collage = #{collages}
+    GROUP BY
+        speciality
+  </select>
+  <select id="getXyryInfo" resultType="java.util.Map">
+    SELECT center_longitude AS centerLongitude,center_dimension AS centerDimension
+	 			 FROM `yq_school_configure` WHERE school=#{school}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

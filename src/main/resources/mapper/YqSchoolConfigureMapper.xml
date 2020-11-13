@@ -16,6 +16,9 @@
     id, school, center_longitude, center_dimension, college, province, city, create_time, 
     update_time
   </sql>
+  <select id="getSchoolInfo" resultType="java.util.Map">
+    SELECT province,city FROM `yq_school_configure` WHERE school=#{school}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
