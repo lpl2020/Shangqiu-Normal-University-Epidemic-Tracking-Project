@@ -34,13 +34,10 @@
     from yq_fxdata_collection
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from yq_fxdata_collection
-        where id = #{id,jdbcType=INTEGER}
-    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from yq_fxdata_collection
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
     <select id="getFxdataInfo" resultType="java.util.Map">
     SELECT COUNT(1) AS fx_num,SUM(IF(fx_addr_country !='中国',1,0)) AS jwfx_num, SUM(IF(fx_addr_province !=#{province},1,0))
      AS wsfx_num FROM (SELECT * FROM yq_fxdata_collection WHERE school=#{school} GROUP BY user_no) FXRY
@@ -112,31 +109,30 @@ GROUP BY
         GROUP BY
         college;
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from yq_fxdata_collection
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="postYqFxbdinfo" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
-    insert into yq_fxdata_collection (id, school, user_name,
-      user_no, fx_time, fx_addr_country,
-      fx_addr_province, fx_addr_city, fx_addr_town,
-      fx_vehicl, is_thseriousarea, fxjk, fxjt_sm, create_time)
-    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
-      #{userno,jdbcType=VARCHAR}, #{fxtime,jdbcType=DATE}, #{fxcountry,jdbcType=VARCHAR},
-      #{fxprovince,jdbcType=VARCHAR}, #{fxcity,jdbcType=VARCHAR}, #{fxtown,jdbcType=VARCHAR},
-      #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{fxjk,jdbcType=VARCHAR}, #{trainnum,jdbcType=VARCHAR},
+
+    <insert id="postYqFxbdinfo" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
+        insert into yq_fxdata_collection (id, school, user_name,
+          user_no, fx_time, fx_addr_country,
+          fx_addr_province, fx_addr_city, fx_addr_town,
+          fx_vehicl, is_thseriousarea, fxjk, fxjt_sm, create_time)
+        values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+          #{userno,jdbcType=VARCHAR}, #{fxtime,jdbcType=DATE}, #{fxcountry,jdbcType=VARCHAR},
+          #{fxprovince,jdbcType=VARCHAR}, #{fxcity,jdbcType=VARCHAR}, #{fxtown,jdbcType=VARCHAR},
+          #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{fxjk,jdbcType=VARCHAR}, #{trainnum,jdbcType=VARCHAR},
+          #{createtime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insert" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
-    insert into yq_fxdata_collection (id, school, userName,
-      userNo, fxTime, fxCountry,
-      fxProvince, fxCity, fxTown,
-      fxVehicle, throughEpidemicArea, trainNum,
-      createTime)
-    values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
-      #{userno,jdbcType=VARCHAR}, #{fxtime,jdbcType=DATE}, #{fxcountry,jdbcType=VARCHAR},
-      #{fxprovince,jdbcType=VARCHAR}, #{fxcity,jdbcType=VARCHAR}, #{fxtown,jdbcType=VARCHAR},
-      #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{trainnum,jdbcType=VARCHAR},
-      #{createtime,jdbcType=TIMESTAMP})
-  </insert>
+        insert into yq_fxdata_collection (id, school, userName,
+          userNo, fxTime, fxCountry,
+          fxProvince, fxCity, fxTown,
+          fxVehicle, throughEpidemicArea, trainNum,
+          createTime)
+        values (#{id,jdbcType=INTEGER}, #{school,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+          #{userno,jdbcType=VARCHAR}, #{fxtime,jdbcType=DATE}, #{fxcountry,jdbcType=VARCHAR},
+          #{fxprovince,jdbcType=VARCHAR}, #{fxcity,jdbcType=VARCHAR}, #{fxtown,jdbcType=VARCHAR},
+          #{fxvehicle,jdbcType=VARCHAR}, #{throughepidemicarea,jdbcType=INTEGER}, #{trainnum,jdbcType=VARCHAR},
+          #{createtime,jdbcType=TIMESTAMP})
+    </insert>
     <insert id="insertSelective" parameterType="com.example.demo.sq.entity.YqFxdataCollection">
         insert into yq_fxdata_collection
         <trim prefix="(" suffix=")" suffixOverrides=",">
