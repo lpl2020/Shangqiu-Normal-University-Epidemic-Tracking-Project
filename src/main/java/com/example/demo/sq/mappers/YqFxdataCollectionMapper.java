@@ -2,6 +2,10 @@ package com.example.demo.sq.mappers;
 
 import com.example.demo.sq.entity.YqFxdataCollection;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Map;
+import java.util.List;
+import java.util.Map;
 
 import java.util.List;
 import java.util.Map;
@@ -10,9 +14,17 @@ import java.util.Map;
 public interface YqFxdataCollectionMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(YqFxdataCollection record);
+
+
+    void postYqFxbdinfo(YqFxdataCollection record);
 
     int insertSelective(YqFxdataCollection record);
+
+    List<Map<String,Object>> getschoolInfo();
+
+    List<Map<String,Object>> getFxdataInfo();
+
+    List<YqFxdataCollection> jtSubmit(String school, String no);
 
     List<Map<String,Object>> getFxdataInfo(String school);
 
@@ -31,11 +43,4 @@ public interface YqFxdataCollectionMapper {
     int updateByPrimaryKeySelective(YqFxdataCollection record);
 
     int updateByPrimaryKey(YqFxdataCollection record);
-
-    List<Map<String, Object>> getFxdataInfo();
-
-    List<Map<String, Object>> getEntiCountDataInfo();
-    List<Map<String, Object>> getsyrelationDataInfo();
-    List<Map<String, Object>> getPersionDataInfo();
-
 }

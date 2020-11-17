@@ -1,9 +1,9 @@
 
 spring:
     datasource:
-        url: jdbc:mysql://127.0.0.1:3306/user_draw_db?serverTimezone=GMT%2B8
+        url: jdbc:mysql://127.0.0.1:3306/sq_yiqing_database?serverTimezone=GMT%2B8
         username: root
-        password: root
+        password: 123123
         driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis:
     typeAliasesPackage: com.example.demo.sq.entity
@@ -12,3 +12,4 @@ mybatis:
 logging:
     level:
         com.example.demo.sq.mappers: debug
+

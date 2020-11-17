@@ -10,9 +10,13 @@ import java.util.Map;
 public interface YqStudentInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(YqStudentInfo record);
+    int postYqZhuceinfo(YqStudentInfo record);
 
     int insertSelective(YqStudentInfo record);
+
+    List<YqStudentInfo> getYqZhuceinfo(String no);
+
+    List<YqStudentInfo> getYqLogin(String no, String password);
 
     List<Map<String,Object>> getStudentInfo();
 
