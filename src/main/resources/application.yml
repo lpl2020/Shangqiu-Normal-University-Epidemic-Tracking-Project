@@ -8,3 +8,7 @@ spring:
 mybatis:
     typeAliasesPackage: com.example.demo.sq.entity
     mapperLocations: classpath:mapper/*.xml
+
+logging:
+    level:
+        com.example.demo.sq.mappers: debug

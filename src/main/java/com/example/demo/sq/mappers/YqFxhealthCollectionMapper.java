@@ -18,7 +18,7 @@ public interface YqFxhealthCollectionMapper {
     List<Map<String,Object>> getSysjDataInfo();
     List<Map<String,Object>> getPersionDataInfo();
 
-    List<Map<String,Object>> getFxdataInfo();
+    List<Map<String,Object>> getFxdataInfo(String school);
 
     YqFxhealthCollection selectByPrimaryKey(Integer id);
 

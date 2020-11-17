@@ -5,13 +5,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+
 @Repository
+
 public interface YqWxgjCollectionMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(YqWxgjCollection record);
 
     int insertSelective(YqWxgjCollection record);
+
+    List<Map<String,Object>> getXyRyInfo(String school);
+
+    List<Map<String,Object>> getXyYjInfo(String school);
 
     YqWxgjCollection selectByPrimaryKey(Integer id);
 
