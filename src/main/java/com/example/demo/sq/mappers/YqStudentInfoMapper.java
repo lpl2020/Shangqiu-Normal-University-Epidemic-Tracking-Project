@@ -14,11 +14,14 @@ public interface YqStudentInfoMapper {
 
     int insertSelective(YqStudentInfo record);
 
-    List<YqStudentInfo> getYqZhuceinfo(String no);
 
     List<YqStudentInfo> getYqLogin(String no, String password);
 
-    List<Map<String, Object>> getStudentInfo();
+    List<Map<String,Object>> getsyrelationDataInfo(String school,String userNo);
+
+    List<Map<String,Object>> getsyrelation2DataInfo();
+
+    List<Map<String,Object>> getStudentInfo();
 
     YqStudentInfo selectByPrimaryKey(Integer id);
 

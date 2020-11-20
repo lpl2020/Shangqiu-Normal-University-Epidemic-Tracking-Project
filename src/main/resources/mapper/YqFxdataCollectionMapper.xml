@@ -23,11 +23,45 @@
   <select id="jtSubmit" resultType="com.example.demo.sq.entity.YqFxdataCollection">
     SELECT school FROM `yq_fxdata_collection` WHERE school=#{school} AND user_no=#{no};
   </select>
-  <select id="getBaseInfo" resultType="java.util.HashMap">
-    SELECT COUNT(1) AS fxNum,SUM(IF(fx_addr_country !='中国',1,0)) AS jwfxNum, SUM(IF(fx_addr_province !='河南省',1,0)) AS wsfxNum
-	FROM (SELECT * FROM yq_fxdata_collection WHERE school='山东英才学院' GROUP BY user_no) FXRY
+    <select id="getEntiCountDataInfo" resultType="java.util.Map">
+    SELECT
+        SUM(
+        IF
+        ( person_type = '1', 1, 0 )) AS teachercount,
+        SUM(
+        IF
+        ( person_type = '0', 1, 0 )) AS studentcount,
+        SUM(
+        IF
+        ( person_type = '2', 1, 0 )) AS foreigner,
+        SUM(
+        IF
+        ( person_type = '3', 1, 0 )) AS other
+    FROM
+        ( SELECT * FROM yq_fxdata_collection WHERE school = #{school} ) tmp1
+        LEFT JOIN ( SELECT * FROM yq_student_info GROUP BY user_no ) tmp2 ON tmp1.user_no = tmp2.user_no
+    </select>
+    <select id="getPersionDataInfo" resultType="java.util.Map">
+   SELECT
+	TMP1.user_name AS userName,
+	sex AS sex,
+	age AS age,
+	classes AS classes,
+	phone,
+	parents_phone AS parentPhone,
+	fx_time AS fxTime,
+	TMP2.fx_vehicl AS fxVehicl,
+	TMP2.fxjt_sm AS fxjtSm,
+	TMP2.fx_addr_city AS addr
+FROM
+	(
+	SELECT
+		*
+	FROM
+		yq_student_info
+WHERE
+	school = #{school} AND user_no = #{userNo}) TMP1 LEFT JOIN (select * from yq_fxdata_collection AS tmp1 WHERE school = #{school} AND user_no = #{userNo} AND tmp1.id IN (select SUBSTRING_INDEX(group_concat(id order by `create_time` desc),',',1) from yq_fxdata_collection WHERE school = #{school} AND user_no = #{userNo} group by user_no))TMP2 ON TMP1.user_no = TMP2.user_no;
   </select>
-
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

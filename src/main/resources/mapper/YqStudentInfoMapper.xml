@@ -21,22 +21,60 @@
     id, school, college, user_name, user_no, sex, age, classes, phone, person_type, create_time, 
     md5_password, department, parents_phone
   </sql>
-  <select id="getYqLogin" resultType="com.example.demo.sq.entity.YqStudentInfo">
+  <select id="getPersionDataInfo" resultType="java.util.Map">
     SELECT
-        school,
-        college,
-        user_name AS userName,
-        classes,
-        phone,
-        user_no AS userNo,
-        person_type AS personType,
-        department,
-        parents_phone AS parentPhone
+	TMP1.user_name AS userName,
+	sex AS sex,
+	age AS age,
+	classes AS classes,
+	phone,
+	parents_phone AS parentPhone,
+	fx_time AS fxTime,
+	TMP2.fx_vehicl AS fxVehicl,
+	TMP2.fxjt_sm AS fxjtSm,
+	TMP2.fx_addr_city AS addr
+FROM
+	( SELECT * FROM yq_student_info WHERE school = '山东英才学院' ) TMP1
+	LEFT JOIN (
+	SELECT
+		*
+	FROM
+		yq_fxdata_collection AS tmp1
+	WHERE
+	school = '山东英才学院'
+	AND tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxdata_collection WHERE school = '山东英才学院' )) TMP2 ON TMP1.user_no = TMP2.user_no;
+  </select>
+  <select id="getsyrelationDataInfo" resultType="java.util.Map">
+     SELECT
+	TMP1.user_name AS userName,
+	sex AS sex,
+	age AS age,
+	classes AS classes,
+	phone,
+	parents_phone AS parentPhone,
+	fx_time AS fxTime,
+	TMP2.fx_vehicl AS fxVehicl,
+	TMP2.fxjt_sm AS fxjtSm,
+	TMP2.fx_addr_city AS addr
+FROM
+	(
+	SELECT
+		*
+	FROM
+		yq_student_info
+WHERE
+	school = #{school} AND user_no = #{userNo}) TMP1 LEFT JOIN (select * from yq_fxdata_collection AS tmp1 WHERE school = #{school} AND user_no = #{userNo} AND tmp1.id IN (select SUBSTRING_INDEX(group_concat(id order by `create_time` desc),',',1) from yq_fxdata_collection WHERE school = #{school} AND user_no = #{userNo} group by user_no))TMP2 ON TMP1.user_no = TMP2.user_no;
+  </select>
+  <select id="getsyrelation2DataInfo" resultType="java.util.Map">
+        SELECT
+        user_name AS userName
     FROM
         `yq_student_info`
-    WHERE
-        user_no = #{no}
-	AND md5_password = #{password};
+    GROUP BY
+        user_no
+    ORDER BY
+        id DESC
+        LIMIT 10;
   </select>
   <select id="getStudentInfo" resultType="java.util.Map">
     select create_time from yq_student_info

@@ -32,10 +32,13 @@ import java.util.Map;
 public class YqyjxnServiceImpl implements YqyjxnService {
     @Autowired
     YqFxhealthCollectionMapper yqFxhealthCollectionMapper;
-    public JSONObject getYqyjxnServiceInfo(){
+
+    public JSONObject getYqyjxnServiceInfo(String school){
         JSONObject rc = new JSONObject();
-        List<Map<String,Object>> result=yqFxhealthCollectionMapper.getYjxnDataInfo();
+        List<Map<String,Object>> result=yqFxhealthCollectionMapper.getYjxnDataInfo(school);
+        List<Map<String,Object>> Result=yqFxhealthCollectionMapper.getYjxnsDataInfo(school);
         rc.put("result",result);
+        rc.put("Result",Result);
         return rc;
     }
 

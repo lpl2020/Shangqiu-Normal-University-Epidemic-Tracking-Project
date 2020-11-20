@@ -14,9 +14,9 @@ public class YqsysjServiceImpl implements YqsysjService {
     @Autowired
     YqFxhealthCollectionMapper yqFxhealthCollectionMapper;
     @Override
-    public JSONObject getYqsysjInfo(){
+    public JSONObject getYqsysjInfo(String school){
         JSONObject rd = new JSONObject();
-        List<Map<String,Object>> Result=yqFxhealthCollectionMapper.getSysjDataInfo();
+        List<Map<String,Object>> Result=yqFxhealthCollectionMapper.getSysjDataInfo(school);
         rd.put("Result",Result);
         return rd;
 

@@ -1,2 +1,7 @@
-package com.example.demo.sq.service;public interface YqsysjService {
+package com.example.demo.sq.service;
+
+import com.alibaba.fastjson.JSONObject;
+
+public interface YqsysjService {
+    JSONObject getYqsysjInfo(String school);
 }

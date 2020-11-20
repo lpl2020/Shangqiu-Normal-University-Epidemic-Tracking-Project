@@ -34,10 +34,10 @@ public class YqSygrgitServiceImpl implements YqsygrgitService {
     @Autowired
     YqWxgjCollectionMapper yqWxgjCollectionMapper;
     @Override
-    public JSONObject getSygrgitInfo(){
+    public JSONObject getSygrgitInfo(String school,String personNo){
         JSONObject rk = new JSONObject();
-        List<Map<String,Object>> Result=yqCollageConfigureMapper.getSygrgitDataInfo();
-        List<Map<String,Object>> result=yqWxgjCollectionMapper.getSygrgitDataInfo();
+        List<Map<String,Object>> Result=yqCollageConfigureMapper.getSygrgitDataInfo(school);
+        List<Map<String,Object>> result=yqWxgjCollectionMapper.getSygrgitDataInfo(school,personNo);
         rk.put("Result",Result);
         rk.put("result",result);
         return rk;

@@ -19,6 +19,67 @@
     id, school, user_name, user_no, timestamp, heathinfo1, heathinfo2, heathinfo3, is_quarantine, 
     notes, temperature, create_time
   </sql>
+  <select id="getEntiCountDataInfo" resultType="java.util.Map">
+        SELECT
+        SUM(
+        IF
+        ( fx_addr_country != '中国', 1, 0 )) AS fromOtherCountry,
+        SUM(
+        IF
+        ( fx_addr_city = '武汉市', 1, 0 )) AS fromWuHan,
+        count( 1 ) AS focusObservation
+    FROM
+        (
+        SELECT
+            *
+        FROM
+            yq_fxhealth_collection AS tmp1
+        WHERE
+            tmp1.school = #{school}
+        AND tmp1.heathinfo1 != '00001'and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection GROUP BY user_no )) tmp2
+        LEFT JOIN ( SELECT * FROM yq_fxdata_collection WHERE school = #{school} ) tmp3 ON tmp2.user_no = tmp3.user_no
+    WHERE
+        tmp2.school = #{school}
+  </select>
+  <select id="getPersionDataInfo" resultType="java.util.Map">
+   SELECT
+	create_time AS TIMESTAMP
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school = #{school} AND user_no=#{userNo} and heathinfo1!='00001';
+  </select>
+  <select id="getSysjDataInfo"  resultType="java.util.Map">
+SELECT
+	user_name AS userName,
+	user_no AS userNo,
+	`timestamp` AS TIMESTAMP
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school =#{school} and is_quarantine=1;
+  </select>
+  <select id="getYjxnsDataInfo" resultType="java.util.Map">
+SELECT
+	count( 1 ) AS count
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school =#{school}
+	AND create_time > date_sub( NOW(), INTERVAL 1 DAY )
+	AND heathinfo1 != '00001';
+  </select>
+  <select id="getYjxnDataInfo" resultType="java.util.Map">
+SELECT
+	heathinfo1,
+TIMESTAMP
+FROM
+	`yq_fxhealth_collection`
+WHERE
+	school = #{school} and heathinfo1!='00001';
+
+  </select>
+
   <select id="jkSubmit" resultType="com.example.demo.sq.entity.YqFxhealthCollection">
     SELECT school FROM `yq_fxhealth_collection` WHERE school=#{school} AND user_no=#{no} and heathinfo2 is not null AND timestamp>=CURDATE();
   </select>

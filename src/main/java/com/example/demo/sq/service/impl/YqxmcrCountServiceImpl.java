@@ -38,9 +38,9 @@ public class YqxmcrCountServiceImpl implements YqxmcrCountService {
     @Autowired
     private YqWxgjCollectionMapper yqWxgjCollectionMapper;
     @Override
-    public JSONObject getYqXmcrCountInfo(){
+    public JSONObject getYqXmcrCountInfo(String school){
           JSONObject ra = new JSONObject();
-          List<Map<String,Object>> result = yqWxgjCollectionMapper.getXmcrCountDataInfo();
+          List<Map<String,Object>> result = yqWxgjCollectionMapper.getXmcrCountDataInfo(school);
           ra.put("result",result);
           return ra;
       }

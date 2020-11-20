@@ -19,13 +19,14 @@ public interface YqFxhealthCollectionMapper {
 
     int insertSelective(YqFxhealthCollection record);
 
-    Map<String,Object> getHealthCollection();
+    List<Map<String,Object>> getEntiCountDataInfo(String studentno);
 
-    List<YqFxhealthCollection> jkSubmit(String school, String no);
+    List<Map<String,Object>> getPersionDataInfo(String school,String userNo);
 
-    List<Map<String,Object>> getYqFxhealthInfo();
+    List<Map<String,Object>> getSysjDataInfo(String school);
 
-    List<Map<String,Object>> getFxdataInfo(String school);
+    List<Map<String,Object>> getYjxnDataInfo(String school);
+    List<Map<String,Object>> getYjxnsDataInfo(String school);
 
     YqFxhealthCollection selectByPrimaryKey(Integer id);
 

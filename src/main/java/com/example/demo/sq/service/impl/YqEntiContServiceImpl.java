@@ -17,10 +17,10 @@ public class YqEntiContServiceImpl implements YqEntiContService {
     @Autowired
     YqFxhealthCollectionMapper yqFxhealthCollectionMapper;
     @Override
-    public JSONObject getYqEntiContServiceInfo(){
+    public JSONObject getYqEntiContServiceInfo(String school){
         JSONObject re = new JSONObject();
-        List<Map<String,Object>> Result=yqFxdataCollectionMapper.getEntiCountDataInfo();
-        List<Map<String,Object>> result=yqFxhealthCollectionMapper.getEntiCountDataInfo();
+        List<Map<String,Object>> Result=yqFxdataCollectionMapper.getEntiCountDataInfo(school);
+        List<Map<String,Object>> result=yqFxhealthCollectionMapper.getEntiCountDataInfo(school);
         re.put("Result",Result);
         re.put("result",result);
         return re;

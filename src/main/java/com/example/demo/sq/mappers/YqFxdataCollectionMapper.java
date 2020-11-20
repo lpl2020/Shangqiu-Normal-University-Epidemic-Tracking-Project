@@ -35,4 +35,9 @@ public interface YqFxdataCollectionMapper {
     int updateByPrimaryKeySelective(YqFxdataCollection record);
 
     int updateByPrimaryKey(YqFxdataCollection record);
+
+
+    List<Map<String, Object>> getEntiCountDataInfo(String school);
+    List<Map<String, Object>> getPersionDataInfo(String school,String userNo);
+
 }

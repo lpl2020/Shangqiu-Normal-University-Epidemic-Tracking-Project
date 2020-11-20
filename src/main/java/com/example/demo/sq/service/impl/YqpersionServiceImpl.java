@@ -36,10 +36,10 @@ public class YqpersionServiceImpl implements YqpersionService {
     @Autowired
     YqFxhealthCollectionMapper yqFxhealthCollectionMapper;
     @Override
-    public JSONObject getPersoionInfo(){
+    public JSONObject getPersoionInfo(String school,String userNo){
         JSONObject rg = new JSONObject();
-        List<Map<String,Object>> Result=yqFxdataCollectionMapper.getPersionDataInfo();
-        List<Map<String,Object>> result=yqFxhealthCollectionMapper.getPersionDataInfo();
+        List<Map<String,Object>> Result=yqFxdataCollectionMapper.getPersionDataInfo(school,userNo);
+        List<Map<String,Object>> result=yqFxhealthCollectionMapper.getPersionDataInfo(school,userNo);
         rg.put("Result",Result);
         rg.put("result",result);
         return rg;

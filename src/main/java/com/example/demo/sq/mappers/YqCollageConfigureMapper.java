@@ -13,20 +13,11 @@ public interface YqCollageConfigureMapper {
 
     int insertSelective(YqCollageConfigure record);
 
-    List<Map<String,Object>> getSchoolListInfo();
-
-    List<YqCollageConfigure> postGetschoollist();
-
-    List<YqCollageConfigure> postGetcollagelist(String schools);
-
-    List<YqCollageConfigure> postpersonallitylist(String schools, String collages);
-
-    List<Map<String,Object>> getXyryInfo(String school);
 
     YqCollageConfigure selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(YqCollageConfigure record);
 
     int updateByPrimaryKey(YqCollageConfigure record);
-    List<Map<String, Object>> getSygrgitDataInfo();
+    List<Map<String, Object>> getSygrgitDataInfo(String school);
 }
