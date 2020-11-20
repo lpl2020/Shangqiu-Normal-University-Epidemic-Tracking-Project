@@ -1,12 +1,8 @@
 package com.example.demo.sq.mappers;
 
 import com.example.demo.sq.entity.YqFxdataCollection;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import java.util.List;
-import java.util.Map;
-import java.util.List;
-import java.util.Map;
-
 import java.util.List;
 import java.util.Map;
 
@@ -14,21 +10,17 @@ import java.util.Map;
 public interface YqFxdataCollectionMapper {
     int deleteByPrimaryKey(Integer id);
 
-
-
     void postYqFxbdinfo(YqFxdataCollection record);
 
     int insertSelective(YqFxdataCollection record);
 
     List<Map<String,Object>> getschoolInfo();
 
-    List<Map<String,Object>> getFxdataInfo();
-
     List<YqFxdataCollection> jtSubmit(String school, String no);
 
-    List<Map<String,Object>> getFxdataInfo(String school);
+    List<Map<String,Object>> getFxdataInfo(String school,String province);
 
-    List<Map<String,Object>> getYqIbodyInfo(String school);
+    List<Map<String,Object>> getYqIbodyInfo(@Param("school") String school);
 
     List<Map<String,Object>> getRmlyInfo(String school);
 

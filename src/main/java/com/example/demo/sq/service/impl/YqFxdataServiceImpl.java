@@ -18,11 +18,16 @@ public class YqFxdataServiceImpl implements YqFxdataService {
     @Autowired
     private YqFxhealthCollectionMapper yqFxhealthCollectionMapper;
 
+    /**
+     * 接口1、 大屏最顶端信息：返校人数 外省返校人数 境外返校人数 重点观察人数
+     *
+     * @return
+     */
     @Override
-    public JSONObject getYqFxdataInfo(String school) {
+    public JSONObject getYqFxdataInfo(String school,String province) {
         try {
             JSONObject res = new JSONObject();
-            List<Map<String, Object>> mapResult = yqFxdataCollectionMapper.getFxdataInfo(school);
+            List<Map<String, Object>> mapResult = yqFxdataCollectionMapper.getFxdataInfo(school,province);
             List<Map<String, Object>> Result = yqFxhealthCollectionMapper.getFxdataInfo(school);
             for (int i = 0; i < mapResult.size(); i++) {
                 Map<String, Object> r = mapResult.get(i);
@@ -45,4 +50,6 @@ public class YqFxdataServiceImpl implements YqFxdataService {
         return null;
 
     }
+
+
 }
