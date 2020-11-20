@@ -17,7 +17,7 @@ public class rootcontroller {
     private rootService rootService;
 
     @RequestMapping(value = "/getloginInfo", method = RequestMethod.GET)
-
+    // 登录接口
     public JSONObject login(
             @RequestParam(value = "school", required = false) String school,
             @RequestParam(value = "user", required = false) String user,
