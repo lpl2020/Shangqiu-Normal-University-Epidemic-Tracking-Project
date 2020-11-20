@@ -9,7 +9,13 @@ mybatis:
     typeAliasesPackage: com.example.demo.sq.entity
     mapperLocations: classpath:mapper/*.xml
 
+#
+#    configuration:
+#        map-underscore-to-camel-case=true:logging:
+#    level:
+#        com.example.demo.sq.mappers: debug
+
+#日志
 logging:
     level:
         com.example.demo.sq.mappers: debug
-

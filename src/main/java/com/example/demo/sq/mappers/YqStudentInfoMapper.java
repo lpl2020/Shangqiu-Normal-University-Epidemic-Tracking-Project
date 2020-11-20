@@ -18,11 +18,12 @@ public interface YqStudentInfoMapper {
 
     List<YqStudentInfo> getYqLogin(String no, String password);
 
-    List<Map<String,Object>> getStudentInfo();
+    List<Map<String, Object>> getStudentInfo();
 
     YqStudentInfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(YqStudentInfo record);
 
     int updateByPrimaryKey(YqStudentInfo record);
+
 }
