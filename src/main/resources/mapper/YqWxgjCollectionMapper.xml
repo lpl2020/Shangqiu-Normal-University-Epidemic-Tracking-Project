@@ -25,81 +25,75 @@
 	school = #{school}
 	AND user_no = #{no};
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from yq_wxgj_collection
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+
     <select id="getXyRyInfo" resultType="java.util.Map">
-    SELECT
-	longitude AS longitude,
-	dimension AS dimension
-FROM
-	`yq_wxgj_collection`
-WHERE
-	school = #{school}
-	AND id IN (
-	SELECT
-		SUBSTRING_INDEX( group_concat( id ORDER BY `time` DESC ), ',', 1 )
-	FROM
-		yq_wxgj_collection
-GROUP BY
-	user_no)
-  </select>
-    <select id="getXyYjInfo" resultType="java.util.Map">
         SELECT
-	*
-FROM
-	((
-		SELECT
-			0 AS flag,
-			user_name AS userName,
-			user_no AS userNum,
-			addr AS lymc,
-			creat_time AS createTime
-		FROM
-			yq_wxgj_collection
-		WHERE
-			school = #{school}
-			AND user_no NOT IN (
-			SELECT
-				user_no
-			FROM
-				yq_fxhealth_collection AS tmp1
-			WHERE
-				school = #{school}
-				AND tmp1.heathinfo1 != '00001'
-			AND tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = #{school} GROUP BY user_no ))
-		ORDER BY
-			creat_time DESC
-			LIMIT 10
-			) UNION ALL
-		(
-		SELECT
-			1 AS flag,
-			user_name AS userName,
-			user_no AS userNum,
-			addr AS lymc,
-			creat_time AS createTime
-		FROM
-			yq_wxgj_collection
-		WHERE
-			school = #{school}
-			AND user_no IN (
-			SELECT
-				user_no
-			FROM
-				yq_fxhealth_collection AS tmp1
-			WHERE
-			school = #{school} and tmp1.heathinfo1 != '00001' and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = #{school} GROUP BY user_no ))
-		ORDER BY
-			creat_time DESC
-			LIMIT 5
-		)) tmp
-ORDER BY
-	createTime ASC
+        longitude AS longitude,
+        dimension AS dimension
+        FROM
+            `yq_wxgj_collection`
+        WHERE
+            school = #{school}
+            AND id IN (
+            SELECT
+                SUBSTRING_INDEX( group_concat( id ORDER BY `time` DESC ), ',', 1 )
+            FROM
+                yq_wxgj_collection
+        GROUP BY
+            user_no)
+    </select>
+    <select id="getXyYjInfo" resultType="java.util.Map">
+                SELECT
+            *
+        FROM
+            ((
+                SELECT
+                    0 AS flag,
+                    user_name AS userName,
+                    user_no AS userNum,
+                    addr AS lymc,
+                    creat_time AS createTime
+                FROM
+                    yq_wxgj_collection
+                WHERE
+                    school = #{school}
+                    AND user_no NOT IN (
+                    SELECT
+                        user_no
+                    FROM
+                        yq_fxhealth_collection AS tmp1
+                    WHERE
+                        school = #{school}
+                        AND tmp1.heathinfo1 != '00001'
+                    AND tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = #{school} GROUP BY user_no ))
+                ORDER BY
+                    creat_time DESC
+                    LIMIT 10
+                    ) UNION ALL
+                (
+                SELECT
+                    1 AS flag,
+                    user_name AS userName,
+                    user_no AS userNum,
+                    addr AS lymc,
+                    creat_time AS createTime
+                FROM
+                    yq_wxgj_collection
+                WHERE
+                    school = #{school}
+                    AND user_no IN (
+                    SELECT
+                        user_no
+                    FROM
+                        yq_fxhealth_collection AS tmp1
+                    WHERE
+                    school = #{school} and tmp1.heathinfo1 != '00001' and tmp1.id IN ( SELECT SUBSTRING_INDEX( group_concat( id ORDER BY `create_time` DESC ), ',', 1 ) FROM yq_fxhealth_collection WHERE school = #{school} GROUP BY user_no ))
+                ORDER BY
+                    creat_time DESC
+                    LIMIT 5
+                )) tmp
+        ORDER BY
+            createTime ASC
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

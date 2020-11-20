@@ -1,11 +1,12 @@
 package com.example.demo.sq.mappers;
 
 import com.example.demo.sq.entity.YqFxdataCollection;
-import com.example.demo.sq.entity.YqStudentInfo;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
-import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Map;
+
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,15 @@ import java.util.Map;
 public interface YqFxdataCollectionMapper {
     int deleteByPrimaryKey(Integer id);
 
+
+
     void postYqFxbdinfo(YqFxdataCollection record);
 
     int insertSelective(YqFxdataCollection record);
+
+    List<Map<String,Object>> getschoolInfo();
+
+    List<Map<String,Object>> getFxdataInfo();
 
     List<YqFxdataCollection> jtSubmit(String school, String no);
 

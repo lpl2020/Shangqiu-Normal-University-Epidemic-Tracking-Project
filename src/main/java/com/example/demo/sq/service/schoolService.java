@@ -2,6 +2,6 @@ package com.example.demo.sq.service;
 
 import com.alibaba.fastjson.JSONObject;
 
-public interface TestService {
-        JSONObject getBaseInfo();
+public interface schoolService {
+    JSONObject getSchoolInfo();
 }

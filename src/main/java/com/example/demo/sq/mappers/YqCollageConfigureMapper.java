@@ -4,6 +4,9 @@ import com.example.demo.sq.entity.YqCollageConfigure;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
+
+import java.util.List;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +17,8 @@ public interface YqCollageConfigureMapper {
     int insert(YqCollageConfigure record);
 
     int insertSelective(YqCollageConfigure record);
+
+    List<Map<String,Object>> getSchoolListInfo();
 
     List<YqCollageConfigure> postGetschoollist();
 
